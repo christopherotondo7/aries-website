@@ -1,0 +1,176 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// Read content from CMS files
+let technologyContent;
+try {
+  const technologyPath = join(process.cwd(), 'src/content/technology.md');
+  const technologyRaw = readFileSync(technologyPath, 'utf-8');
+  const frontmatter = technologyRaw.split('---')[1];
+  const body = technologyRaw.split('---')[2];
+  
+  const title = frontmatter.match(/title:\s*"([^"]+)"/)?.[1] || 'Our Technology';
+  const description = frontmatter.match(/description:\s*"([^"]+)"/)?.[1] || '';
+  
+  technologyContent = { title, description, body };
+} catch (error) {
+  technologyContent = {
+    title: 'Our Technology',
+    description: 'Advanced technology and equipment for precision manufacturing',
+    body: 'Discover our cutting-edge technology...'
+  };
+}
+
+const metadata = {
+  title: `${technologyContent.title} - Aries Group`,
+  description: technologyContent.description,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero>
+    <Fragment slot="title">
+      {technologyContent.title}
+    </Fragment>
+    <Fragment slot="subtitle">
+      {technologyContent.description}
+    </Fragment>
+  </Hero>
+
+  <!-- Content Section -->
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="prose prose-lg mx-auto dark:prose-invert mb-16">
+      <Fragment set:html={technologyContent.body} />
+    </div>
+  </div>
+
+  <!-- Technology Stats -->
+  <Stats
+    stats={[
+      { title: 'Production Sites', amount: '12+' },
+      { title: 'Years Experience', amount: '25+' },
+      { title: 'Laser Cutting Systems', amount: '8' },
+      { title: 'CNC Machines', amount: '15+' },
+    ]}
+  />
+
+  <!-- Advanced Equipment -->
+  <Features
+    id="equipment"
+    title="Advanced Equipment"
+    subtitle="State-of-the-art machinery delivering precision and efficiency"
+    items={[
+      {
+        title: 'Fiber Laser Cutting',
+        description: 'High-precision fiber laser cutting systems with automated material handling and real-time quality monitoring.',
+        icon: 'tabler:laser',
+      },
+      {
+        title: 'CNC Punching',
+        description: 'Automated punching machines with tool changing capabilities for complex geometries and high-speed production.',
+        icon: 'tabler:target-arrow',
+      },
+      {
+        title: 'Press Brake Technology',
+        description: 'Advanced bending technology with precision controls and automated backgauge systems.',
+        icon: 'tabler:fold',
+      },
+      {
+        title: 'Robotic Welding',
+        description: 'Automated welding systems ensuring consistent quality and reducing production time.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Quality Control Systems',
+        description: 'Advanced inspection and measurement equipment with real-time quality monitoring.',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Material Handling',
+        description: 'Automated storage and retrieval systems for efficient material flow and inventory management.',
+        icon: 'tabler:crane',
+      },
+    ]}
+  />
+
+  <!-- Quality Systems -->
+  <div class="bg-gray-50 dark:bg-slate-800 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Quality Management
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+          Certified quality systems ensuring excellence at every step
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">ISO 9001:2015</h3>
+          <p class="text-gray-600 dark:text-gray-300">Certified quality management system ensuring consistent delivery of high-quality products.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Real-time Monitoring</h3>
+          <p class="text-gray-600 dark:text-gray-300">Advanced inspection equipment with continuous quality monitoring throughout production.</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Continuous Improvement</h3>
+          <p class="text-gray-600 dark:text-gray-300">Ongoing process optimization and technology upgrades to maintain competitive advantages.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Innovation Focus -->
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+        Innovation & Investment
+      </h2>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        We continuously invest in new technology and processes to maintain our competitive edge and deliver superior results to our clients.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Industry 4.0 Integration</h3>
+        <p class="text-gray-600 dark:text-gray-300">Smart manufacturing systems with IoT connectivity and data analytics for optimized production.</p>
+      </div>
+      
+      <div class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Sustainable Practices</h3>
+        <p class="text-gray-600 dark:text-gray-300">Energy-efficient equipment and environmentally conscious manufacturing processes.</p>
+      </div>
+      
+      <div class="bg-white dark:bg-slate-900 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">R&D Investment</h3>
+        <p class="text-gray-600 dark:text-gray-300">Ongoing research and development to stay ahead of industry trends and technological advances.</p>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,6 +1,9 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -40,12 +43,12 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Contact Us',
+        text: 'Get Quote',
         href: '/contact',
       },
-      { text: 'Learn more', href: '/about' },
+      { text: 'Virtual Tour', href: '/production-sites' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Aries Group' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Aries Group Sheet Metal Processing' }}
   >
     <Fragment slot="title">
       {homeContent.heroTitle}
@@ -56,10 +59,140 @@ const metadata = {
     </Fragment>
   </Hero>
 
+  <!-- Company Stats -->
+  <Stats
+    stats={[
+      { title: 'Years of Experience', amount: '25+' },
+      { title: 'Production Sites', amount: '12' },
+      { title: 'Employees', amount: '250+' },
+      { title: 'Countries Served', amount: '15+' },
+    ]}
+  />
+
   <!-- Content section with CMS body content -->
-  <div class="max-w-4xl mx-auto px-4 py-16 text-center">
-    <div class="prose prose-lg mx-auto dark:prose-invert">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <div class="prose prose-lg mx-auto dark:prose-invert text-center mb-16">
       <Fragment set:html={homeContent.body} />
     </div>
   </div>
+
+  <!-- Our Capabilities -->
+  <Features
+    id="capabilities"
+    title="Our Capabilities"
+    subtitle="Comprehensive sheet metal processing solutions with cutting-edge technology"
+    items={[
+      {
+        title: 'Precision Laser Cutting',
+        description: 'Advanced fiber laser technology for high-precision cutting of various materials and thicknesses.',
+        icon: 'tabler:laser',
+      },
+      {
+        title: 'CNC Punching & Forming',
+        description: 'Automated punching and forming processes for complex geometries and high-volume production.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Welding & Assembly',
+        description: 'Professional welding services and complete assembly solutions with certified quality standards.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Quality Control',
+        description: 'ISO 9001:2015 certified quality management with advanced inspection and testing capabilities.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'European Production',
+        description: 'Strategic production sites across Europe ensuring rapid delivery and local support.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Custom Solutions',
+        description: 'Tailored manufacturing processes designed to meet specific customer requirements and specifications.',
+        icon: 'tabler:puzzle',
+      },
+    ]}
+  />
+
+  <!-- Technology Overview -->
+  <div class="bg-gray-50 dark:bg-slate-800 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Advanced Technology
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+          State-of-the-art equipment and processes delivering precision and efficiency
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fiber Laser Systems</h3>
+          <p class="text-gray-600 dark:text-gray-300">High-speed, precision cutting technology</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">CNC Machinery</h3>
+          <p class="text-gray-600 dark:text-gray-300">Automated precision manufacturing</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Quality Systems</h3>
+          <p class="text-gray-600 dark:text-gray-300">ISO certified quality management</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10l4-2 4 2V8"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">European Network</h3>
+          <p class="text-gray-600 dark:text-gray-300">Strategic production locations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '/contact',
+      },
+      {
+        text: 'View Capabilities',
+        href: '/technology',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Start Your Project?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Get in touch with our expert team to discuss your sheet metal processing requirements. 
+      We provide custom quotes and technical consultations.
+    </Fragment>
+  </CallToAction>
 </Layout>
