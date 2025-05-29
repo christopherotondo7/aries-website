@@ -1,41 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
-    <title>Content Manager</title>
+    <title>Aries Content Manager</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-      CMS.init({
-        config: {
-          backend: {
-            name: 'git-gateway',
-            branch: 'main'
-          },
-          load_config_file: false,
-          media_folder: 'src/assets/images',
-          public_folder: '/_astro',
-          collections: [{
-            name: 'pages',
-            label: 'Pages',
-            files: [{
-              label: 'Home Page',
-              name: 'home',
-              file: 'src/content/home.md',
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Content', name: 'body', widget: 'markdown' }
-              ]
-            }]
-          }]
-        }
-      });
+</head>
+<body>
+    <div id="nc-root"></div>
+    <script type="module">
+        import CMS from 'https://unpkg.com/@staticcms/core@^2.0.0/dist/static-cms-core.esm.js'
+        
+        CMS.init({
+            config: {
+                backend: {
+                    name: 'git-gateway',
+                    branch: 'main'
+                },
+                media_folder: 'src/assets/images',
+                public_folder: '/src/assets/images',
+                collections: [
+                    {
+                        name: 'pages',
+                        label: 'Pages',
+                        folder: 'src/content',
+                        create: true,
+                        slug: '{{slug}}',
+                        fields: [
+                            { name: 'title', label: 'Title', widget: 'string' },
+                            { name: 'body', label: 'Content', widget: 'markdown' }
+                        ]
+                    }
+                ]
+            }
+        })
     </script>
-  </body>
+</body>
 </html>
