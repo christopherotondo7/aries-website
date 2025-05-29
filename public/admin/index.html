@@ -1,39 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aries Content Manager</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    <div id="nc-root"></div>
-    <script type="module">
-        import CMS from 'https://unpkg.com/@staticcms/core@^2.0.0/dist/static-cms-core.esm.js'
-        
-        CMS.init({
-            config: {
-                backend: {
-                    name: 'git-gateway',
-                    branch: 'main'
-                },
-                media_folder: 'src/assets/images',
-                public_folder: '/src/assets/images',
-                collections: [
-                    {
-                        name: 'pages',
-                        label: 'Pages',
-                        folder: 'src/content',
-                        create: true,
-                        slug: '{{slug}}',
-                        fields: [
-                            { name: 'title', label: 'Title', widget: 'string' },
-                            { name: 'body', label: 'Content', widget: 'markdown' }
-                        ]
-                    }
-                ]
-            }
-        })
-    </script>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </body>
 </html>

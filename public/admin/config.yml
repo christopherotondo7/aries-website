@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: src/assets/images
+public_folder: /src/assets/images
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "src/content/home.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+      - label: "About Page"
+        name: "about"
+        file: "src/content/about.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/content/contact.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
