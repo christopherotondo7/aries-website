@@ -11,12 +11,14 @@
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      window.CMS_MANUAL_INIT = true;
       CMS.init({
         config: {
           backend: {
             name: 'git-gateway',
             branch: 'main'
           },
+          load_config_file: false,
           media_folder: 'src/assets/images',
           public_folder: '/_astro',
           collections: [{
@@ -28,28 +30,6 @@
               file: 'src/content/home.md',
               fields: [
                 { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Hero Title', name: 'hero_title', widget: 'string' },
-                { label: 'Hero Description', name: 'hero_description', widget: 'text' },
-                { label: 'Hero Image', name: 'hero_image', widget: 'image' },
-                { label: 'Content', name: 'body', widget: 'markdown' }
-              ]
-            }, {
-              label: 'About Page',
-              name: 'about',
-              file: 'src/content/about.md',
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Description', name: 'description', widget: 'text' },
-                { label: 'Content', name: 'body', widget: 'markdown' }
-              ]
-            }, {
-              label: 'Contact Page',
-              name: 'contact',
-              file: 'src/content/contact.md',
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                { label: 'Phone', name: 'phone', widget: 'string' },
-                { label: 'Email', name: 'email', widget: 'string' },
                 { label: 'Content', name: 'body', widget: 'markdown' }
               ]
             }]
