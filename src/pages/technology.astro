@@ -1,27 +1,349 @@
 ---
-import Layout from '~/layouts/MarkdownLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: "Technology & Innovation",
-  description: "Advanced manufacturing technology and innovative processes for precision sheet metal processing.",
+  title: 'Technology & Innovation | Aries Manufacturing',
+  description: 'Industry 4.0 manufacturing excellence with advanced technology driving superior quality, efficiency, and reliability for demanding applications.',
 };
 ---
 
-<Layout frontmatter={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto">
-    <h1>Technology & Innovation</h1>
-    
-    <p>At Aries Group, we leverage cutting-edge technology to deliver precision manufacturing solutions that exceed industry standards.</p>
-    
-    <h2>Advanced Equipment</h2>
-    <ul>
-      <li><strong>CNC Machines</strong>: State-of-the-art computer-controlled manufacturing</li>
-      <li><strong>Laser Systems</strong>: High-precision cutting and engraving capabilities</li>
-      <li><strong>Automated Lines</strong>: Efficient production with consistent quality</li>
-      <li><strong>Quality Control</strong>: Advanced inspection and measurement systems</li>
-    </ul>
-    
-    <h2>Innovation Focus</h2>
-    <p>We continuously invest in research and development to improve our processes and deliver innovative solutions to our clients.</p>
-  </div>
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Technology & Innovation"
+    title="Industry 4.0 Manufacturing Excellence"
+    subtitle="Cutting-edge technology and continuous innovation drive our manufacturing processes, delivering superior quality, efficiency, and reliability for the most demanding applications."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View Equipment',
+        href: '#equipment',
+        icon: 'tabler:arrow-down',
+      },
+    ]}
+    image={{
+      src: '/images/robot-welding-1.jpg',
+      alt: 'Advanced robotic welding system',
+      inferSize: true,
+    }}
+  />
+
+  <!-- Industry 4.0 Overview -->
+  <Features3
+    title="Industry 4.0 Integration"
+    subtitle="Smart manufacturing technologies transforming our production capabilities"
+    tagline="Smart Factory"
+    columns={2}
+    items={[
+      {
+        title: 'Digital Process Control',
+        description: 'Real-time monitoring and control of all manufacturing processes with predictive analytics.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Complete Traceability',
+        description: 'Full material and process traceability from raw material to finished product delivery.',
+        icon: 'tabler:qrcode',
+      },
+      {
+        title: 'Automated Systems',
+        description: 'Lights-out production capabilities with robotic material handling and quality control.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Interconnected Machines',
+        description: 'Seamless communication between equipment for optimized workflow and efficiency.',
+        icon: 'tabler:network',
+      },
+    ]}
+  />
+
+  <!-- Technology Stats -->
+  <Stats
+    title="Technology Performance"
+    subtitle="Advanced manufacturing capabilities delivering measurable results"
+    stats={[
+      { amount: '95%', title: 'Equipment Efficiency' },
+      { amount: '24/7', title: 'Automated Operations' },
+      { amount: '<0.1%', title: 'Defect Rate' },
+      { amount: '100%', title: 'Process Traceability' },
+    ]}
+  />
+
+  <!-- Advanced Equipment Section -->
+  <Content
+    id="equipment"
+    tagline="State-of-the-Art Equipment"
+    title="Latest Generation Manufacturing Systems"
+    subtitle="Continuous investment in cutting-edge technology ensures we deliver the highest quality and efficiency"
+    items={[
+      {
+        title: 'Trumpf 6kW Fiber Laser',
+        description: 'Dual-head laser cutting system with automated material handling and nesting optimization for maximum throughput.',
+      },
+      {
+        title: 'Mazak 5-Axis Machining Centers',
+        description: 'High-precision multi-axis machining with integrated measurement and adaptive control systems.',
+      },
+      {
+        title: 'KUKA Collaborative Robots',
+        description: 'Advanced welding robots with adaptive welding technology and real-time quality monitoring.',
+      },
+      {
+        title: 'Zeiss Coordinate Measuring',
+        description: 'Precision metrology systems for complete dimensional verification and quality documentation.',
+      },
+    ]}
+    image={{
+      src: '/images/machining-1.jpg',
+      alt: 'Advanced CNC machining center',
+      inferSize: true,
+    }}
+  />
+
+  <!-- Cutting Technology -->
+  <Features2
+    tagline="Cutting Technology"
+    title="Advanced Material Processing"
+    subtitle="Multiple cutting technologies for optimal results across all material types and thicknesses"
+    items={[
+      {
+        title: 'Fiber Laser Cutting',
+        description: 'High-speed, precision cutting with superior edge quality and minimal heat-affected zone for materials up to 30mm.',
+        icon: 'tabler:laser',
+      },
+      {
+        title: 'Plasma Arc Cutting',
+        description: 'Heavy-duty cutting for thick materials with beveling capabilities and automated torch height control.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Oxy-Fuel Cutting',
+        description: 'Multi-torch systems for very heavy plates with optimized gas consumption and cut quality.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Mechanical Cutting',
+        description: 'Precision shearing and punching for clean edges without thermal effects on material properties.',
+        icon: 'tabler:cut',
+      },
+    ]}
+  />
+
+  <!-- Machining Technology -->
+  <Content
+    tagline="Precision Machining"
+    title="Multi-Axis Manufacturing Excellence"
+    subtitle="Advanced CNC machining capabilities for complex geometries and tight tolerances"
+    isReversed
+    items={[
+      {
+        title: '5-Axis Simultaneous Machining',
+        description: 'Complex part machining in single setups for improved accuracy and reduced lead times.',
+      },
+      {
+        title: 'Adaptive Machining Control',
+        description: 'Real-time adjustment of cutting parameters based on material conditions and tool wear.',
+      },
+      {
+        title: 'Integrated Measurement',
+        description: 'On-machine probing and measurement systems for continuous quality verification.',
+      },
+      {
+        title: 'Automated Tool Management',
+        description: 'Advanced tool changers with tool condition monitoring and automatic replacement.',
+      },
+    ]}
+    image={{
+      src: '/images/engineering-1.jpg',
+      alt: 'Engineering workstation with CAD/CAM systems',
+      inferSize: true,
+    }}
+  />
+
+  <!-- Welding & Assembly Technology -->
+  <Features
+    tagline="Welding Innovation"
+    title="Advanced Joining Technologies"
+    subtitle="Cutting-edge welding systems combining manual expertise with robotic precision"
+    items={[
+      {
+        title: 'Adaptive Robotic Welding',
+        description: 'AI-powered welding systems that adjust parameters in real-time for optimal weld quality.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Seam Tracking Technology',
+        description: 'Laser-guided welding with automatic joint tracking for consistent results on complex geometries.',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'Multi-Process Capability',
+        description: 'TIG, MIG/MAG, and pulse welding technologies optimized for different materials and applications.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Weld Quality Monitoring',
+        description: 'Real-time monitoring of welding parameters with automatic documentation and quality reports.',
+        icon: 'tabler:chart-dots',
+      },
+    ]}
+  />
+
+  <!-- Digital Manufacturing -->
+  <Content
+    tagline="Digital Manufacturing"
+    title="Integrated CAD/CAM/CAE Systems"
+    subtitle="Complete digital workflow from design optimization to production execution"
+    items={[
+      {
+        title: 'Design for Manufacturing',
+        description: 'Advanced CAD systems with integrated manufacturability analysis and cost optimization.',
+      },
+      {
+        title: 'Automated Programming',
+        description: 'CAM systems with automatic toolpath generation and collision detection for all machines.',
+      },
+      {
+        title: 'Simulation & Validation',
+        description: 'Virtual machining and welding simulation to optimize processes before production.',
+      },
+      {
+        title: 'Production Planning',
+        description: 'Integrated ERP systems for optimal scheduling, material flow, and resource allocation.',
+      },
+    ]}
+    image={{
+      src: '/images/assembly-1.jpg',
+      alt: 'Digital manufacturing control systems',
+      inferSize: true,
+    }}
+  />
+
+  <!-- Quality Technology -->
+  <Features2
+    tagline="Quality Systems"
+    title="Advanced Quality Control"
+    subtitle="Comprehensive metrology and testing systems ensuring consistent quality and compliance"
+    items={[
+      {
+        title: '3D Coordinate Measurement',
+        description: 'High-precision CMM systems with automated measurement routines and statistical analysis.',
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Non-Destructive Testing',
+        description: 'Complete NDT capabilities including radiographic, ultrasonic, and penetrant testing.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Surface Analysis',
+        description: 'Advanced surface measurement systems for roughness, waviness, and coating thickness verification.',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Statistical Process Control',
+        description: 'Real-time SPC monitoring with automatic alerts and process adjustment recommendations.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Environmental Technology -->
+  <Features3
+    title="Sustainable Manufacturing Technology"
+    subtitle="Environmental responsibility through advanced technology implementation"
+    tagline="Green Technology"
+    columns={3}
+    items={[
+      {
+        title: 'Energy Optimization',
+        description: 'Smart energy management systems reducing consumption by 30% through intelligent scheduling.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Waste Minimization',
+        description: 'Advanced nesting algorithms and material optimization reducing waste to less than 5%.',
+        icon: 'tabler:recycle',
+      },
+      {
+        title: 'Emission Control',
+        description: 'State-of-the-art filtration and capture systems maintaining clean air standards.',
+        icon: 'tabler:wind',
+      },
+      {
+        title: 'Water Conservation',
+        description: 'Closed-loop cooling systems and water recycling reducing consumption by 40%.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Material Recovery',
+        description: 'Advanced sorting and processing systems enabling 98% material recycling rates.',
+        icon: 'tabler:arrows-sort',
+      },
+      {
+        title: 'Carbon Footprint',
+        description: 'Comprehensive monitoring and reduction programs targeting net-zero emissions.',
+        icon: 'tabler:world',
+      },
+    ]}
+  />
+
+  <!-- Future Technology -->
+  <Content
+    tagline="Future Roadmap"
+    title="Emerging Technologies"
+    subtitle="Preparing for the next generation of manufacturing technology"
+    isReversed
+    items={[
+      {
+        title: 'Artificial Intelligence',
+        description: 'AI integration for predictive maintenance, quality optimization, and intelligent process control.',
+      },
+      {
+        title: 'Additive Manufacturing',
+        description: 'Metal 3D printing capabilities for rapid prototyping and complex geometry production.',
+      },
+      {
+        title: 'IoT Integration',
+        description: 'Internet of Things connectivity for comprehensive machine monitoring and data analytics.',
+      },
+      {
+        title: 'Virtual Reality',
+        description: 'VR systems for training, remote support, and virtual factory simulation capabilities.',
+      },
+    ]}
+    image={{
+      src: '/images/cutting-1.jpg',
+      alt: 'Future manufacturing technology concept',
+      inferSize: true,
+    }}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Experience Our Technology"
+    subtitle="Schedule a facility tour to see our advanced manufacturing systems in action and discuss how our technology can benefit your projects"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Facility Tour',
+        href: '/contact',
+        icon: 'tabler:calendar',
+      },
+      {
+        variant: 'secondary',
+        text: 'Technical Consultation',
+        href: '/contact',
+        icon: 'tabler:phone',
+      },
+    ]}
+  />
 </Layout>
