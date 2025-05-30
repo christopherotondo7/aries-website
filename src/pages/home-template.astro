@@ -1,0 +1,99 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features from '~/components/widgets/Features.astro';
+
+// Import our reusable blocks
+import TextBlock from '~/components/blocks/TextBlock.astro';
+import StatsBlock from '~/components/blocks/StatsBlock.astro';
+import FeatureGrid from '~/components/blocks/FeatureGrid.astro';
+
+// Import data
+import { homepageData } from '~/data/homepage';
+
+const metadata = {
+  title: 'Aries Group - Sheet Metal Processing Excellence',
+  description: 'European leader in sheet metal processing with advanced technology and precision manufacturing solutions.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: homepageData.hero.primaryButton.text,
+        href: homepageData.hero.primaryButton.href,
+      },
+      { 
+        text: homepageData.hero.secondaryButton.text, 
+        href: homepageData.hero.secondaryButton.href 
+      },
+    ]}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Aries Group Sheet Metal Processing' }}
+  >
+    <Fragment slot="title">
+      {homepageData.hero.title}
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      {homepageData.hero.subtitle}
+    </Fragment>
+  </Hero>
+
+  <!-- Company Stats -->
+  <StatsBlock 
+    title={homepageData.companyStats.title}
+    subtitle={homepageData.companyStats.subtitle}
+    stats={homepageData.companyStats.stats}
+  />
+
+  <!-- About Section -->
+  <TextBlock 
+    title={homepageData.aboutSection.title}
+    content={homepageData.aboutSection.content}
+    background="white"
+  />
+
+  <!-- Capabilities -->
+  <Features
+    id="capabilities"
+    title={homepageData.capabilities.title}
+    subtitle={homepageData.capabilities.subtitle}
+    items={homepageData.capabilities.features}
+  />
+
+  <!-- Technology Overview -->
+  <FeatureGrid
+    title={homepageData.technology.title}
+    subtitle={homepageData.technology.subtitle}
+    features={homepageData.technology.features}
+    columns={4}
+    background="gray"
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: homepageData.callToAction.primaryButton.text,
+        href: homepageData.callToAction.primaryButton.href,
+      },
+      {
+        text: homepageData.callToAction.secondaryButton.text,
+        href: homepageData.callToAction.secondaryButton.href,
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      {homepageData.callToAction.title}
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      {homepageData.callToAction.subtitle}
+    </Fragment>
+  </CallToAction>
+</Layout>
