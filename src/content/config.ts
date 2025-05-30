@@ -1,5 +1,4 @@
 import { z, defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
 
 const metadataDefinition = () =>
   z
@@ -47,7 +46,7 @@ const metadataDefinition = () =>
     .optional();
 
 const postCollection = defineCollection({
-  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
+  type: 'content',
   schema: z.object({
     publishDate: z.date().optional(),
     updateDate: z.date().optional(),
@@ -66,7 +65,7 @@ const postCollection = defineCollection({
 });
 
 const pagesCollection = defineCollection({
-  loader: glob({ pattern: ['*.md'], base: 'src/content/pages' }),
+  type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
