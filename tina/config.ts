@@ -38,7 +38,7 @@ export default defineConfig({
         name: "pages",
         label: "Pages",
         path: "src/content/pages",
-        format: "mdx",
+        format: "md",
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
@@ -48,7 +48,7 @@ export default defineConfig({
         name: "site_content",
         label: "Site Content",
         path: "src/content",
-        format: "mdx",
+        format: "md",
         match: { include: "*.md" },
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
