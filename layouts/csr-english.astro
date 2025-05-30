@@ -1,0 +1,414 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'CSR & Sustainability | Aries Manufacturing',
+  description: 'Corporate social responsibility and sustainable development initiatives. ECOVADIS Bronze Medal recognition for environmental, social, and economic performance.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="CSR & Sustainability"
+    title="Responsible Manufacturing for a Sustainable Future"
+    subtitle="Committed to environmental stewardship, social responsibility, and economic sustainability. Our comprehensive CSR approach creates value for all stakeholders while protecting our planet for future generations."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download CSR Report',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.15.00.jpeg',
+      alt: 'Sustainable manufacturing operations',
+    }}
+  />
+
+  <!-- CSR Performance -->
+  <Stats
+    title="Sustainability Performance"
+    subtitle="Measurable impact across environmental, social, and economic dimensions"
+    stats={[
+      { amount: 'Bronze', title: 'ECOVADIS Medal' },
+      { amount: '95%', title: 'Material Recycling' },
+      { amount: '30%', title: 'Energy Reduction' },
+      { amount: '0', title: 'Lost Time Accidents' },
+    ]}
+  />
+
+  <!-- Environmental Responsibility -->
+  <Features3
+    id="environmental"
+    title="Environmental Stewardship"
+    subtitle="Comprehensive environmental management reducing our impact while enhancing operational efficiency"
+    tagline="Environment"
+    columns={3}
+    items={[
+      {
+        title: 'Carbon Footprint Reduction',
+        description: 'Systematic approach to reducing greenhouse gas emissions through energy efficiency and renewable energy adoption.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Waste Minimization',
+        description: 'Advanced material optimization and recycling programs achieving >95% material recovery rates.',
+        icon: 'tabler:recycle',
+      },
+      {
+        title: 'Water Conservation',
+        description: 'Closed-loop water systems and conservation measures reducing consumption by 40%.',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Air Quality Management',
+        description: 'State-of-the-art filtration and emission control systems exceeding regulatory requirements.',
+        icon: 'tabler:wind',
+      },
+      {
+        title: 'Energy Efficiency',
+        description: 'Smart energy management systems and LED lighting reducing energy consumption by 30%.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Sustainable Materials',
+        description: 'Preference for recycled materials and sustainable sourcing practices throughout our supply chain.',
+        icon: 'tabler:leaf',
+      },
+    ]}
+  />
+
+  <!-- Environmental Management -->
+  <Content
+    tagline="Environmental Systems"
+    title="ISO 14001:2015 Environmental Management"
+    subtitle="Certified environmental management system ensuring systematic approach to environmental protection"
+    items={[
+      {
+        title: 'Environmental Policy',
+        description: 'Comprehensive environmental policy with clear objectives and measurable targets for continuous improvement.',
+      },
+      {
+        title: 'Impact Assessment',
+        description: 'Regular assessment of environmental aspects and impacts with mitigation strategies for significant effects.',
+      },
+      {
+        title: 'Compliance Management',
+        description: 'Systematic tracking and compliance with all applicable environmental regulations and permits.',
+      },
+      {
+        title: 'Monitoring & Reporting',
+        description: 'Continuous monitoring of environmental performance with regular reporting to stakeholders.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.15.02.jpeg',
+      alt: 'Environmental management systems',
+    }}
+  />
+
+  <!-- Social Responsibility -->
+  <Features2
+    tagline="Social Impact"
+    title="Social Responsibility & Community Engagement"
+    subtitle="Building stronger communities through responsible employment practices and local engagement"
+    items={[
+      {
+        title: 'Employee Development',
+        description: 'Comprehensive training programs, career development opportunities, and skills enhancement initiatives.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Workplace Safety',
+        description: 'Zero-accident culture with comprehensive safety training and protective equipment programs.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Diversity & Inclusion',
+        description: 'Equal opportunity employment practices promoting diversity and inclusive workplace culture.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Community Support',
+        description: 'Local community investment through education partnerships and economic development initiatives.',
+        icon: 'tabler:heart',
+      },
+    ]}
+  />
+
+  <!-- Employee Welfare -->
+  <Content
+    tagline="Employee Focus"
+    title="Employee Well-being & Development"
+    subtitle="Investing in our people through comprehensive welfare programs and professional development opportunities"
+    isReversed
+    items={[
+      {
+        title: 'Professional Training',
+        description: 'Ongoing skills development programs including technical training, leadership development, and certification support.',
+      },
+      {
+        title: 'Health & Safety',
+        description: 'Comprehensive occupational health programs with regular health screenings and wellness initiatives.',
+      },
+      {
+        title: 'Work-Life Balance',
+        description: 'Flexible working arrangements and family-friendly policies supporting employee well-being.',
+      },
+      {
+        title: 'Recognition Programs',
+        description: 'Employee recognition and reward programs celebrating achievements and long-term service.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.15.03.jpeg',
+      alt: 'Employee development and training programs',
+    }}
+  />
+
+  <!-- Economic Sustainability -->
+  <Features
+    tagline="Economic Impact"
+    title="Sustainable Economic Development"
+    subtitle="Creating long-term economic value for all stakeholders through responsible business practices"
+    items={[
+      {
+        title: 'Local Sourcing',
+        description: 'Preference for local suppliers and partners, supporting regional economic development and reducing transportation impact.',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Innovation Investment',
+        description: 'Continuous investment in research, development, and technology advancement for sustainable competitive advantage.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Supplier Development',
+        description: 'Supporting supplier capability development and sustainability initiatives throughout our value chain.',
+        icon: 'tabler:handshake',
+      },
+      {
+        title: 'Stakeholder Value',
+        description: 'Balanced approach to value creation for customers, employees, suppliers, and local communities.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- Sustainability Initiatives -->
+  <Content
+    tagline="Green Initiatives"
+    title="Sustainability Projects & Innovations"
+    subtitle="Active initiatives driving environmental performance improvement and sustainable manufacturing practices"
+    items={[
+      {
+        title: 'Renewable Energy',
+        description: 'Solar panel installations and renewable energy procurement reducing carbon footprint by 25%.',
+      },
+      {
+        title: 'Circular Economy',
+        description: 'Closed-loop material flows and product lifecycle extension through remanufacturing and refurbishment.',
+      },
+      {
+        title: 'Green Technology',
+        description: 'Investment in clean technologies and energy-efficient equipment for sustainable operations.',
+      },
+      {
+        title: 'Carbon Neutrality',
+        description: 'Roadmap to carbon neutrality by 2035 through emission reduction and offset programs.',
+      },
+    ]}
+    image={{
+      src: '/images/assembly-1.jpg',
+      alt: 'Sustainable manufacturing initiatives',
+    }}
+  />
+
+  <!-- Supply Chain Responsibility -->
+  <Features2
+    tagline="Supply Chain"
+    title="Responsible Supply Chain Management"
+    subtitle="Extending CSR principles throughout our supply chain and business partnerships"
+    items={[
+      {
+        title: 'Supplier Code of Conduct',
+        description: 'Comprehensive supplier requirements covering ethical, environmental, and social responsibility standards.',
+        icon: 'tabler:file-certificate',
+      },
+      {
+        title: 'Supplier Audits',
+        description: 'Regular audits and assessments of supplier CSR performance with improvement support programs.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Local Partnerships',
+        description: 'Preference for local suppliers and long-term partnerships supporting regional economic development.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Sustainable Materials',
+        description: 'Sourcing policies favoring recycled content, sustainable materials, and responsible mining practices.',
+        icon: 'tabler:leaf',
+      },
+    ]}
+  />
+
+  <!-- CSR Governance -->
+  <Content
+    tagline="Governance"
+    title="CSR Governance & Management"
+    subtitle="Structured approach to CSR management with clear accountability and regular performance review"
+    isReversed
+    items={[
+      {
+        title: 'CSR Committee',
+        description: 'Senior management committee overseeing CSR strategy, implementation, and performance monitoring.',
+      },
+      {
+        title: 'Performance Metrics',
+        description: 'Comprehensive KPI framework tracking environmental, social, and economic performance indicators.',
+      },
+      {
+        title: 'Stakeholder Engagement',
+        description: 'Regular engagement with customers, employees, suppliers, and communities on CSR priorities.',
+      },
+      {
+        title: 'Transparency Reporting',
+        description: 'Annual CSR reporting and third-party verification of sustainability performance claims.',
+      },
+    ]}
+    image={{
+      src: '/images/engineering-1.jpg',
+      alt: 'CSR governance and management systems',
+    }}
+  />
+
+  <!-- Awards & Recognition -->
+  <Features3
+    title="Recognition & Awards"
+    subtitle="External recognition of our CSR performance and commitment"
+    tagline="Recognition"
+    columns={2}
+    items={[
+      {
+        title: 'ECOVADIS Bronze Medal',
+        description: 'Top 50% CSR performance recognition across environmental, labor practices, ethics, and sustainable procurement.',
+        icon: 'tabler:medal',
+      },
+      {
+        title: 'ISO 14001 Certification',
+        description: 'Environmental management system certification demonstrating systematic environmental stewardship.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Safety Excellence Awards',
+        description: 'Industry recognition for outstanding workplace safety performance and zero-accident culture.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Community Partnership',
+        description: 'Local government recognition for community engagement and economic development contributions.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
+
+  <!-- Future Commitments -->
+  <Content
+    tagline="Future Goals"
+    title="2030 Sustainability Commitments"
+    subtitle="Ambitious targets driving our sustainability journey towards 2030 and beyond"
+    items={[
+      {
+        title: 'Carbon Neutrality',
+        description: 'Achieve carbon neutrality by 2035 through emission reduction, renewable energy, and offset programs.',
+      },
+      {
+        title: 'Zero Waste to Landfill',
+        description: 'Eliminate waste to landfill through enhanced recycling, reuse, and circular economy initiatives.',
+      },
+      {
+        title: 'Water Positive',
+        description: 'Become water positive by 2030 through conservation, reuse, and watershed protection programs.',
+      },
+      {
+        title: 'Supplier Sustainability',
+        description: '100% of key suppliers meeting CSR standards with verified sustainability performance.',
+      },
+    ]}
+    image={{
+      src: '/images/bending.jpg',
+      alt: 'Future sustainability commitments',
+    }}
+  />
+
+  <!-- Stakeholder Impact -->
+  <Stats
+    title="Stakeholder Impact Metrics"
+    subtitle="Measuring our positive impact across all stakeholder groups"
+    stats={[
+      { amount: '275', title: 'Jobs Created' },
+      { amount: '50+', title: 'Local Suppliers' },
+      { amount: '10', title: 'Community Projects' },
+      { amount: '€5M', title: 'Local Economic Impact' },
+    ]}
+  />
+
+  <!-- Reporting & Transparency -->
+  <Features
+    tagline="Transparency"
+    title="CSR Reporting & Communication"
+    subtitle="Comprehensive reporting and transparent communication of our CSR performance"
+    items={[
+      {
+        title: 'Annual CSR Report',
+        description: 'Comprehensive annual report covering all aspects of CSR performance with third-party verification.',
+        icon: 'tabler:report',
+      },
+      {
+        title: 'Performance Dashboard',
+        description: 'Real-time CSR performance dashboard providing transparent access to key sustainability metrics.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Stakeholder Surveys',
+        description: 'Regular stakeholder feedback collection and response to ensure alignment with expectations.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'External Verification',
+        description: 'Third-party verification of CSR data and performance claims ensuring credibility and accuracy.',
+        icon: 'tabler:certificate',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Partner with Us for Sustainable Manufacturing"
+    subtitle="Join us in our commitment to responsible manufacturing. Discover how our CSR initiatives can support your sustainability goals and create shared value."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download CSR Report',
+        href: '#',
+        icon: 'tabler:download',
+      },
+      {
+        variant: 'secondary',
+        text: 'Discuss Sustainability Partnership',
+        href: '/contact',
+        icon: 'tabler:handshake',
+      },
+    ]}
+  />
+</Layout>

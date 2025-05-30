@@ -1,0 +1,373 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Production Sites | Aries Manufacturing',
+  description: 'Two strategic European production facilities in France and Slovakia. Combined capabilities serving clients across Europe with precision manufacturing and logistics excellence.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Our Facilities"
+    title="European Production Network"
+    subtitle="Two strategically located production sites providing comprehensive manufacturing services across Europe. Combined expertise, unified quality standards, and optimized logistics for maximum customer value."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Visit',
+        href: '/contact',
+        icon: 'tabler:calendar',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg',
+      alt: 'Aries production facility overview',
+    }}
+  />
+
+  <!-- Network Overview -->
+  <Stats
+    title="Combined Production Capabilities"
+    subtitle="Unified European manufacturing network delivering excellence"
+    stats={[
+      { amount: '2', title: 'Production Sites' },
+      { amount: '275', title: 'Total Employees' },
+      { amount: '45,000m²', title: 'Combined Floor Space' },
+      { amount: '24/7', title: 'Production Capability' },
+    ]}
+  />
+
+  <!-- France Headquarters -->
+  <Content
+    id="france-site"
+    tagline="France Headquarters"
+    title="Advanced Manufacturing Hub"
+    subtitle="Our main production facility combining precision engineering, advanced technology, and skilled craftsmanship"
+    items={[
+      {
+        title: 'Engineering & Design Center',
+        description: 'State-of-the-art CAD/CAM facilities with experienced engineering team for project development and optimization.',
+      },
+      {
+        title: 'Precision Machining',
+        description: 'Multi-axis CNC machining centers specializing in complex geometries and tight tolerance manufacturing.',
+      },
+      {
+        title: 'Quality Laboratory',
+        description: 'Comprehensive metrology lab with coordinate measuring machines and complete testing capabilities.',
+      },
+      {
+        title: 'Assembly Operations',
+        description: 'Dedicated assembly areas for mechanical sub-assemblies and final product integration.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.29.jpeg',
+      alt: 'France production facility interior',
+    }}
+  />
+
+  <!-- France Capabilities -->
+  <Features2
+    tagline="France Site Specialties"
+    title="Core Manufacturing Capabilities"
+    subtitle="Specialized equipment and processes at our French headquarters"
+    items={[
+      {
+        title: 'Advanced CNC Machining',
+        description: '5-axis machining centers, turning centers, and specialized equipment for precision component manufacturing.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Laser Cutting Systems',
+        description: 'High-power fiber laser cutting with automated material handling for efficient sheet metal processing.',
+        icon: 'tabler:laser',
+      },
+      {
+        title: 'Assembly & Testing',
+        description: 'Complete mechanical assembly capabilities with integrated testing and quality verification systems.',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Engineering Services',
+        description: 'Full engineering support including design optimization, process planning, and technical consultation.',
+        icon: 'tabler:blueprint',
+      },
+    ]}
+  />
+
+  <!-- Slovakia Operations -->
+  <Content
+    id="slovakia-site"
+    tagline="Slovakia Operations"
+    title="High-Volume Production Center"
+    subtitle="Specialized facility focusing on series production, robotic welding, and efficient manufacturing processes"
+    isReversed
+    items={[
+      {
+        title: 'Robotic Welding Cells',
+        description: 'Advanced robotic welding systems for consistent, high-quality production of welded assemblies.',
+      },
+      {
+        title: 'Series Production',
+        description: 'Optimized production lines for medium to high-volume manufacturing with lean principles.',
+      },
+      {
+        title: 'Cutting Operations',
+        description: 'Heavy-duty cutting systems including plasma and oxy-fuel for thick material processing.',
+      },
+      {
+        title: 'Logistics Hub',
+        description: 'Strategic location providing efficient distribution across Central and Eastern Europe.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.30.jpeg',
+      alt: 'Slovakia production facility',
+    }}
+  />
+
+  <!-- Slovakia Capabilities -->
+  <Features
+    tagline="Slovakia Site Specialties"
+    title="Volume Production Excellence"
+    subtitle="Efficient manufacturing systems optimized for series production"
+    items={[
+      {
+        title: 'Robotic Welding',
+        description: 'Multiple KUKA welding robots with adaptive welding technology for consistent quality in series production.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Heavy Cutting',
+        description: 'Large-format plasma and oxy-fuel cutting systems for thick plates and structural components.',
+        icon: 'tabler:cut',
+      },
+      {
+        title: 'Material Handling',
+        description: 'Automated material handling systems and overhead cranes for efficient workflow management.',
+        icon: 'tabler:crane',
+      },
+      {
+        title: 'Quality Control',
+        description: 'Integrated quality control systems with real-time monitoring and documentation.',
+        icon: 'tabler:certificate',
+      },
+    ]}
+  />
+
+  <!-- Combined Network Benefits -->
+  <Features2
+    tagline="Network Advantages"
+    title="Strategic European Coverage"
+    subtitle="Benefits of our two-site production network"
+    items={[
+      {
+        title: 'Complementary Capabilities',
+        description: 'Each site specializes in different processes, providing complete manufacturing solutions under one roof.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'Risk Mitigation',
+        description: 'Dual-site operations ensure business continuity and backup production capabilities.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Optimized Logistics',
+        description: 'Strategic locations enable efficient delivery across Europe with reduced transportation costs.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Scalable Production',
+        description: 'Combined capacity allows for flexible scaling to meet varying customer demand.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- Technology & Equipment -->
+  <Content
+    tagline="Combined Equipment"
+    title="Unified Technology Platform"
+    subtitle="State-of-the-art equipment across both facilities with integrated control systems"
+    items={[
+      {
+        title: 'Standardized Processes',
+        description: 'Common quality standards and procedures ensuring consistent results regardless of production site.',
+      },
+      {
+        title: 'Shared Technology',
+        description: 'Latest generation equipment at both sites with unified programming and operating procedures.',
+      },
+      {
+        title: 'Integrated Systems',
+        description: 'Connected ERP and quality management systems providing real-time visibility across all operations.',
+      },
+      {
+        title: 'Knowledge Transfer',
+        description: 'Regular exchange of expertise and best practices between facilities for continuous improvement.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.31.jpeg',
+      alt: 'Advanced manufacturing equipment',
+    }}
+  />
+
+  <!-- Site Specifications -->
+  <Stats
+    title="Facility Specifications"
+    subtitle="Detailed capabilities of our production network"
+    stats={[
+      { amount: '25,000m²', title: 'France Facility' },
+      { amount: '20,000m²', title: 'Slovakia Facility' },
+      { amount: '150', title: 'France Employees' },
+      { amount: '125', title: 'Slovakia Employees' },
+    ]}
+  />
+
+  <!-- Quality & Certifications -->
+  <Features
+    tagline="Unified Standards"
+    title="Consistent Quality Across Sites"
+    subtitle="Both facilities maintain identical quality standards and certifications"
+    items={[
+      {
+        title: 'ISO 9001:2015',
+        description: 'Quality management systems certified at both locations ensuring consistent processes and outcomes.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'ISO 14001:2015',
+        description: 'Environmental management standards implemented uniformly across both production sites.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'ISO 3834-2',
+        description: 'Welding quality standards certified for both manual and robotic welding operations.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'EN 15085-2',
+        description: 'Railway welding certification available at both sites for specialized transportation applications.',
+        icon: 'tabler:train',
+      },
+    ]}
+  />
+
+  <!-- Environmental Responsibility -->
+  <Content
+    tagline="Sustainability"
+    title="Environmental Stewardship"
+    subtitle="Both facilities committed to sustainable manufacturing practices and environmental protection"
+    isReversed
+    items={[
+      {
+        title: 'Energy Efficiency',
+        description: 'LED lighting, energy-efficient equipment, and smart energy management systems at both locations.',
+      },
+      {
+        title: 'Waste Minimization',
+        description: 'Advanced material utilization and recycling programs achieving >95% material recovery rates.',
+      },
+      {
+        title: 'Emission Control',
+        description: 'State-of-the-art filtration and emission control systems exceeding regulatory requirements.',
+      },
+      {
+        title: 'Local Sourcing',
+        description: 'Preference for local suppliers and materials reducing transportation and supporting regional economies.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.32.jpeg',
+      alt: 'Environmental initiatives at production sites',
+    }}
+  />
+
+  <!-- Logistics & Distribution -->
+  <Features2
+    tagline="Logistics Excellence"
+    title="Efficient European Distribution"
+    subtitle="Strategic locations enabling optimal logistics and customer service"
+    items={[
+      {
+        title: 'Central European Access',
+        description: 'Slovakia location provides efficient access to Central and Eastern European markets.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Western European Hub',
+        description: 'France headquarters serves as the primary hub for Western European distribution.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Multi-Modal Transport',
+        description: 'Access to road, rail, and air transport options for flexible shipping solutions.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Just-in-Time Delivery',
+        description: 'Coordinated production and logistics enabling JIT delivery for time-sensitive projects.',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
+
+  <!-- Future Expansion -->
+  <Content
+    tagline="Future Growth"
+    title="Continuous Investment & Expansion"
+    subtitle="Ongoing development of our European production network"
+    items={[
+      {
+        title: 'Capacity Expansion',
+        description: 'Planned facility expansions to meet growing customer demand and new market opportunities.',
+      },
+      {
+        title: 'Technology Upgrades',
+        description: 'Continuous investment in latest generation equipment and Industry 4.0 technologies.',
+      },
+      {
+        title: 'Workforce Development',
+        description: 'Ongoing training and development programs ensuring our teams stay at the forefront of manufacturing excellence.',
+      },
+      {
+        title: 'Market Expansion',
+        description: 'Strategic planning for potential additional locations to serve new geographic markets.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.33.jpeg',
+      alt: 'Future expansion plans visualization',
+    }}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Visit Our Facilities"
+    subtitle="Experience our manufacturing capabilities firsthand. Schedule a guided tour of either facility to see our advanced equipment and meet our expert teams."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule France Visit',
+        href: '/contact?location=france',
+        icon: 'tabler:calendar',
+      },
+      {
+        variant: 'secondary',
+        text: 'Schedule Slovakia Visit',
+        href: '/contact?location=slovakia',
+        icon: 'tabler:calendar',
+      },
+    ]}
+  />
+</Layout>

@@ -1,0 +1,414 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Quality & Certifications | Aries Manufacturing',
+  description: 'ISO certified quality management systems, continuous improvement processes, and comprehensive quality assurance for precision manufacturing excellence.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Quality & Certifications"
+    title="Excellence Through Quality"
+    subtitle="Comprehensive quality management systems, international certifications, and continuous improvement processes ensuring consistent excellence in every project we deliver."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Quality Manual',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-06-04 at 09.56.05.jpeg',
+      alt: 'Quality control and inspection processes',
+    }}
+  />
+
+  <!-- ISO Certifications -->
+  <Features
+    tagline="ISO Certifications"
+    title="International Quality Standards"
+    subtitle="Comprehensive ISO certification portfolio demonstrating our commitment to quality, environment, and safety"
+    items={[
+      {
+        title: 'ISO 9001:2015',
+        description: 'Quality management systems ensuring consistent processes, customer satisfaction, and continuous improvement.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'ISO 14001:2015',
+        description: 'Environmental management systems demonstrating our commitment to sustainable and responsible operations.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'ISO 3834-2',
+        description: 'Comprehensive quality requirements for fusion welding of metallic materials and components.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'ECOVADIS Bronze Medal',
+        description: 'Corporate social responsibility performance recognition for environmental and ethical business practices.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
+
+  <!-- Quality Statistics -->
+  <Stats
+    title="Quality Performance Metrics"
+    subtitle="Measurable quality excellence across all operations"
+    stats={[
+      { amount: '<0.1%', title: 'Defect Rate' },
+      { amount: '99.8%', title: 'On-Time Delivery' },
+      { amount: '100%', title: 'Material Traceability' },
+      { amount: '24hr', title: 'Quality Response Time' },
+    ]}
+  />
+
+  <!-- Quality Management System -->
+  <Content
+    id="qms"
+    tagline="Quality Management"
+    title="Comprehensive Quality Management System"
+    subtitle="Integrated quality processes covering every aspect of our operations from supplier qualification to final delivery"
+    items={[
+      {
+        title: 'Process Documentation',
+        description: 'Complete documentation of all manufacturing processes with clear procedures and quality checkpoints.',
+      },
+      {
+        title: 'Supplier Qualification',
+        description: 'Rigorous supplier assessment and ongoing monitoring ensuring material quality and compliance.',
+      },
+      {
+        title: 'In-Process Control',
+        description: 'Real-time monitoring and control of manufacturing processes with statistical process control.',
+      },
+      {
+        title: 'Final Inspection',
+        description: 'Comprehensive final inspection and testing before shipment with complete documentation.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-06-04 at 09.56.06.jpeg',
+      alt: 'Quality management processes',
+    }}
+  />
+
+  <!-- Quality Control Equipment -->
+  <Features2
+    tagline="Inspection Equipment"
+    title="Advanced Quality Control Technology"
+    subtitle="State-of-the-art inspection and testing equipment ensuring precision and accuracy"
+    items={[
+      {
+        title: 'Coordinate Measuring Machines',
+        description: 'High-precision CMM systems for dimensional verification and geometric tolerance checking.',
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Non-Destructive Testing',
+        description: 'Complete NDT capabilities including radiographic, ultrasonic, and penetrant testing.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Material Testing',
+        description: 'Chemical analysis, mechanical testing, and material property verification equipment.',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Surface Measurement',
+        description: 'Surface roughness, coating thickness, and surface profile measurement systems.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Welding Quality -->
+  <Content
+    tagline="Welding Excellence"
+    title="Certified Welding Quality"
+    subtitle="Comprehensive welding quality system meeting the highest international standards"
+    isReversed
+    items={[
+      {
+        title: 'Welding Procedure Qualification',
+        description: 'Documented welding procedures qualified according to international standards for all applications.',
+      },
+      {
+        title: 'Welder Certification',
+        description: 'Certified welders with qualifications for structural, pressure vessel, and specialized applications.',
+      },
+      {
+        title: 'Weld Testing',
+        description: 'Comprehensive weld testing including radiographic, ultrasonic, and mechanical property testing.',
+      },
+      {
+        title: 'Railway Welding',
+        description: 'EN 15085-2 certification for welding of railway vehicles and components.',
+      },
+    ]}
+    image={{
+      src: '/images/WELDING.jpg',
+      alt: 'Certified welding operations',
+    }}
+  />
+
+  <!-- Quality Certifications Detail -->
+  <Features3
+    title="Specialized Certifications"
+    subtitle="Industry-specific quality certifications and approvals"
+    tagline="Specialized Quality"
+    columns={3}
+    items={[
+      {
+        title: 'EN 15085-2',
+        description: 'Railway vehicle welding certification for safety-critical applications.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'CE Marking',
+        description: 'European conformity marking for construction products and machinery.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Pressure Equipment',
+        description: 'PED certification for pressure vessel and piping system manufacturing.',
+        icon: 'tabler:gauge',
+      },
+      {
+        title: 'ASME Qualification',
+        description: 'American Society of Mechanical Engineers welding and fabrication qualifications.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Lloyd\'s Register',
+        description: 'Marine and offshore certification for harsh environment applications.',
+        icon: 'tabler:anchor',
+      },
+      {
+        title: 'Nuclear Standards',
+        description: 'Nuclear industry quality standards for critical component manufacturing.',
+        icon: 'tabler:atom',
+      },
+    ]}
+  />
+
+  <!-- Continuous Improvement -->
+  <Content
+    tagline="Continuous Improvement"
+    title="Kaizen & Lean Manufacturing"
+    subtitle="Systematic approach to continuous improvement driving efficiency and quality enhancement"
+    items={[
+      {
+        title: 'Lean Manufacturing',
+        description: 'Implementation of lean principles to eliminate waste and optimize value streams.',
+      },
+      {
+        title: '5S Workplace Organization',
+        description: 'Systematic workplace organization for improved efficiency, safety, and quality.',
+      },
+      {
+        title: 'Employee Suggestions',
+        description: 'Active employee participation in improvement initiatives with recognition programs.',
+      },
+      {
+        title: 'Performance Metrics',
+        description: 'Comprehensive KPI monitoring and regular management review for continuous enhancement.',
+      },
+    ]}
+    image={{
+      src: '/images/assembly-1.jpg',
+      alt: 'Continuous improvement processes',
+    }}
+  />
+
+  <!-- Quality Documentation -->
+  <Features2
+    tagline="Documentation Systems"
+    title="Complete Quality Documentation"
+    subtitle="Comprehensive documentation and traceability systems"
+    items={[
+      {
+        title: 'Material Certificates',
+        description: 'Complete material traceability with mill certificates and chemical/mechanical property reports.',
+        icon: 'tabler:file-certificate',
+      },
+      {
+        title: 'Process Records',
+        description: 'Detailed manufacturing process records including parameters, inspections, and test results.',
+        icon: 'tabler:clipboard-data',
+      },
+      {
+        title: 'Quality Dossiers',
+        description: 'Comprehensive quality packages including all certifications, test results, and compliance documentation.',
+        icon: 'tabler:folder',
+      },
+      {
+        title: 'Digital Archive',
+        description: 'Secure digital archiving system ensuring long-term availability of quality records.',
+        icon: 'tabler:database',
+      },
+    ]}
+  />
+
+  <!-- Testing & Inspection -->
+  <Content
+    tagline="Testing Capabilities"
+    title="Comprehensive Testing & Inspection"
+    subtitle="Complete in-house testing capabilities and partnerships with accredited laboratories"
+    isReversed
+    items={[
+      {
+        title: 'Dimensional Inspection',
+        description: 'Precision dimensional verification using CMM, height gauges, and certified measuring equipment.',
+      },
+      {
+        title: 'Mechanical Testing',
+        description: 'Tensile, impact, hardness, and fatigue testing for material property verification.',
+      },
+      {
+        title: 'Chemical Analysis',
+        description: 'Spectroscopic analysis for material composition verification and compliance.',
+      },
+      {
+        title: 'Environmental Testing',
+        description: 'Corrosion, temperature cycling, and environmental exposure testing capabilities.',
+      },
+    ]}
+    image={{
+      src: '/images/machining-1.jpg',
+      alt: 'Testing and inspection laboratory',
+    }}
+  />
+
+  <!-- Quality Training -->
+  <Features
+    tagline="Quality Culture"
+    title="Quality Training & Development"
+    subtitle="Comprehensive training programs ensuring quality awareness and competence"
+    items={[
+      {
+        title: 'Quality Awareness Training',
+        description: 'Regular training programs for all employees on quality principles and procedures.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Technical Competence',
+        description: 'Specialized training for technical roles including welding, machining, and inspection.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Continuous Education',
+        description: 'Ongoing professional development and certification maintenance programs.',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Quality Audits',
+        description: 'Regular internal audits and management reviews ensuring system effectiveness.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
+
+  <!-- Customer Quality Support -->
+  <Content
+    tagline="Customer Support"
+    title="Quality Support Services"
+    subtitle="Comprehensive quality support throughout the project lifecycle"
+    items={[
+      {
+        title: 'Quality Planning',
+        description: 'Project-specific quality plans developed in collaboration with customers.',
+      },
+      {
+        title: 'Inspection Witnessing',
+        description: 'Customer witness points and hold points for critical inspection activities.',
+      },
+      {
+        title: 'Technical Support',
+        description: 'Ongoing technical support and quality consultation throughout project execution.',
+      },
+      {
+        title: 'After-Sales Service',
+        description: 'Continued support for quality issues and technical questions after delivery.',
+      },
+    ]}
+    image={{
+      src: '/images/engineering-1.jpg',
+      alt: 'Customer quality support services',
+    }}
+  />
+
+  <!-- Quality Performance -->
+  <Stats
+    title="Quality Achievement Metrics"
+    subtitle="Demonstrated quality performance across key indicators"
+    stats={[
+      { amount: '25+', title: 'Years ISO Certified' },
+      { amount: '0', title: 'Major Non-Conformances' },
+      { amount: '100%', title: 'Customer Satisfaction' },
+      { amount: '99.5%', title: 'First Pass Yield' },
+    ]}
+  />
+
+  <!-- Industry Recognition -->
+  <Features3
+    title="Quality Recognition & Awards"
+    subtitle="External recognition of our quality excellence"
+    tagline="Recognition"
+    columns={2}
+    items={[
+      {
+        title: 'Customer Quality Awards',
+        description: 'Recognition from major customers for outstanding quality performance and partnership.',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Industry Certifications',
+        description: 'Specialized industry certifications demonstrating sector-specific quality competence.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Regulatory Approvals',
+        description: 'Approvals from regulatory bodies for safety-critical and controlled applications.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Continuous Improvement',
+        description: 'Recognition for innovative quality improvement initiatives and best practices.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Experience Our Quality Excellence"
+    subtitle="Discover how our comprehensive quality systems and certifications can ensure the success of your next project. Contact our quality team for detailed discussions."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Speak with Quality Manager',
+        href: '/contact',
+        icon: 'tabler:user-check',
+      },
+      {
+        variant: 'secondary',
+        text: 'Download Quality Certificates',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+  />
+</Layout>

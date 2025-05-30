@@ -1,0 +1,435 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Market Sectors | Aries Manufacturing',
+  description: 'Specialized manufacturing solutions for railway, construction, general industry, and energy sectors. Certified processes and expertise for demanding applications.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Market Sectors"
+    title="Specialized Manufacturing Solutions"
+    subtitle="Decades of expertise serving demanding industrial sectors with precision manufacturing, certified processes, and comprehensive quality assurance for mission-critical applications."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Discuss Your Project',
+        href: '/contact',
+        icon: 'tabler:message',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.34.jpeg',
+      alt: 'Industrial manufacturing applications',
+    }}
+  />
+
+  <!-- Market Overview -->
+  <Features3
+    title="Industries We Serve"
+    subtitle="Specialized expertise across key industrial sectors"
+    tagline="Our Markets"
+    columns={2}
+    items={[
+      {
+        title: 'Railway Industry',
+        description: 'Certified manufacturing for rolling stock, infrastructure, and safety-critical components.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Building & Construction',
+        description: 'Structural metalwork, architectural elements, and building system components.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'General Industry',
+        description: 'Custom machinery, production equipment, and industrial automation solutions.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Energy & Environment',
+        description: 'Renewable energy components, environmental systems, and sustainable technologies.',
+        icon: 'tabler:wind',
+      },
+    ]}
+  />
+
+  <!-- Railway Industry Section -->
+  <Content
+    id="railway"
+    tagline="Railway Industry"
+    title="Certified Railway Manufacturing"
+    subtitle="Specialized expertise in railway vehicle manufacturing and infrastructure components with full EN 15085-2 certification"
+    items={[
+      {
+        title: 'Rolling Stock Components',
+        description: 'Chassis, bogies, car bodies, and structural components for passenger and freight vehicles.',
+      },
+      {
+        title: 'Infrastructure Elements',
+        description: 'Platform structures, signal gantries, maintenance equipment, and station infrastructure.',
+      },
+      {
+        title: 'Safety-Critical Parts',
+        description: 'Components requiring highest reliability standards with complete traceability and documentation.',
+      },
+      {
+        title: 'Retrofit & Maintenance',
+        description: 'Repair parts, upgrades, and refurbishment components for existing rolling stock.',
+      },
+    ]}
+    image={{
+      src: '/images/assembly-1.jpg',
+      alt: 'Railway component manufacturing',
+    }}
+  />
+
+  <!-- Railway Certifications -->
+  <Features
+    tagline="Railway Standards"
+    title="Railway Industry Compliance"
+    subtitle="Complete certification and quality systems for railway applications"
+    items={[
+      {
+        title: 'EN 15085-2 Certified',
+        description: 'Welding of railway vehicles and components certification ensuring highest safety standards.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Material Traceability',
+        description: 'Complete material certification and traceability from mill certificates to final delivery.',
+        icon: 'tabler:qrcode',
+      },
+      {
+        title: 'Quality Documentation',
+        description: 'Comprehensive quality dossiers including all test results, certifications, and process records.',
+        icon: 'tabler:file-certificate',
+      },
+      {
+        title: 'Railway Standards',
+        description: 'Compliance with international railway standards including UIC, TSI, and national regulations.',
+        icon: 'tabler:world',
+      },
+    ]}
+  />
+
+  <!-- Construction Sector -->
+  <Content
+    id="construction"
+    tagline="Building & Construction"
+    title="Structural Metalwork Excellence"
+    subtitle="Comprehensive solutions for architectural and structural applications from design support to final installation"
+    isReversed
+    items={[
+      {
+        title: 'Structural Steel',
+        description: 'Beams, columns, trusses, and complex structural assemblies for commercial and industrial buildings.',
+      },
+      {
+        title: 'Architectural Metalwork',
+        description: 'Facades, curtain walls, canopies, and decorative elements combining function with aesthetic appeal.',
+      },
+      {
+        title: 'Safety Systems',
+        description: 'Railings, staircases, platforms, and safety barriers meeting all relevant building codes.',
+      },
+      {
+        title: 'Modular Systems',
+        description: 'Prefabricated building components and modular construction elements for rapid assembly.',
+      },
+    ]}
+    image={{
+      src: '/images/WhatsApp Image 2024-03-18 at 12.14.35.jpeg',
+      alt: 'Structural metalwork components',
+    }}
+  />
+
+  <!-- Construction Standards -->
+  <Features2
+    tagline="Construction Excellence"
+    title="Building Industry Standards"
+    subtitle="Compliance with construction codes and safety regulations"
+    items={[
+      {
+        title: 'CE Marking',
+        description: 'Structural components manufactured and marked according to European construction product regulations.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Eurocode Compliance',
+        description: 'Design and fabrication following Eurocode standards for structural steel construction.',
+        icon: 'tabler:blueprint',
+      },
+      {
+        title: 'Fire Safety',
+        description: 'Fire-resistant designs and protective coatings meeting building safety requirements.',
+        icon: 'tabler:flame-off',
+      },
+      {
+        title: 'Seismic Design',
+        description: 'Earthquake-resistant structural design and detailing for high-risk seismic zones.',
+        icon: 'tabler:wave-square',
+      },
+    ]}
+  />
+
+  <!-- General Industry -->
+  <Content
+    id="industry"
+    tagline="General Industry"
+    title="Custom Industrial Solutions"
+    subtitle="Flexible manufacturing capabilities for diverse industrial applications and custom machinery requirements"
+    items={[
+      {
+        title: 'Production Machinery',
+        description: 'Custom machine frames, housings, and structural components for manufacturing equipment.',
+      },
+      {
+        title: 'Processing Equipment',
+        description: 'Vessels, tanks, conveyors, and handling systems for various industrial processes.',
+      },
+      {
+        title: 'Automation Components',
+        description: 'Robotic cells, automated systems, and precision positioning equipment.',
+      },
+      {
+        title: 'Maintenance & Repair',
+        description: 'Replacement parts, modifications, and upgrades for existing industrial equipment.',
+      },
+    ]}
+    image={{
+      src: '/images/machining-1.jpg',
+      alt: 'Industrial machinery components',
+    }}
+  />
+
+  <!-- Industry Applications -->
+  <Features3
+    title="Industrial Applications"
+    subtitle="Diverse applications across manufacturing sectors"
+    tagline="Applications"
+    columns={3}
+    items={[
+      {
+        title: 'Food Processing',
+        description: 'Stainless steel equipment and hygienic design components for food industry applications.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Automotive',
+        description: 'Production tooling, fixtures, and automation components for automotive manufacturing.',
+        icon: 'tabler:car',
+      },
+      {
+        title: 'Aerospace',
+        description: 'Precision components and tooling for aerospace manufacturing and assembly processes.',
+        icon: 'tabler:plane',
+      },
+      {
+        title: 'Packaging',
+        description: 'Machinery components and systems for packaging and material handling applications.',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Pharmaceutical',
+        description: 'Cleanroom equipment and precision components for pharmaceutical manufacturing.',
+        icon: 'tabler:pill',
+      },
+      {
+        title: 'Logistics',
+        description: 'Warehouse systems, material handling equipment, and distribution center infrastructure.',
+        icon: 'tabler:truck',
+      },
+    ]}
+  />
+
+  <!-- Energy Sector -->
+  <Content
+    id="energy"
+    tagline="Energy & Environment"
+    title="Sustainable Energy Solutions"
+    subtitle="Contributing to the energy transition with components for renewable energy systems and environmental technologies"
+    isReversed
+    items={[
+      {
+        title: 'Wind Energy',
+        description: 'Turbine components, support structures, and maintenance equipment for wind power generation.',
+      },
+      {
+        title: 'Solar Systems',
+        description: 'Mounting systems, tracking mechanisms, and support structures for solar installations.',
+      },
+      {
+        title: 'Hydroelectric',
+        description: 'Turbine components, penstock sections, and powerhouse structural elements.',
+      },
+      {
+        title: 'Environmental Tech',
+        description: 'Water treatment systems, waste processing equipment, and emission control technologies.',
+      },
+    ]}
+    image={{
+      src: '/images/bending.jpg',
+      alt: 'Renewable energy components',
+    }}
+  />
+
+  <!-- Energy Standards -->
+  <Features
+    tagline="Energy Compliance"
+    title="Energy Industry Standards"
+    subtitle="Meeting stringent requirements for energy infrastructure projects"
+    items={[
+      {
+        title: 'Environmental Standards',
+        description: 'Compliance with environmental regulations and sustainability requirements for green energy projects.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Offshore Certification',
+        description: 'Marine-grade materials and processes for offshore wind and tidal energy applications.',
+        icon: 'tabler:anchor',
+      },
+      {
+        title: 'Grid Code Compliance',
+        description: 'Electrical safety and grid connection standards for power generation equipment.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Long-Life Design',
+        description: 'Durability engineering for 20+ year operational life in harsh environmental conditions.',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
+
+  <!-- Cross-Sector Capabilities -->
+  <Stats
+    title="Cross-Sector Expertise"
+    subtitle="Common capabilities serving all market sectors"
+    stats={[
+      { amount: '65+', title: 'Years Experience' },
+      { amount: '4', title: 'Key Sectors' },
+      { amount: '20+', title: 'Specialized Applications' },
+      { amount: '100%', title: 'Quality Compliance' },
+    ]}
+  />
+
+  <!-- Quality Systems -->
+  <Features2
+    tagline="Quality Assurance"
+    title="Sector-Specific Quality Systems"
+    subtitle="Tailored quality programs for each market sector"
+    items={[
+      {
+        title: 'Material Certification',
+        description: 'Complete material traceability with mill certificates and chemical/mechanical property verification.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Process Validation',
+        description: 'Documented welding procedures, heat treatment records, and process parameter verification.',
+        icon: 'tabler:check',
+      },
+      {
+        title: 'Dimensional Inspection',
+        description: 'Comprehensive dimensional verification using coordinate measuring machines and certified gauges.',
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'Final Documentation',
+        description: 'Complete quality dossiers including all test results, certifications, and compliance records.',
+        icon: 'tabler:file-check',
+      },
+    ]}
+  />
+
+  <!-- Innovation & Development -->
+  <Content
+    tagline="Innovation"
+    title="Sector-Driven Innovation"
+    subtitle="Continuous development of new solutions and capabilities driven by market needs"
+    items={[
+      {
+        title: 'Customer Collaboration',
+        description: 'Joint development projects with customers to optimize designs and manufacturing processes.',
+      },
+      {
+        title: 'Technology Integration',
+        description: 'Adoption of new technologies and processes to meet evolving sector requirements.',
+      },
+      {
+        title: 'Standards Development',
+        description: 'Active participation in industry standards committees and certification body working groups.',
+      },
+      {
+        title: 'Sustainability Focus',
+        description: 'Development of environmentally responsible manufacturing processes and sustainable products.',
+      },
+    ]}
+    image={{
+      src: '/images/engineering-1.jpg',
+      alt: 'Innovation and development processes',
+    }}
+  />
+
+  <!-- Sector Selection Guide -->
+  <Features3
+    title="Why Choose Aries for Your Sector?"
+    subtitle="Sector-specific advantages and capabilities"
+    tagline="Our Advantages"
+    columns={2}
+    items={[
+      {
+        title: 'Deep Sector Knowledge',
+        description: 'Decades of experience understanding the unique requirements and challenges of each industry.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Regulatory Expertise',
+        description: 'Comprehensive knowledge of sector-specific regulations, standards, and certification requirements.',
+        icon: 'tabler:license',
+      },
+      {
+        title: 'Technical Excellence',
+        description: 'Advanced manufacturing capabilities and quality systems exceeding industry expectations.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Partnership Approach',
+        description: 'Long-term partnership mindset focused on customer success and mutual growth.',
+        icon: 'tabler:handshake',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Ready to Discuss Your Sector-Specific Needs?"
+    subtitle="Our sector specialists are ready to understand your unique requirements and develop optimal manufacturing solutions for your industry."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Speak with Sector Specialist',
+        href: '/contact',
+        icon: 'tabler:user-check',
+      },
+      {
+        variant: 'secondary',
+        text: 'Download Sector Brochures',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+  />
+</Layout>

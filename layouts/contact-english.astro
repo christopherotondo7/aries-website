@@ -1,0 +1,325 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Contact from '~/components/widgets/Contact.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Contact Us | Aries Manufacturing',
+  description: 'Get in touch with Aries for custom manufacturing solutions. Request quotes, technical support, and project consultation from our expert team.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Contact Us"
+    title="Let's Discuss Your Project"
+    subtitle="Our engineering team is ready to provide custom manufacturing solutions tailored to your specific requirements. Contact us for quotes, technical consultation, and project development."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '#quote-form',
+        icon: 'tabler:file-text',
+      },
+    ]}
+  />
+
+  <!-- Contact Information -->
+  <Features
+    id="contact-info"
+    tagline="Get In Touch"
+    title="Multiple Ways to Reach Us"
+    subtitle="Choose the most convenient way to contact our team"
+    items={[
+      {
+        title: 'Main Office',
+        description: 'Monday-Friday: 8:00 AM - 5:00 PM CET<br/>Emergency support available 24/7',
+        icon: 'tabler:phone',
+      },
+      {
+        title: 'Technical Support',
+        description: 'Engineering team available for technical consultation and project development',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Quote Requests',
+        description: 'Fast response time for custom manufacturing quotes and feasibility studies',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Quality Department',
+        description: 'Dedicated quality team for certifications, inspections and compliance questions',
+        icon: 'tabler:certificate',
+      },
+    ]}
+  />
+
+  <!-- Contact Forms Section -->
+  <Contact
+    id="contact-forms"
+    title="Contact Our Team"
+    subtitle="Choose the appropriate form based on your inquiry type"
+    tagline="Quick Contact"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Full Name',
+        autocomplete: 'name',
+        placeholder: 'Your full name',
+        required: true,
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email Address',
+        autocomplete: 'email',
+        placeholder: 'your.email@company.com',
+        required: true,
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company Name',
+        autocomplete: 'organization',
+        placeholder: 'Your company',
+      },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone Number',
+        autocomplete: 'tel',
+        placeholder: '+33 1 23 45 67 89',
+      },
+      {
+        type: 'select',
+        name: 'inquiry_type',
+        label: 'Inquiry Type',
+        options: [
+          { value: '', label: 'Select inquiry type' },
+          { value: 'quote', label: 'Request Quote' },
+          { value: 'technical', label: 'Technical Consultation' },
+          { value: 'quality', label: 'Quality & Certifications' },
+          { value: 'partnership', label: 'Partnership Opportunity' },
+          { value: 'general', label: 'General Information' },
+        ],
+        required: true,
+      },
+    ]}
+    textarea={{
+      label: 'Project Details',
+      name: 'message',
+      placeholder: 'Please describe your project requirements, materials, quantities, deadlines, and any specific technical specifications...',
+      rows: 6,
+      required: true,
+    }}
+    disclaimer={{
+      label: 'By submitting this form, you agree to our privacy policy and consent to being contacted about your inquiry.',
+    }}
+    button="Send Message"
+  />
+
+  <!-- Quote Request Form -->
+  <Content
+    id="quote-form"
+    tagline="Technical Quote"
+    title="Request Detailed Manufacturing Quote"
+    subtitle="Provide technical specifications for accurate pricing and delivery estimates"
+    items={[
+      {
+        title: 'Project Specifications',
+        description: 'Material types, dimensions, tolerances, quantities, and finishing requirements',
+      },
+      {
+        title: 'Technical Documentation',
+        description: 'CAD files, drawings, specifications, or reference samples',
+      },
+      {
+        title: 'Timeline Requirements',
+        description: 'Project deadlines, delivery schedules, and any urgent requirements',
+      },
+      {
+        title: 'Quality Standards',
+        description: 'Required certifications, testing, inspection, and documentation needs',
+      },
+    ]}
+  />
+
+  <!-- Advanced Quote Form -->
+  <Contact
+    id="quote-request"
+    title="Technical Quote Request"
+    subtitle="Complete form for detailed manufacturing quote"
+    tagline="Quote Request"
+    inputs={[
+      {
+        type: 'text',
+        name: 'company_name',
+        label: 'Company Name',
+        autocomplete: 'organization',
+        placeholder: 'Your company name',
+        required: true,
+      },
+      {
+        type: 'text',
+        name: 'contact_person',
+        label: 'Contact Person',
+        autocomplete: 'name',
+        placeholder: 'Primary contact name',
+        required: true,
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email Address',
+        autocomplete: 'email',
+        placeholder: 'your.email@company.com',
+        required: true,
+      },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone Number',
+        autocomplete: 'tel',
+        placeholder: '+33 1 23 45 67 89',
+        required: true,
+      },
+      {
+        type: 'select',
+        name: 'project_type',
+        label: 'Project Type',
+        options: [
+          { value: '', label: 'Select project type' },
+          { value: 'cutting', label: 'Cutting Services' },
+          { value: 'machining', label: 'CNC Machining' },
+          { value: 'welding', label: 'Welding & Assembly' },
+          { value: 'finishing', label: 'Surface Treatment' },
+          { value: 'complete', label: 'Complete Manufacturing' },
+        ],
+        required: true,
+      },
+      {
+        type: 'select',
+        name: 'material_type',
+        label: 'Material Type',
+        options: [
+          { value: '', label: 'Select material' },
+          { value: 'mild_steel', label: 'Mild Steel' },
+          { value: 'stainless_steel', label: 'Stainless Steel' },
+          { value: 'aluminum', label: 'Aluminum' },
+          { value: 'special_alloy', label: 'Special Alloys' },
+          { value: 'other', label: 'Other (specify in notes)' },
+        ],
+        required: true,
+      },
+      {
+        type: 'text',
+        name: 'quantity',
+        label: 'Quantity Required',
+        placeholder: 'e.g., 100 pieces, 500 kg',
+        required: true,
+      },
+      {
+        type: 'text',
+        name: 'timeline',
+        label: 'Required Delivery Date',
+        placeholder: 'e.g., 4 weeks, specific date',
+        required: true,
+      },
+    ]}
+    textarea={{
+      label: 'Technical Specifications',
+      name: 'specifications',
+      placeholder: 'Please provide detailed specifications including:\n- Material grade and thickness\n- Dimensions and tolerances\n- Surface finish requirements\n- Quality standards or certifications needed\n- Any special requirements or constraints',
+      rows: 8,
+      required: true,
+    }}
+    disclaimer={{
+      label: 'Technical files can be sent separately via email. Our engineering team will review and respond within 24 hours.',
+    }}
+    button="Request Quote"
+  />
+
+  <!-- Office Locations -->
+  <Content
+    tagline="Our Locations"
+    title="European Production Network"
+    subtitle="Two strategically located facilities serving clients across Europe"
+    isReversed
+    items={[
+      {
+        title: 'France Headquarters',
+        description: 'Main production facility with precision machining, assembly, and engineering services.',
+      },
+      {
+        title: 'Slovakia Operations',
+        description: 'High-volume production facility specializing in cutting, welding, and series manufacturing.',
+      },
+      {
+        title: 'European Coverage',
+        description: 'Strategic locations enabling efficient logistics and customer support across Europe.',
+      },
+      {
+        title: 'Local Support',
+        description: 'Regional sales and technical support teams providing personalized service.',
+      },
+    ]}
+    image={{
+      src: '/images/assembly-1.jpg',
+      alt: 'Aries production facility',
+    }}
+  />
+
+  <!-- Office Details -->
+  <Features
+    tagline="Office Information"
+    title="Contact Details & Hours"
+    subtitle="Complete contact information for both locations"
+    items={[
+      {
+        title: 'France Office',
+        description: 'Address: [Complete address to be added]<br/>Phone: [Phone number]<br/>Email: france@aries.com',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Slovakia Office',
+        description: 'Address: [Complete address to be added]<br/>Phone: [Phone number]<br/>Email: slovakia@aries.com',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Business Hours',
+        description: 'Monday - Friday: 8:00 AM - 5:00 PM CET<br/>Emergency support: 24/7 availability',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Response Time',
+        description: 'General inquiries: Same day<br/>Quote requests: Within 24 hours<br/>Technical support: Within 4 hours',
+        icon: 'tabler:clock-hour-3',
+      },
+    ]}
+  />
+
+  <!-- Emergency Contact -->
+  <CallToAction
+    title="Need Urgent Support?"
+    subtitle="For emergency manufacturing needs or urgent technical support, contact our 24/7 hotline"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Emergency Hotline',
+        href: 'tel:+33123456789',
+        icon: 'tabler:phone-call',
+      },
+      {
+        variant: 'secondary',
+        text: 'Email Support',
+        href: 'mailto:emergency@aries.com',
+        icon: 'tabler:mail',
+      },
+    ]}
+  />
+</Layout>

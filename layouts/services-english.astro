@@ -1,0 +1,307 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'Services & Capabilities | Aries Manufacturing',
+  description: 'Complete metalworking services: laser cutting, CNC machining, welding, assembly. Advanced equipment and certified processes for precision manufacturing.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Our Services"
+    title="Complete Manufacturing Capabilities"
+    subtitle="From raw materials to finished assemblies, we deliver precision engineering solutions across the full production cycle with state-of-the-art equipment and certified processes."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+    ]}
+    image={{
+      src: '/images/machining-1.jpg',
+      alt: 'CNC machining operation',
+    }}
+  />
+
+  <!-- Service Categories Overview -->
+  <Features3
+    title="Our Core Capabilities"
+    subtitle="Four main service categories covering the complete manufacturing process"
+    tagline="Services Overview"
+    columns={2}
+    items={[
+      {
+        title: 'Industrial Cutting',
+        description: 'Advanced thermal and mechanical cutting processes for all material thicknesses.',
+        icon: 'tabler:cut',
+      },
+      {
+        title: 'Precision Machining',
+        description: 'Multi-axis CNC operations for complex geometries and tight tolerances.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Welding & Assembly',
+        description: 'Expert manual and robotic welding with complete mechanical assembly.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Finishing & Treatment',
+        description: 'Surface treatments, painting, and quality finishing for durability.',
+        icon: 'tabler:paint',
+      },
+    ]}
+  />
+
+  <!-- Industrial Cutting Section -->
+  <Content
+    id="cutting"
+    tagline="Cutting Services"
+    title="Advanced Industrial Cutting Solutions"
+    subtitle="State-of-the-art thermal and mechanical cutting processes for materials from thin sheets to heavy plates"
+    isReversed
+    items={[
+      {
+        title: 'Fiber Laser Cutting',
+        description: 'High-precision cutting up to 30mm steel thickness with superior edge quality and minimal heat-affected zone.',
+      },
+      {
+        title: 'Plasma Cutting',
+        description: 'Heavy thickness cutting with 600A systems for materials up to 200mm with beveling capabilities.',
+      },
+      {
+        title: 'Oxy-fuel Cutting',
+        description: 'Multi-torch systems for very heavy plates up to 300mm thickness with optimized cutting parameters.',
+      },
+      {
+        title: 'Cold Cutting',
+        description: 'Precision shearing, punching and mechanical cutting for clean edges without thermal effects.',
+      },
+    ]}
+    image={{
+      src: '/images/cutting-1.jpg',
+      alt: 'Laser cutting operation',
+    }}
+  />
+
+  <!-- Equipment Specifications -->
+  <Features
+    tagline="Cutting Equipment"
+    title="Advanced Cutting Technology"
+    subtitle="Latest generation equipment for maximum precision and efficiency"
+    items={[
+      {
+        title: 'Trumpf 6kW Fiber Laser',
+        description: 'Dual-head system with 5.5m x 13m tables for simultaneous cutting of two plates.',
+        icon: 'tabler:laser',
+      },
+      {
+        title: 'Automated Material Handling',
+        description: 'Fully automated systems with magazine storage for lights-out production.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Plasma Systems',
+        description: 'Multi-head plasma cutting with beveling capabilities up to 5.5m x 20m.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Punching Centers',
+        description: '40-tool turret punching for complex hole patterns and forming operations.',
+        icon: 'tabler:circle-dot',
+      },
+    ]}
+  />
+
+  <!-- Precision Machining Section -->
+  <Content
+    id="machining"
+    tagline="Machining Services"
+    title="Precision CNC Machining"
+    subtitle="Multi-axis machining capabilities for complex components requiring tight tolerances and superior surface finishes"
+    items={[
+      {
+        title: '5-Axis Machining Centers',
+        description: 'Complex geometry machining with single setup for improved accuracy and reduced lead times.',
+      },
+      {
+        title: 'CNC Turning',
+        description: 'Precision turning operations for shafts, flanges and cylindrical components up to 500mm diameter.',
+      },
+      {
+        title: 'High-Precision Milling',
+        description: 'Vertical and horizontal milling for complex parts with tolerances down to ±0.01mm.',
+      },
+      {
+        title: 'Drilling & Tapping',
+        description: 'Precision hole making operations with automatic tool changing and quality verification.',
+      },
+    ]}
+    image={{
+      src: '/images/machining-1.jpg',
+      alt: 'CNC machining center',
+    }}
+  />
+
+  <!-- Machining Capabilities Stats -->
+  <Stats
+    title="Machining Capabilities"
+    subtitle="Precision manufacturing specifications"
+    stats={[
+      { amount: '±0.01mm', title: 'Tolerance Capability' },
+      { amount: '5', title: 'Axis Machining' },
+      { amount: '15t', title: 'Maximum Part Weight' },
+      { amount: '3x10m', title: 'Maximum Dimensions' },
+    ]}
+  />
+
+  <!-- Welding & Assembly Section -->
+  <Content
+    id="welding"
+    tagline="Welding & Assembly"
+    title="Expert Welding Solutions"
+    subtitle="Comprehensive welding services from manual precision work to high-volume robotic production"
+    isReversed
+    items={[
+      {
+        title: 'Manual Welding Expertise',
+        description: 'Certified welders skilled in TIG, MIG/MAG, and electrode welding for critical applications.',
+      },
+      {
+        title: 'Robotic Welding Systems',
+        description: 'KUKA robotic welding cells for consistent quality in series production with adaptive welding.',
+      },
+      {
+        title: 'Mechanical Assembly',
+        description: 'Complete sub-assembly and final assembly services with precision tooling and fixtures.',
+      },
+      {
+        title: 'Quality Control',
+        description: 'Radiographic testing, dye penetrant inspection and dimensional verification for all welds.',
+      },
+    ]}
+    image={{
+      src: '/images/WELDING.jpg',
+      alt: 'Welding operation',
+    }}
+  />
+
+  <!-- Welding Certifications -->
+  <Features
+    tagline="Welding Quality"
+    title="Certified Welding Processes"
+    subtitle="International standards compliance for critical applications"
+    items={[
+      {
+        title: 'ISO 3834-2 Certified',
+        description: 'Comprehensive quality requirements for fusion welding of metallic materials.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'EN 15085-2 Railway',
+        description: 'Specialized certification for railway vehicle and component welding applications.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Qualified Welders',
+        description: 'Team of certified welders with qualifications for structural and pressure vessel work.',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: 'NDT Testing',
+        description: 'Complete non-destructive testing capabilities for weld quality verification.',
+        icon: 'tabler:search',
+      },
+    ]}
+  />
+
+  <!-- Finishing & Treatment Section -->
+  <Content
+    id="finishing"
+    tagline="Finishing Services"
+    title="Surface Treatment & Finishing"
+    subtitle="Complete surface preparation and protection services for enhanced durability and appearance"
+    items={[
+      {
+        title: 'Surface Preparation',
+        description: 'Shot blasting, sandblasting and chemical cleaning for optimal surface preparation.',
+      },
+      {
+        title: 'Industrial Painting',
+        description: 'Multi-coat paint systems including primers, intermediate and topcoats for maximum protection.',
+      },
+      {
+        title: 'Anti-Corrosion Treatment',
+        description: 'Specialized coatings and treatments for harsh environmental conditions and extended service life.',
+      },
+      {
+        title: 'Quality Finishing',
+        description: 'Precision deburring, polishing and final inspection for superior appearance and function.',
+      },
+    ]}
+    image={{
+      src: '/images/painting-2.jpg',
+      alt: 'Industrial painting facility',
+    }}
+  />
+
+  <!-- Process Integration -->
+  <Features3
+    title="Integrated Manufacturing Process"
+    subtitle="Seamless workflow from design to delivery"
+    tagline="Our Process"
+    columns={4}
+    items={[
+      {
+        title: 'Engineering & Design',
+        description: 'CAD/CAM optimization and manufacturing engineering for optimal production.',
+        icon: 'tabler:blueprint',
+      },
+      {
+        title: 'Material Procurement',
+        description: 'Certified material sourcing with complete traceability and quality documentation.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Production Control',
+        description: 'Real-time monitoring and quality control throughout the manufacturing process.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Logistics & Delivery',
+        description: 'Packaging, shipping and just-in-time delivery solutions for efficient supply chain.',
+        icon: 'tabler:package',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Need Custom Manufacturing Solutions?"
+    subtitle="Our engineering team is ready to discuss your project requirements and develop the optimal manufacturing approach"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Technical Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+      {
+        variant: 'secondary',
+        text: 'Download Capabilities Brochure',
+        href: '#',
+        icon: 'tabler:download',
+      },
+    ]}
+  />
+</Layout>
