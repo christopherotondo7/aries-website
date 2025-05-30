@@ -77,7 +77,18 @@ const pagesCollection = defineCollection({
     sections: z.array(z.object({
       type: z.string(),
       title: z.string().optional(),
+      subtitle: z.string().optional(),
       content: z.string().optional(),
+      highlight: z.string().optional(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string(),
+      }).optional(),
+      button: z.object({
+        text: z.string(),
+        href: z.string(),
+        style: z.string().optional(),
+      }).optional(),
       stats: z.array(z.object({
         label: z.string(),
         value: z.string(),

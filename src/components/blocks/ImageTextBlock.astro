@@ -1,0 +1,87 @@
+---
+import Image from '~/components/common/Image.astro';
+import Button from '~/components/ui/Button.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  content?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  button?: {
+    text: string;
+    href: string;
+    style?: string;
+  };
+  reverse?: boolean;
+  highlight?: string;
+}
+
+const {
+  title,
+  subtitle,
+  content,
+  image,
+  button,
+  reverse = false,
+  highlight,
+} = Astro.props;
+---
+
+<section class="px-6 py-16 md:py-20">
+  <div class="max-w-7xl mx-auto">
+    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${reverse ? 'lg:grid-flow-col-dense' : ''}`}>
+      
+      <!-- Image -->
+      <div class={`${reverse ? 'lg:col-start-2' : ''}`}>
+        {image && (
+          <div class="relative">
+            <Image
+              class="w-full h-auto rounded-lg shadow-lg"
+              width={600}
+              height={400}
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+            />
+          </div>
+        )}
+      </div>
+
+      <!-- Content -->
+      <div class={`${reverse ? 'lg:col-start-1' : ''} space-y-6`}>
+        {subtitle && (
+          <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">
+            {subtitle}
+          </p>
+        )}
+        
+        {title && (
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight font-heading">
+            <Fragment set:html={highlight ? title.replace(highlight, `<span class="text-blue-600 dark:text-blue-400">${highlight}</span>`) : title} />
+          </h2>
+        )}
+        
+        {content && (
+          <div class="text-lg text-muted dark:text-slate-400 leading-relaxed">
+            <Fragment set:html={content} />
+          </div>
+        )}
+        
+        {button && (
+          <div class="pt-4">
+            <Button 
+              variant={button.style || "primary"}
+              href={button.href}
+              class="inline-flex items-center"
+            >
+              {button.text}
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

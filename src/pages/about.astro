@@ -2,8 +2,11 @@
 import { getEntry } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import VideoHero from '~/components/widgets/VideoHero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
+import ImageTextBlock from '~/components/blocks/ImageTextBlock.astro';
+import Button from '~/components/ui/Button.astro';
 
 // Get the markdown content
 const entry = await getEntry('pages', 'about');
@@ -33,19 +36,30 @@ const valuesData = frontmatter.sections?.find(s => s.type === 'values')?.items?.
 <Layout metadata={metadata}>
   <!-- Hero Section -->
   {frontmatter.hero && (
-    <Hero
-      image={{
-        src: frontmatter.hero.image || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-        alt: frontmatter.hero.title,
-      }}
-    >
-      <Fragment slot="title">
-        {frontmatter.hero.title}
-      </Fragment>
-      <Fragment slot="subtitle">
-        {frontmatter.hero.subtitle}
-      </Fragment>
-    </Hero>
+    frontmatter.hero.video ? (
+      <VideoHero
+        title={frontmatter.hero.title}
+        subtitle={frontmatter.hero.subtitle}
+        video={{
+          src: frontmatter.hero.video,
+          poster: frontmatter.hero.videoPoster,
+        }}
+      />
+    ) : (
+      <Hero
+        image={{
+          src: frontmatter.hero.image || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+          alt: frontmatter.hero.title,
+        }}
+      >
+        <Fragment slot="title">
+          {frontmatter.hero.title}
+        </Fragment>
+        <Fragment slot="subtitle">
+          {frontmatter.hero.subtitle}
+        </Fragment>
+      </Hero>
+    )
   )}
 
   <!-- Introduction Section -->
@@ -62,6 +76,19 @@ const valuesData = frontmatter.sections?.find(s => s.type === 'values')?.items?.
         </div>
       </div>
     </section>
+  ))}
+
+  <!-- Image + Text Blocks -->
+  {frontmatter.sections?.filter(s => s.type === 'image_text').map((section, index) => (
+    <ImageTextBlock
+      title={section.title}
+      subtitle={section.subtitle}
+      content={section.content}
+      image={section.image}
+      button={section.button}
+      highlight={section.highlight}
+      reverse={index % 2 === 1}
+    />
   ))}
 
   <!-- Stats Section -->
@@ -81,6 +108,31 @@ const valuesData = frontmatter.sections?.find(s => s.type === 'values')?.items?.
       columns={2}
     />
   )}
+
+  <!-- Call-to-Action Sections -->
+  {frontmatter.sections?.filter(s => s.type === 'cta').map(section => (
+    <section class="px-6 py-16 bg-blue-50 dark:bg-slate-800">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-6 font-heading">
+          {section.title}
+        </h2>
+        <p class="text-xl text-muted dark:text-slate-400 leading-relaxed mb-8">
+          {section.content}
+        </p>
+        {section.button && (
+          <div class="pt-4">
+            <Button 
+              variant={section.button.style || "primary"}
+              href={section.button.href}
+              class="text-lg px-8 py-4"
+            >
+              {section.button.text}
+            </Button>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
 
   <!-- Mission Statement -->
   {frontmatter.mission && (
