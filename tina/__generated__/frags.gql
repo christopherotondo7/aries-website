@@ -9,6 +9,67 @@ fragment Data_postParts on Data_post {
 fragment PagesParts on Pages {
   __typename
   title
+  description
+  hero {
+    __typename
+    title
+    subtitle
+    image
+    video
+    videoPoster
+  }
+  sections {
+    __typename
+    ... on PagesSectionsIntro {
+      title
+      content
+    }
+    ... on PagesSectionsStats {
+      title
+      stats {
+        __typename
+        label
+        value
+      }
+    }
+    ... on PagesSectionsValues {
+      title
+      items {
+        __typename
+        title
+        description
+        icon
+      }
+    }
+    ... on PagesSectionsImage_text {
+      title
+      subtitle
+      content
+      highlight
+      image {
+        __typename
+        src
+        alt
+      }
+      button {
+        __typename
+        text
+        href
+        style
+      }
+    }
+    ... on PagesSectionsCta {
+      title
+      content
+      button {
+        __typename
+        text
+        href
+        style
+      }
+    }
+  }
+  mission
   body
 }
 

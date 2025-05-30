@@ -145,16 +145,173 @@ type Data_postConnection implements Connection {
   edges: [Data_postConnectionEdges]
 }
 
+type PagesHero {
+  title: String
+  subtitle: String
+  image: String
+  video: String
+  videoPoster: String
+}
+
+type PagesSectionsIntro {
+  title: String
+  content: JSON
+}
+
+type PagesSectionsStatsStats {
+  label: String
+  value: String
+}
+
+type PagesSectionsStats {
+  title: String
+  stats: [PagesSectionsStatsStats]
+}
+
+type PagesSectionsValuesItems {
+  title: String
+  description: String
+  icon: String
+}
+
+type PagesSectionsValues {
+  title: String
+  items: [PagesSectionsValuesItems]
+}
+
+type PagesSectionsImage_textImage {
+  src: String
+  alt: String
+}
+
+type PagesSectionsImage_textButton {
+  text: String
+  href: String
+  style: String
+}
+
+type PagesSectionsImage_text {
+  title: String
+  subtitle: String
+  content: JSON
+  highlight: String
+  image: PagesSectionsImage_textImage
+  button: PagesSectionsImage_textButton
+}
+
+type PagesSectionsCtaButton {
+  text: String
+  href: String
+  style: String
+}
+
+type PagesSectionsCta {
+  title: String
+  content: JSON
+  button: PagesSectionsCtaButton
+}
+
+union PagesSections = PagesSectionsIntro | PagesSectionsStats | PagesSectionsValues | PagesSectionsImage_text | PagesSectionsCta
+
 type Pages implements Node & Document {
   title: String!
+  description: String
+  hero: PagesHero
+  sections: [PagesSections]
+  mission: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input PagesHeroFilter {
+  title: StringFilter
+  subtitle: StringFilter
+  image: ImageFilter
+  video: StringFilter
+  videoPoster: ImageFilter
+}
+
+input PagesSectionsIntroFilter {
+  title: StringFilter
+  content: RichTextFilter
+}
+
+input PagesSectionsStatsStatsFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input PagesSectionsStatsFilter {
+  title: StringFilter
+  stats: PagesSectionsStatsStatsFilter
+}
+
+input PagesSectionsValuesItemsFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+}
+
+input PagesSectionsValuesFilter {
+  title: StringFilter
+  items: PagesSectionsValuesItemsFilter
+}
+
+input PagesSectionsImage_textImageFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input PagesSectionsImage_textButtonFilter {
+  text: StringFilter
+  href: StringFilter
+  style: StringFilter
+}
+
+input PagesSectionsImage_textFilter {
+  title: StringFilter
+  subtitle: StringFilter
+  content: RichTextFilter
+  highlight: StringFilter
+  image: PagesSectionsImage_textImageFilter
+  button: PagesSectionsImage_textButtonFilter
+}
+
+input PagesSectionsCtaButtonFilter {
+  text: StringFilter
+  href: StringFilter
+  style: StringFilter
+}
+
+input PagesSectionsCtaFilter {
+  title: StringFilter
+  content: RichTextFilter
+  button: PagesSectionsCtaButtonFilter
+}
+
+input PagesSectionsFilter {
+  intro: PagesSectionsIntroFilter
+  stats: PagesSectionsStatsFilter
+  values: PagesSectionsValuesFilter
+  image_text: PagesSectionsImage_textFilter
+  cta: PagesSectionsCtaFilter
+}
+
 input PagesFilter {
   title: StringFilter
+  description: StringFilter
+  hero: PagesHeroFilter
+  sections: PagesSectionsFilter
+  mission: StringFilter
   body: RichTextFilter
 }
 
@@ -257,8 +414,86 @@ input Data_postMutation {
   body: JSON
 }
 
+input PagesHeroMutation {
+  title: String
+  subtitle: String
+  image: String
+  video: String
+  videoPoster: String
+}
+
+input PagesSectionsIntroMutation {
+  title: String
+  content: JSON
+}
+
+input PagesSectionsStatsStatsMutation {
+  label: String
+  value: String
+}
+
+input PagesSectionsStatsMutation {
+  title: String
+  stats: [PagesSectionsStatsStatsMutation]
+}
+
+input PagesSectionsValuesItemsMutation {
+  title: String
+  description: String
+  icon: String
+}
+
+input PagesSectionsValuesMutation {
+  title: String
+  items: [PagesSectionsValuesItemsMutation]
+}
+
+input PagesSectionsImage_textImageMutation {
+  src: String
+  alt: String
+}
+
+input PagesSectionsImage_textButtonMutation {
+  text: String
+  href: String
+  style: String
+}
+
+input PagesSectionsImage_textMutation {
+  title: String
+  subtitle: String
+  content: JSON
+  highlight: String
+  image: PagesSectionsImage_textImageMutation
+  button: PagesSectionsImage_textButtonMutation
+}
+
+input PagesSectionsCtaButtonMutation {
+  text: String
+  href: String
+  style: String
+}
+
+input PagesSectionsCtaMutation {
+  title: String
+  content: JSON
+  button: PagesSectionsCtaButtonMutation
+}
+
+input PagesSectionsMutation {
+  intro: PagesSectionsIntroMutation
+  stats: PagesSectionsStatsMutation
+  values: PagesSectionsValuesMutation
+  image_text: PagesSectionsImage_textMutation
+  cta: PagesSectionsCtaMutation
+}
+
 input PagesMutation {
   title: String
+  description: String
+  hero: PagesHeroMutation
+  sections: [PagesSectionsMutation]
+  mission: String
   body: JSON
 }
 

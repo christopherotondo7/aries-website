@@ -271,17 +271,185 @@ export type Data_PostConnection = Connection & {
   edges?: Maybe<Array<Maybe<Data_PostConnectionEdges>>>;
 };
 
+export type PagesHero = {
+  __typename?: 'PagesHero';
+  title?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  video?: Maybe<Scalars['String']['output']>;
+  videoPoster?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsIntro = {
+  __typename?: 'PagesSectionsIntro';
+  title?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type PagesSectionsStatsStats = {
+  __typename?: 'PagesSectionsStatsStats';
+  label?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsStats = {
+  __typename?: 'PagesSectionsStats';
+  title?: Maybe<Scalars['String']['output']>;
+  stats?: Maybe<Array<Maybe<PagesSectionsStatsStats>>>;
+};
+
+export type PagesSectionsValuesItems = {
+  __typename?: 'PagesSectionsValuesItems';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsValues = {
+  __typename?: 'PagesSectionsValues';
+  title?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<PagesSectionsValuesItems>>>;
+};
+
+export type PagesSectionsImage_TextImage = {
+  __typename?: 'PagesSectionsImage_textImage';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsImage_TextButton = {
+  __typename?: 'PagesSectionsImage_textButton';
+  text?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsImage_Text = {
+  __typename?: 'PagesSectionsImage_text';
+  title?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+  highlight?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<PagesSectionsImage_TextImage>;
+  button?: Maybe<PagesSectionsImage_TextButton>;
+};
+
+export type PagesSectionsCtaButton = {
+  __typename?: 'PagesSectionsCtaButton';
+  text?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  style?: Maybe<Scalars['String']['output']>;
+};
+
+export type PagesSectionsCta = {
+  __typename?: 'PagesSectionsCta';
+  title?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+  button?: Maybe<PagesSectionsCtaButton>;
+};
+
+export type PagesSections = PagesSectionsIntro | PagesSectionsStats | PagesSectionsValues | PagesSectionsImage_Text | PagesSectionsCta;
+
 export type Pages = Node & Document & {
   __typename?: 'Pages';
   title: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  hero?: Maybe<PagesHero>;
+  sections?: Maybe<Array<Maybe<PagesSections>>>;
+  mission?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PagesHeroFilter = {
+  title?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  video?: InputMaybe<StringFilter>;
+  videoPoster?: InputMaybe<ImageFilter>;
+};
+
+export type PagesSectionsIntroFilter = {
+  title?: InputMaybe<StringFilter>;
+  content?: InputMaybe<RichTextFilter>;
+};
+
+export type PagesSectionsStatsStatsFilter = {
+  label?: InputMaybe<StringFilter>;
+  value?: InputMaybe<StringFilter>;
+};
+
+export type PagesSectionsStatsFilter = {
+  title?: InputMaybe<StringFilter>;
+  stats?: InputMaybe<PagesSectionsStatsStatsFilter>;
+};
+
+export type PagesSectionsValuesItemsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+};
+
+export type PagesSectionsValuesFilter = {
+  title?: InputMaybe<StringFilter>;
+  items?: InputMaybe<PagesSectionsValuesItemsFilter>;
+};
+
+export type PagesSectionsImage_TextImageFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type PagesSectionsImage_TextButtonFilter = {
+  text?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type PagesSectionsImage_TextFilter = {
+  title?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  content?: InputMaybe<RichTextFilter>;
+  highlight?: InputMaybe<StringFilter>;
+  image?: InputMaybe<PagesSectionsImage_TextImageFilter>;
+  button?: InputMaybe<PagesSectionsImage_TextButtonFilter>;
+};
+
+export type PagesSectionsCtaButtonFilter = {
+  text?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+  style?: InputMaybe<StringFilter>;
+};
+
+export type PagesSectionsCtaFilter = {
+  title?: InputMaybe<StringFilter>;
+  content?: InputMaybe<RichTextFilter>;
+  button?: InputMaybe<PagesSectionsCtaButtonFilter>;
+};
+
+export type PagesSectionsFilter = {
+  intro?: InputMaybe<PagesSectionsIntroFilter>;
+  stats?: InputMaybe<PagesSectionsStatsFilter>;
+  values?: InputMaybe<PagesSectionsValuesFilter>;
+  image_text?: InputMaybe<PagesSectionsImage_TextFilter>;
+  cta?: InputMaybe<PagesSectionsCtaFilter>;
+};
+
 export type PagesFilter = {
   title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  hero?: InputMaybe<PagesHeroFilter>;
+  sections?: InputMaybe<PagesSectionsFilter>;
+  mission?: InputMaybe<StringFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
@@ -474,8 +642,86 @@ export type Data_PostMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type PagesHeroMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  video?: InputMaybe<Scalars['String']['input']>;
+  videoPoster?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsIntroMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type PagesSectionsStatsStatsMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsStatsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  stats?: InputMaybe<Array<InputMaybe<PagesSectionsStatsStatsMutation>>>;
+};
+
+export type PagesSectionsValuesItemsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsValuesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<PagesSectionsValuesItemsMutation>>>;
+};
+
+export type PagesSectionsImage_TextImageMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsImage_TextButtonMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsImage_TextMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+  highlight?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<PagesSectionsImage_TextImageMutation>;
+  button?: InputMaybe<PagesSectionsImage_TextButtonMutation>;
+};
+
+export type PagesSectionsCtaButtonMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  style?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PagesSectionsCtaMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+  button?: InputMaybe<PagesSectionsCtaButtonMutation>;
+};
+
+export type PagesSectionsMutation = {
+  intro?: InputMaybe<PagesSectionsIntroMutation>;
+  stats?: InputMaybe<PagesSectionsStatsMutation>;
+  values?: InputMaybe<PagesSectionsValuesMutation>;
+  image_text?: InputMaybe<PagesSectionsImage_TextMutation>;
+  cta?: InputMaybe<PagesSectionsCtaMutation>;
+};
+
 export type PagesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  hero?: InputMaybe<PagesHeroMutation>;
+  sections?: InputMaybe<Array<InputMaybe<PagesSectionsMutation>>>;
+  mission?: InputMaybe<Scalars['String']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
@@ -492,7 +738,7 @@ export type PostMutation = {
 
 export type Data_PostPartsFragment = { __typename: 'Data_post', title: string, date?: string | null, description?: string | null, body?: any | null };
 
-export type PagesPartsFragment = { __typename: 'Pages', title: string, body?: any | null };
+export type PagesPartsFragment = { __typename: 'Pages', title: string, description?: string | null, mission?: string | null, body?: any | null, hero?: { __typename: 'PagesHero', title?: string | null, subtitle?: string | null, image?: string | null, video?: string | null, videoPoster?: string | null } | null, sections?: Array<{ __typename: 'PagesSectionsIntro', title?: string | null, content?: any | null } | { __typename: 'PagesSectionsStats', title?: string | null, stats?: Array<{ __typename: 'PagesSectionsStatsStats', label?: string | null, value?: string | null } | null> | null } | { __typename: 'PagesSectionsValues', title?: string | null, items?: Array<{ __typename: 'PagesSectionsValuesItems', title?: string | null, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'PagesSectionsImage_text', title?: string | null, subtitle?: string | null, content?: any | null, highlight?: string | null, image?: { __typename: 'PagesSectionsImage_textImage', src?: string | null, alt?: string | null } | null, button?: { __typename: 'PagesSectionsImage_textButton', text?: string | null, href?: string | null, style?: string | null } | null } | { __typename: 'PagesSectionsCta', title?: string | null, content?: any | null, button?: { __typename: 'PagesSectionsCtaButton', text?: string | null, href?: string | null, style?: string | null } | null } | null> | null };
 
 export type Site_ContentPartsFragment = { __typename: 'Site_content', title: string, description?: string | null, body?: any | null };
 
@@ -522,7 +768,7 @@ export type PagesQueryVariables = Exact<{
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PagesQuery = { __typename?: 'Query', pages: { __typename: 'Pages', id: string, title: string, description?: string | null, mission?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'PagesHero', title?: string | null, subtitle?: string | null, image?: string | null, video?: string | null, videoPoster?: string | null } | null, sections?: Array<{ __typename: 'PagesSectionsIntro', title?: string | null, content?: any | null } | { __typename: 'PagesSectionsStats', title?: string | null, stats?: Array<{ __typename: 'PagesSectionsStatsStats', label?: string | null, value?: string | null } | null> | null } | { __typename: 'PagesSectionsValues', title?: string | null, items?: Array<{ __typename: 'PagesSectionsValuesItems', title?: string | null, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'PagesSectionsImage_text', title?: string | null, subtitle?: string | null, content?: any | null, highlight?: string | null, image?: { __typename: 'PagesSectionsImage_textImage', src?: string | null, alt?: string | null } | null, button?: { __typename: 'PagesSectionsImage_textButton', text?: string | null, href?: string | null, style?: string | null } | null } | { __typename: 'PagesSectionsCta', title?: string | null, content?: any | null, button?: { __typename: 'PagesSectionsCtaButton', text?: string | null, href?: string | null, style?: string | null } | null } | null> | null } };
 
 export type PagesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -534,7 +780,7 @@ export type PagesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PagesConnectionQuery = { __typename?: 'Query', pagesConnection: { __typename?: 'PagesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PagesConnectionEdges', cursor: string, node?: { __typename: 'Pages', id: string, title: string, description?: string | null, mission?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'PagesHero', title?: string | null, subtitle?: string | null, image?: string | null, video?: string | null, videoPoster?: string | null } | null, sections?: Array<{ __typename: 'PagesSectionsIntro', title?: string | null, content?: any | null } | { __typename: 'PagesSectionsStats', title?: string | null, stats?: Array<{ __typename: 'PagesSectionsStatsStats', label?: string | null, value?: string | null } | null> | null } | { __typename: 'PagesSectionsValues', title?: string | null, items?: Array<{ __typename: 'PagesSectionsValuesItems', title?: string | null, description?: string | null, icon?: string | null } | null> | null } | { __typename: 'PagesSectionsImage_text', title?: string | null, subtitle?: string | null, content?: any | null, highlight?: string | null, image?: { __typename: 'PagesSectionsImage_textImage', src?: string | null, alt?: string | null } | null, button?: { __typename: 'PagesSectionsImage_textButton', text?: string | null, href?: string | null, style?: string | null } | null } | { __typename: 'PagesSectionsCta', title?: string | null, content?: any | null, button?: { __typename: 'PagesSectionsCtaButton', text?: string | null, href?: string | null, style?: string | null } | null } | null> | null } | null } | null> | null } };
 
 export type Site_ContentQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -587,6 +833,67 @@ export const PagesPartsFragmentDoc = gql`
     fragment PagesParts on Pages {
   __typename
   title
+  description
+  hero {
+    __typename
+    title
+    subtitle
+    image
+    video
+    videoPoster
+  }
+  sections {
+    __typename
+    ... on PagesSectionsIntro {
+      title
+      content
+    }
+    ... on PagesSectionsStats {
+      title
+      stats {
+        __typename
+        label
+        value
+      }
+    }
+    ... on PagesSectionsValues {
+      title
+      items {
+        __typename
+        title
+        description
+        icon
+      }
+    }
+    ... on PagesSectionsImage_text {
+      title
+      subtitle
+      content
+      highlight
+      image {
+        __typename
+        src
+        alt
+      }
+      button {
+        __typename
+        text
+        href
+        style
+      }
+    }
+    ... on PagesSectionsCta {
+      title
+      content
+      button {
+        __typename
+        text
+        href
+        style
+      }
+    }
+  }
+  mission
   body
 }
     `;

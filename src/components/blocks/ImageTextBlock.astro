@@ -38,10 +38,8 @@ const {
       <div class={`${reverse ? 'lg:col-start-2' : ''}`}>
         {image && (
           <div class="relative">
-            <Image
+            <img
               class="w-full h-auto rounded-lg shadow-lg"
-              width={600}
-              height={400}
               src={image.src}
               alt={image.alt}
               loading="lazy"

@@ -25,7 +25,7 @@ export default defineConfig({
       {
         name: "data_post",
         label: "Posts (Data)",
-        path: "src/data/post",
+        path: "src/content/post",
         format: "mdx",
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
@@ -41,6 +41,118 @@ export default defineConfig({
         format: "md",
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
+          { type: "string", name: "description", label: "Description" },
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero Section",
+            fields: [
+              { type: "string", name: "title", label: "Hero Title" },
+              { type: "string", name: "subtitle", label: "Hero Subtitle" },
+              { type: "image", name: "image", label: "Hero Image" },
+              { type: "string", name: "video", label: "Background Video URL (MP4)" },
+              { type: "image", name: "videoPoster", label: "Video Poster Image" },
+            ],
+          },
+          {
+            type: "object",
+            name: "sections",
+            label: "Content Sections",
+            list: true,
+            templates: [
+              {
+                name: "intro",
+                label: "Introduction",
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "rich-text", name: "content", label: "Content" },
+                ],
+              },
+              {
+                name: "stats",
+                label: "Statistics",
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  {
+                    type: "object",
+                    name: "stats",
+                    label: "Stats",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "label", label: "Label" },
+                      { type: "string", name: "value", label: "Value" },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "values",
+                label: "Values",
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  {
+                    type: "object",
+                    name: "items",
+                    label: "Value Items",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "title", label: "Title" },
+                      { type: "string", name: "description", label: "Description" },
+                      { type: "string", name: "icon", label: "Icon" },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "image_text",
+                label: "Image + Text Block",
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "string", name: "subtitle", label: "Subtitle" },
+                  { type: "rich-text", name: "content", label: "Content" },
+                  { type: "string", name: "highlight", label: "Text to Highlight" },
+                  {
+                    type: "object",
+                    name: "image",
+                    label: "Image",
+                    fields: [
+                      { type: "image", name: "src", label: "Image" },
+                      { type: "string", name: "alt", label: "Alt Text" },
+                    ],
+                  },
+                  {
+                    type: "object",
+                    name: "button",
+                    label: "Button",
+                    fields: [
+                      { type: "string", name: "text", label: "Button Text" },
+                      { type: "string", name: "href", label: "Button Link" },
+                      { type: "string", name: "style", label: "Button Style", options: ["primary", "secondary", "outline"] },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "cta",
+                label: "Call-to-Action Section",
+                fields: [
+                  { type: "string", name: "title", label: "Title" },
+                  { type: "rich-text", name: "content", label: "Content" },
+                  {
+                    type: "object",
+                    name: "button",
+                    label: "Button",
+                    fields: [
+                      { type: "string", name: "text", label: "Button Text" },
+                      { type: "string", name: "href", label: "Button Link" },
+                      { type: "string", name: "style", label: "Button Style", options: ["primary", "secondary", "outline"] },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          { type: "string", name: "mission", label: "Mission Statement" },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
         ],
       },
