@@ -44,7 +44,7 @@ var config_default = defineConfig({
         label: "Site Content",
         path: "src/content",
         format: "md",
-        match: { include: "*.md" },
+        match: { include: "*.md", exclude: "pages/**" },
         fields: [
           { type: "string", name: "title", label: "Title", isTitle: true, required: true },
           { type: "string", name: "description", label: "Description" },
