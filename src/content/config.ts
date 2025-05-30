@@ -69,6 +69,31 @@ const pagesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    hero: z.object({
+      title: z.string().optional(),
+      subtitle: z.string().optional(),
+      image: z.string().optional(),
+    }).optional(),
+    sections: z.array(z.object({
+      type: z.string(),
+      title: z.string().optional(),
+      content: z.string().optional(),
+      stats: z.array(z.object({
+        label: z.string(),
+        value: z.string(),
+      })).optional(),
+      items: z.array(z.object({
+        title: z.string(),
+        description: z.string(),
+        icon: z.string().optional(),
+      })).optional(),
+      members: z.array(z.object({
+        name: z.string(),
+        role: z.string(),
+        description: z.string(),
+      })).optional(),
+    })).optional(),
+    mission: z.string().optional(),
   }),
 });
 

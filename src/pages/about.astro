@@ -1,29 +1,123 @@
 ---
-import Layout from '~/layouts/MarkdownLayout.astro';
+import { getEntry } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
 
-// Simple hardcoded content that matches the markdown file
-// This will work until we fix the content collection issue
+// Get the markdown content
+const entry = await getEntry('pages', 'about');
+if (!entry) throw new Error('About page not found');
+
+const { data: frontmatter } = entry;
+
 const metadata = {
-  title: "About Aries Group",
-  description: "Learn about our company's history, values, and commitment to excellence in sheet metal processing.",
+  title: frontmatter.title,
+  description: frontmatter.description,
 };
+
+// Prepare stats data
+const statsData = frontmatter.sections?.find(s => s.type === 'stats')?.stats?.map(stat => ({
+  title: stat.label,
+  amount: stat.value
+})) || [];
+
+// Prepare values data for Features component
+const valuesData = frontmatter.sections?.find(s => s.type === 'values')?.items?.map(item => ({
+  title: item.title,
+  description: item.description,
+  icon: 'tabler:star', // You can map icons later
+})) || [];
 ---
 
 <Layout metadata={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto">
-    <h1>About Aries Group</h1>
-    
-    <p>Aries Group is a leading European manufacturer specializing in precision sheet metal processing. With decades of experience and cutting-edge technology, we provide comprehensive solutions to clients across various industries.</p>
-    
-    <h2>Our Mission</h2>
-    <p>To deliver exceptional sheet metal processing solutions through innovation, precision, and customer-focused service.</p>
-    
-    <h2>Our Values</h2>
-    <ul>
-      <li><strong>Excellence</strong>: Commitment to the highest quality standards</li>
-      <li><strong>Innovation</strong>: Embracing advanced technology and processes</li>
-      <li><strong>Reliability</strong>: Consistent delivery and dependable partnerships</li>
-      <li><strong>Sustainability</strong>: Environmentally conscious manufacturing practices</li>
-    </ul>
-  </div>
+  <!-- Hero Section -->
+  {frontmatter.hero && (
+    <Hero
+      image={{
+        src: frontmatter.hero.image || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        alt: frontmatter.hero.title,
+      }}
+    >
+      <Fragment slot="title">
+        {frontmatter.hero.title}
+      </Fragment>
+      <Fragment slot="subtitle">
+        {frontmatter.hero.subtitle}
+      </Fragment>
+    </Hero>
+  )}
+
+  <!-- Introduction Section -->
+  {frontmatter.sections?.filter(s => s.type === 'intro').map(section => (
+    <section class="px-6 py-16 md:py-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+            {section.title}
+          </h2>
+          <p class="text-xl text-muted dark:text-slate-400">
+            {section.content}
+          </p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Stats Section -->
+  {statsData.length > 0 && (
+    <Stats
+      title={frontmatter.sections?.find(s => s.type === 'stats')?.title || "Our Impact"}
+      stats={statsData}
+    />
+  )}
+
+  <!-- Values Section -->
+  {valuesData.length > 0 && (
+    <Features
+      title={frontmatter.sections?.find(s => s.type === 'values')?.title || "Our Values"}
+      subtitle="The principles that guide everything we do"
+      items={valuesData}
+      columns={2}
+    />
+  )}
+
+  <!-- Mission Statement -->
+  {frontmatter.mission && (
+    <section class="px-6 py-16 bg-blue-50 dark:bg-slate-800">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-6 font-heading">
+          Our Mission
+        </h2>
+        <p class="text-xl text-muted dark:text-slate-400 leading-relaxed">
+          {frontmatter.mission}
+        </p>
+      </div>
+    </section>
+  )}
+
+  <!-- Leadership Team -->
+  {frontmatter.sections?.filter(s => s.type === 'team').map(section => (
+    <section class="px-6 py-16">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-12 font-heading text-center">
+          {section.title}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {section.members?.map(member => (
+            <div class="text-center">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-4 flex items-center justify-center">
+                <span class="text-white text-2xl font-bold">
+                  {member.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{member.name}</h3>
+              <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">{member.role}</p>
+              <p class="text-muted dark:text-slate-400">{member.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
 </Layout>
