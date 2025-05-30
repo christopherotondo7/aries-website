@@ -8,7 +8,9 @@
     "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "dev:astro": "astro dev",
+    "dev:tina": "tinacms dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

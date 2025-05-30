@@ -1,0 +1,32 @@
+---
+// TinaCMS Admin Page - proper integration
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinaCMS Admin</title>
+    <style>
+        body { margin: 0; font-family: system-ui; }
+        #loading { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div>Loading TinaCMS...</div>
+    </div>
+    
+    <script type="module">
+        // Redirect to the generated admin interface
+        window.location.href = '/admin/index.html';
+    </script>
+</body>
+</html>
