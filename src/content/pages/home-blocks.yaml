@@ -1,0 +1,69 @@
+title: "Aries Group - Sheet Metal Processing Excellence"
+description: "European leader in sheet metal processing"
+
+blocks:
+  - type: hero
+    title: "European Leader in Sheet Metal Processing"
+    subtitle: "Aries Group provides comprehensive sheet metal processing solutions with cutting-edge technology and decades of expertise across multiple production sites in Europe."
+    buttons:
+      - text: "Get Quote"
+        href: "/contact"
+        style: "primary"
+      - text: "Virtual Tour"
+        href: "/production-sites"
+        style: "secondary"
+
+  - type: stats
+    title: "Our Track Record"
+    subtitle: "Proven expertise across Europe"
+    background: "blue"
+    items:
+      - number: "25+"
+        label: "Years of Experience"
+        description: "Industry expertise since 1999"
+      - number: "12"
+        label: "Production Sites"
+        description: "Across European markets"
+      - number: "250+"
+        label: "Employees"
+        description: "Skilled manufacturing professionals"
+      - number: "15+"
+        label: "Countries Served"
+        description: "European and international clients"
+
+  - type: text
+    title: "Welcome to Aries Group"
+    content: |
+      Leading European manufacturer specializing in precision sheet metal processing with advanced technology and comprehensive solutions.
+      
+      ## Our Expertise
+      - Advanced sheet metal processing
+      - Precision manufacturing
+      - European production capabilities
+      - Technology-driven solutions
+
+  - type: feature-grid
+    title: "Our Capabilities"
+    subtitle: "Comprehensive sheet metal processing solutions with cutting-edge technology"
+    columns: 3
+    items:
+      - title: "Precision Laser Cutting"
+        description: "Advanced fiber laser technology for high-precision cutting of various materials and thicknesses."
+        icon: "tabler:cut"
+      - title: "CNC Punching & Forming"
+        description: "Automated punching and forming processes for complex geometries and high-volume production."
+        icon: "tabler:settings"
+      - title: "Welding & Assembly"
+        description: "Professional welding services and complete assembly solutions with certified quality standards."
+        icon: "tabler:flame"
+
+  - type: call-to-action
+    title: "Ready to Start Your Project?"
+    subtitle: "Get in touch with our expert team to discuss your sheet metal processing requirements. We provide custom quotes and technical consultations."
+    buttons:
+      - text: "Request Quote"
+        href: "/contact"
+        style: "primary"
+      - text: "View Capabilities"
+        href: "/technology"
+        style: "secondary"
