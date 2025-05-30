@@ -54,12 +54,21 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  page(relativePath: String): Page!
-  pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
+  data_post(relativePath: String): Data_post!
+  data_postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Data_postFilter): Data_postConnection!
+  pages(relativePath: String): Pages!
+  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PagesFilter): PagesConnection!
+  site_content(relativePath: String): Site_content!
+  site_contentConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Site_contentFilter): Site_contentConnection!
+  post(relativePath: String): Post!
+  postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
 }
 
 input DocumentFilter {
-  page: PageFilter
+  data_post: Data_postFilter
+  pages: PagesFilter
+  site_content: Site_contentFilter
+  post: PostFilter
 }
 
 type DocumentConnectionEdges {
@@ -85,58 +94,13 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Page | Folder
+union DocumentNode = Data_post | Pages | Site_content | Post | Folder
 
-type PageHeroButtons {
-  text: String
-  href: String
-  style: String
-}
-
-type PageHero {
-  title: String
-  subtitle: String
-  buttons: [PageHeroButtons]
-}
-
-type PageBlocksTextBlock {
-  title: String
-  content: JSON
-  background: String
-}
-
-type PageBlocksStatsBlockStats {
-  number: String
-  label: String
-  description: String
-}
-
-type PageBlocksStatsBlock {
-  title: String
-  subtitle: String
-  stats: [PageBlocksStatsBlockStats]
-}
-
-type PageBlocksFeatureGridFeatures {
-  title: String
-  description: String
-  icon: String
-}
-
-type PageBlocksFeatureGrid {
-  title: String
-  subtitle: String
-  columns: String
-  features: [PageBlocksFeatureGridFeatures]
-}
-
-union PageBlocks = PageBlocksTextBlock | PageBlocksStatsBlock | PageBlocksFeatureGrid
-
-type Page implements Node & Document {
+type Data_post implements Node & Document {
   title: String!
+  date: String
   description: String
-  hero: PageHero
-  blocks: [PageBlocks]
+  body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -149,16 +113,12 @@ input StringFilter {
   in: [String]
 }
 
-input PageHeroButtonsFilter {
-  text: StringFilter
-  href: StringFilter
-  style: StringFilter
-}
-
-input PageHeroFilter {
-  title: StringFilter
-  subtitle: StringFilter
-  buttons: PageHeroButtonsFilter
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
 }
 
 input RichTextFilter {
@@ -167,59 +127,96 @@ input RichTextFilter {
   exists: Boolean
 }
 
-input PageBlocksTextBlockFilter {
+input Data_postFilter {
   title: StringFilter
-  content: RichTextFilter
-  background: StringFilter
-}
-
-input PageBlocksStatsBlockStatsFilter {
-  number: StringFilter
-  label: StringFilter
+  date: DatetimeFilter
   description: StringFilter
+  body: RichTextFilter
 }
 
-input PageBlocksStatsBlockFilter {
-  title: StringFilter
-  subtitle: StringFilter
-  stats: PageBlocksStatsBlockStatsFilter
-}
-
-input PageBlocksFeatureGridFeaturesFilter {
-  title: StringFilter
-  description: StringFilter
-  icon: StringFilter
-}
-
-input PageBlocksFeatureGridFilter {
-  title: StringFilter
-  subtitle: StringFilter
-  columns: StringFilter
-  features: PageBlocksFeatureGridFeaturesFilter
-}
-
-input PageBlocksFilter {
-  textBlock: PageBlocksTextBlockFilter
-  statsBlock: PageBlocksStatsBlockFilter
-  featureGrid: PageBlocksFeatureGridFilter
-}
-
-input PageFilter {
-  title: StringFilter
-  description: StringFilter
-  hero: PageHeroFilter
-  blocks: PageBlocksFilter
-}
-
-type PageConnectionEdges {
+type Data_postConnectionEdges {
   cursor: String!
-  node: Page
+  node: Data_post
 }
 
-type PageConnection implements Connection {
+type Data_postConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [PageConnectionEdges]
+  edges: [Data_postConnectionEdges]
+}
+
+type Pages implements Node & Document {
+  title: String!
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PagesFilter {
+  title: StringFilter
+  body: RichTextFilter
+}
+
+type PagesConnectionEdges {
+  cursor: String!
+  node: Pages
+}
+
+type PagesConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PagesConnectionEdges]
+}
+
+type Site_content implements Node & Document {
+  title: String!
+  description: String
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Site_contentFilter {
+  title: StringFilter
+  description: StringFilter
+  body: RichTextFilter
+}
+
+type Site_contentConnectionEdges {
+  cursor: String!
+  node: Site_content
+}
+
+type Site_contentConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Site_contentConnectionEdges]
+}
+
+type Post implements Node & Document {
+  title: String!
+  body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PostFilter {
+  title: StringFilter
+  body: RichTextFilter
+}
+
+type PostConnectionEdges {
+  cursor: String!
+  node: Post
+}
+
+type PostConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PostConnectionEdges]
 }
 
 type Mutation {
@@ -228,73 +225,52 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
-  updatePage(relativePath: String!, params: PageMutation!): Page!
-  createPage(relativePath: String!, params: PageMutation!): Page!
+  updateData_post(relativePath: String!, params: Data_postMutation!): Data_post!
+  createData_post(relativePath: String!, params: Data_postMutation!): Data_post!
+  updatePages(relativePath: String!, params: PagesMutation!): Pages!
+  createPages(relativePath: String!, params: PagesMutation!): Pages!
+  updateSite_content(relativePath: String!, params: Site_contentMutation!): Site_content!
+  createSite_content(relativePath: String!, params: Site_contentMutation!): Site_content!
+  updatePost(relativePath: String!, params: PostMutation!): Post!
+  createPost(relativePath: String!, params: PostMutation!): Post!
 }
 
 input DocumentUpdateMutation {
-  page: PageMutation
+  data_post: Data_postMutation
+  pages: PagesMutation
+  site_content: Site_contentMutation
+  post: PostMutation
   relativePath: String
 }
 
 input DocumentMutation {
-  page: PageMutation
+  data_post: Data_postMutation
+  pages: PagesMutation
+  site_content: Site_contentMutation
+  post: PostMutation
 }
 
-input PageHeroButtonsMutation {
-  text: String
-  href: String
-  style: String
-}
-
-input PageHeroMutation {
+input Data_postMutation {
   title: String
-  subtitle: String
-  buttons: [PageHeroButtonsMutation]
-}
-
-input PageBlocksTextBlockMutation {
-  title: String
-  content: JSON
-  background: String
-}
-
-input PageBlocksStatsBlockStatsMutation {
-  number: String
-  label: String
+  date: String
   description: String
+  body: JSON
 }
 
-input PageBlocksStatsBlockMutation {
+input PagesMutation {
   title: String
-  subtitle: String
-  stats: [PageBlocksStatsBlockStatsMutation]
+  body: JSON
 }
 
-input PageBlocksFeatureGridFeaturesMutation {
+input Site_contentMutation {
   title: String
   description: String
-  icon: String
+  body: JSON
 }
 
-input PageBlocksFeatureGridMutation {
+input PostMutation {
   title: String
-  subtitle: String
-  columns: String
-  features: [PageBlocksFeatureGridFeaturesMutation]
-}
-
-input PageBlocksMutation {
-  textBlock: PageBlocksTextBlockMutation
-  statsBlock: PageBlocksStatsBlockMutation
-  featureGrid: PageBlocksFeatureGridMutation
-}
-
-input PageMutation {
-  title: String
-  description: String
-  hero: PageHeroMutation
-  blocks: [PageBlocksMutation]
+  body: JSON
 }
 
 schema {

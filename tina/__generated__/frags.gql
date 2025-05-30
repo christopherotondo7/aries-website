@@ -1,45 +1,26 @@
-fragment PageParts on Page {
+fragment Data_postParts on Data_post {
+  __typename
+  title
+  date
+  description
+  body
+}
+
+fragment PagesParts on Pages {
+  __typename
+  title
+  body
+}
+
+fragment Site_contentParts on Site_content {
   __typename
   title
   description
-  hero {
-    __typename
-    title
-    subtitle
-    buttons {
-      __typename
-      text
-      href
-      style
-    }
-  }
-  blocks {
-    __typename
-    ... on PageBlocksTextBlock {
-      title
-      content
-      background
-    }
-    ... on PageBlocksStatsBlock {
-      title
-      subtitle
-      stats {
-        __typename
-        number
-        label
-        description
-      }
-    }
-    ... on PageBlocksFeatureGrid {
-      title
-      subtitle
-      columns
-      features {
-        __typename
-        title
-        description
-        icon
-      }
-    }
-  }
+  body
+}
+
+fragment PostParts on Post {
+  __typename
+  title
+  body
 }
