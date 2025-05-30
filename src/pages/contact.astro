@@ -1,16 +1,32 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '~/layouts/MarkdownLayout.astro';
 
-const entry = await getEntry('pages', 'contact');
-const { Content } = await entry.render();
-
 const metadata = {
-  title: entry.data.title,
-  description: entry.data.description,
+  title: "Contact Us",
+  description: "Get in touch with Aries Group for your sheet metal processing needs.",
 };
 ---
 
 <Layout metadata={metadata}>
-  <Content />
+  <div class="prose prose-lg max-w-none mx-auto">
+    <h1>Contact Us</h1>
+    
+    <p>Ready to discuss your sheet metal processing needs? Our team is here to help you find the perfect solution.</p>
+    
+    <h2>Get In Touch</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Contact Information</h3>
+        <p><strong>Email:</strong> contact@aries1.fr</p>
+        <p><strong>Phone:</strong> +33 (0)1 23 45 67 89</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Request a Quote</h3>
+        <p>Send us your project specifications and we'll provide a detailed quote within 24 hours.</p>
+      </div>
+    </div>
+    
+    <h2>Our Locations</h2>
+    <p>Aries Group operates multiple production facilities across Europe to serve our clients efficiently.</p>
+  </div>
 </Layout>

@@ -1,16 +1,27 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '~/layouts/MarkdownLayout.astro';
 
-const entry = await getEntry('pages', 'technology');
-const { Content } = await entry.render();
-
 const metadata = {
-  title: entry.data.title,
-  description: entry.data.description,
+  title: "Technology & Innovation",
+  description: "Advanced manufacturing technology and innovative processes for precision sheet metal processing.",
 };
 ---
 
 <Layout metadata={metadata}>
-  <Content />
+  <div class="prose prose-lg max-w-none mx-auto">
+    <h1>Technology & Innovation</h1>
+    
+    <p>At Aries Group, we leverage cutting-edge technology to deliver precision manufacturing solutions that exceed industry standards.</p>
+    
+    <h2>Advanced Equipment</h2>
+    <ul>
+      <li><strong>CNC Machines</strong>: State-of-the-art computer-controlled manufacturing</li>
+      <li><strong>Laser Systems</strong>: High-precision cutting and engraving capabilities</li>
+      <li><strong>Automated Lines</strong>: Efficient production with consistent quality</li>
+      <li><strong>Quality Control</strong>: Advanced inspection and measurement systems</li>
+    </ul>
+    
+    <h2>Innovation Focus</h2>
+    <p>We continuously invest in research and development to improve our processes and deliver innovative solutions to our clients.</p>
+  </div>
 </Layout>

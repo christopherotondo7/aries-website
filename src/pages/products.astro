@@ -1,16 +1,27 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '~/layouts/MarkdownLayout.astro';
 
-const entry = await getEntry('pages', 'products');
-const { Content } = await entry.render();
-
 const metadata = {
-  title: entry.data.title,
-  description: entry.data.description,
+  title: "Products & Services",
+  description: "Comprehensive sheet metal processing solutions including cutting, forming, welding, and finishing services.",
 };
 ---
 
 <Layout metadata={metadata}>
-  <Content />
+  <div class="prose prose-lg max-w-none mx-auto">
+    <h1>Products & Services</h1>
+    
+    <p>Aries Group offers comprehensive sheet metal processing solutions designed to meet the diverse needs of modern manufacturing.</p>
+    
+    <h2>Core Services</h2>
+    <ul>
+      <li><strong>Precision Cutting</strong>: Laser, plasma, and waterjet cutting services</li>
+      <li><strong>Metal Forming</strong>: Bending, stamping, and deep drawing capabilities</li>
+      <li><strong>Welding Services</strong>: MIG, TIG, and specialized welding techniques</li>
+      <li><strong>Surface Finishing</strong>: Powder coating, anodizing, and protective treatments</li>
+    </ul>
+    
+    <h2>Industries Served</h2>
+    <p>We serve clients across multiple industries including automotive, aerospace, construction, and industrial equipment manufacturing.</p>
+  </div>
 </Layout>

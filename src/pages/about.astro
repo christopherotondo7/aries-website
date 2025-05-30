@@ -1,16 +1,29 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '~/layouts/MarkdownLayout.astro';
 
-const entry = await getEntry('pages', 'about');
-const { Content } = await entry.render();
-
+// Simple hardcoded content that matches the markdown file
+// This will work until we fix the content collection issue
 const metadata = {
-  title: entry.data.title,
-  description: entry.data.description,
+  title: "About Aries Group",
+  description: "Learn about our company's history, values, and commitment to excellence in sheet metal processing.",
 };
 ---
 
 <Layout metadata={metadata}>
-  <Content />
+  <div class="prose prose-lg max-w-none mx-auto">
+    <h1>About Aries Group</h1>
+    
+    <p>Aries Group is a leading European manufacturer specializing in precision sheet metal processing. With decades of experience and cutting-edge technology, we provide comprehensive solutions to clients across various industries.</p>
+    
+    <h2>Our Mission</h2>
+    <p>To deliver exceptional sheet metal processing solutions through innovation, precision, and customer-focused service.</p>
+    
+    <h2>Our Values</h2>
+    <ul>
+      <li><strong>Excellence</strong>: Commitment to the highest quality standards</li>
+      <li><strong>Innovation</strong>: Embracing advanced technology and processes</li>
+      <li><strong>Reliability</strong>: Consistent delivery and dependable partnerships</li>
+      <li><strong>Sustainability</strong>: Environmentally conscious manufacturing practices</li>
+    </ul>
+  </div>
 </Layout>
