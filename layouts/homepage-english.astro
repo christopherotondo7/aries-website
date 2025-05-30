@@ -7,6 +7,9 @@ import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 
+import robotWelding from '~/assets/images/robot-welding-1.jpg';
+import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
+
 const metadata = {
   title: 'Aries - European Manufacturer of High-Precision Metal Components',
   description: 'Custom industrial solutions from laser cutting to final assembly. 65+ years of expertise, €42M turnover, 275 employees across France and Slovakia.',
@@ -17,23 +20,27 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Video Hero Section -->
   <VideoHero
-    videoSrc="/video aries.mp4"
-    fallbackImage="/images/hero-image.png"
+    video={{
+      src: "/video aries.mp4",
+      poster: "/images/hero-image.png"
+    }}
+    image={{
+      src: "/images/hero-image.png",
+      alt: "Aries manufacturing facility"
+    }}
     tagline="European Manufacturing Excellence"
     title="High-Precision Metal Components"
     subtitle="Custom Industrial Solutions - From Laser Cutting to Final Assembly"
-    actions={[
+    buttons={[
       {
-        variant: 'primary',
         text: 'Our Services',
         href: '/services',
-        icon: 'tabler:arrow-right',
+        style: 'primary',
       },
       {
-        variant: 'secondary',
         text: 'Request Quote',
         href: '/contact',
-        icon: 'tabler:file-text',
+        style: 'secondary',
       },
     ]}
   />
@@ -45,7 +52,7 @@ const metadata = {
     stats={[
       { amount: '€42M', title: 'Annual Turnover' },
       { amount: '275', title: 'Employees' },
-      { amount: '2', title: 'Production Sites' },
+      { amount: '3', title: 'Production Sites' },
       { amount: '65+', title: 'Years Experience' },
     ]}
   />
@@ -105,9 +112,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg',
+      src: facility,
       alt: 'Aries manufacturing facility',
-      inferSize: true,
     }}
   />
 
@@ -164,9 +170,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/robot-welding-1.jpg',
+      src: robotWelding,
       alt: 'Robotic welding system',
-      inferSize: true,
     }}
   />
 

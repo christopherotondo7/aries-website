@@ -8,6 +8,12 @@ import Content from '~/components/widgets/Content.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+import robotWelding from '~/assets/images/robot-welding-1.jpg';
+import machining from '~/assets/images/machining-1.jpg';
+import engineering from '~/assets/images/engineering-1.jpg';
+import assembly from '~/assets/images/assembly-1.jpg';
+import cutting from '~/assets/images/cutting-1.jpg';
+
 const metadata = {
   title: 'Technology & Innovation | Aries Manufacturing',
   description: 'Industry 4.0 manufacturing excellence with advanced technology driving superior quality, efficiency, and reliability for demanding applications.',
@@ -29,9 +35,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/robot-welding-1.jpg',
+      src: robotWelding,
       alt: 'Advanced robotic welding system',
-      inferSize: true,
     }}
   />
 
@@ -102,9 +107,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/machining-1.jpg',
+      src: machining,
       alt: 'Advanced CNC machining center',
-      inferSize: true,
     }}
   />
 
@@ -117,7 +121,7 @@ const metadata = {
       {
         title: 'Fiber Laser Cutting',
         description: 'High-speed, precision cutting with superior edge quality and minimal heat-affected zone for materials up to 30mm.',
-        icon: 'tabler:laser',
+        icon: 'tabler:cut',
       },
       {
         title: 'Plasma Arc Cutting',
@@ -162,9 +166,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/engineering-1.jpg',
+      src: engineering,
       alt: 'Engineering workstation with CAD/CAM systems',
-      inferSize: true,
     }}
   />
 
@@ -221,9 +224,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/assembly-1.jpg',
+      src: assembly,
       alt: 'Digital manufacturing control systems',
-      inferSize: true,
     }}
   />
 
@@ -321,9 +323,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: '/images/cutting-1.jpg',
+      src: cutting,
       alt: 'Future manufacturing technology concept',
-      inferSize: true,
     }}
   />
 

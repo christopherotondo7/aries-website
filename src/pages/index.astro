@@ -1,198 +1,227 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import VideoHero from '~/components/widgets/VideoHero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import Content from '~/components/widgets/Content.astro';
 
-// Read content from CMS files
-let homeContent;
-try {
-  const homePath = join(process.cwd(), 'src/content/home.md');
-  const homeRaw = readFileSync(homePath, 'utf-8');
-  const frontmatter = homeRaw.split('---')[1];
-  const body = homeRaw.split('---')[2];
-  
-  // Parse frontmatter manually
-  const title = frontmatter.match(/title:\s*"([^"]+)"/)?.[1] || 'Aries Group';
-  const heroTitle = frontmatter.match(/hero_title:\s*"([^"]+)"/)?.[1] || 'European Leader in Sheet Metal Processing';
-  const heroDescription = frontmatter.match(/hero_description:\s*"([^"]+)"/)?.[1] || 'Precision manufacturing solutions';
-  
-  homeContent = { title, heroTitle, heroDescription, body };
-} catch (error) {
-  // Fallback content if file doesn't exist
-  homeContent = {
-    title: 'Aries Group',
-    heroTitle: 'European Leader in Sheet Metal Processing',
-    heroDescription: 'Aries Group provides comprehensive sheet metal processing solutions with cutting-edge technology and decades of expertise.',
-    body: 'Welcome to Aries Group - your trusted partner in precision manufacturing.'
-  };
-}
+import robotWelding from '~/assets/images/robot-welding-1.jpg';
+import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
 
 const metadata = {
-  title: homeContent.title,
+  title: 'Aries - European Manufacturer of High-Precision Metal Components',
+  description: 'Custom industrial solutions from laser cutting to final assembly. 65+ years of expertise, €42M turnover, 275 employees across France and Slovakia.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget using CMS content -->
-  <Hero
-    actions={[
+  <!-- Video Hero Section -->
+  <VideoHero
+    video={{
+      src: "/video aries.mp4",
+      poster: "/images/hero-image.png"
+    }}
+    image={{
+      src: "/images/hero-image.png",
+      alt: "Aries manufacturing facility"
+    }}
+    tagline="European Manufacturing Excellence"
+    title="High-Precision Metal Components"
+    subtitle="Custom Industrial Solutions - From Laser Cutting to Final Assembly"
+    buttons={[
       {
-        variant: 'primary',
-        text: 'Get Quote',
-        href: '/contact',
+        text: 'Our Services',
+        href: '/services',
+        style: 'primary',
       },
-      { text: 'Virtual Tour', href: '/production-sites' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Aries Group Sheet Metal Processing' }}
-  >
-    <Fragment slot="title">
-      {homeContent.heroTitle}
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      {homeContent.heroDescription}
-    </Fragment>
-  </Hero>
-
-  <!-- Company Stats -->
-  <Stats
-    stats={[
-      { title: 'Years of Experience', amount: '25+' },
-      { title: 'Production Sites', amount: '12' },
-      { title: 'Employees', amount: '250+' },
-      { title: 'Countries Served', amount: '15+' },
+      {
+        text: 'Request Quote',
+        href: '/contact',
+        style: 'secondary',
+      },
     ]}
   />
 
-  <!-- Content section with CMS body content -->
-  <div class="max-w-6xl mx-auto px-4 py-16">
-    <div class="prose prose-lg mx-auto dark:prose-invert text-center mb-16">
-      <Fragment set:html={homeContent.body} />
-    </div>
-  </div>
+  <!-- Key Statistics -->
+  <Stats
+    title="Trusted by Industry Leaders"
+    subtitle="65+ years of European manufacturing excellence"
+    stats={[
+      { amount: '€42M', title: 'Annual Turnover' },
+      { amount: '275', title: 'Employees' },
+      { amount: '2', title: 'Production Sites' },
+      { amount: '65+', title: 'Years Experience' },
+    ]}
+  />
 
-  <!-- Our Capabilities -->
+  <!-- Services Overview -->
   <Features
-    id="capabilities"
-    title="Our Capabilities"
-    subtitle="Comprehensive sheet metal processing solutions with cutting-edge technology"
+    id="services"
+    tagline="Our Capabilities"
+    title="Complete Manufacturing Solutions"
+    subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
     items={[
       {
-        title: 'Precision Laser Cutting',
-        description: 'Advanced fiber laser technology for high-precision cutting of various materials and thicknesses.',
+        title: 'High-Precision Laser Cutting',
+        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL cutting tables for maximum efficiency.',
         icon: 'tabler:cut',
       },
       {
-        title: 'CNC Punching & Forming',
-        description: 'Automated punching and forming processes for complex geometries and high-volume production.',
-        icon: 'tabler:settings',
+        title: 'Multi-Axis CNC Machining',
+        description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
+        icon: 'tabler:tool',
       },
       {
-        title: 'Welding & Assembly',
-        description: 'Professional welding services and complete assembly solutions with certified quality standards.',
+        title: 'Manual & Robotic Welding',
+        description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
         icon: 'tabler:flame',
       },
       {
-        title: 'Quality Control',
-        description: 'ISO 9001:2015 certified quality management with advanced inspection and testing capabilities.',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'European Production',
-        description: 'Strategic production sites across Europe ensuring rapid delivery and local support.',
-        icon: 'tabler:world',
-      },
-      {
-        title: 'Custom Solutions',
-        description: 'Tailored manufacturing processes designed to meet specific customer requirements and specifications.',
-        icon: 'tabler:puzzle',
+        title: 'Assembly & Logistics',
+        description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
+        icon: 'tabler:package',
       },
     ]}
   />
 
-  <!-- Technology Overview -->
-  <div class="bg-gray-50 dark:bg-slate-800 py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-          Advanced Technology
-        </h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
-          State-of-the-art equipment and processes delivering precision and efficiency
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Fiber Laser Systems</h3>
-          <p class="text-gray-600 dark:text-gray-300">High-speed, precision cutting technology</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">CNC Machinery</h3>
-          <p class="text-gray-600 dark:text-gray-300">Automated precision manufacturing</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Quality Systems</h3>
-          <p class="text-gray-600 dark:text-gray-300">ISO certified quality management</p>
-        </div>
-        
-        <div class="text-center">
-          <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10l4-2 4 2V8"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white">European Network</h3>
-          <p class="text-gray-600 dark:text-gray-300">Strategic production locations</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Company Values -->
+  <Content
+    tagline="Our Values"
+    title="Partnership. Innovation. Excellence."
+    subtitle="Built on family values since 1956, we combine traditional craftsmanship with cutting-edge technology"
+    isReversed
+    items={[
+      {
+        title: 'Innovation',
+        description: 'Industry 4.0 integration, digital processes, and continuous investment in advanced technologies.',
+      },
+      {
+        title: 'Quality',
+        description: 'ISO 9001, 14001, 3834-2 certifications ensuring the highest standards in every project.',
+      },
+      {
+        title: 'Sustainability',
+        description: 'ECOVADIS Bronze Medal recognizing our commitment to environmental and social responsibility.',
+      },
+      {
+        title: 'Partnership',
+        description: 'Long-term relationships built on trust, reliability and shared success with our clients.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Aries manufacturing facility',
+    }}
+  />
+
+  <!-- Market Sectors -->
+  <Features2
+    tagline="Industries We Serve"
+    title="Specialized Solutions Across Key Sectors"
+    subtitle="Delivering precision components and assemblies for demanding industrial applications"
+    items={[
+      {
+        title: 'Railway Industry',
+        description: 'Chassis, sub-assemblies and certified components meeting EN 15085-2 standards with complete traceability.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Building & Construction',
+        description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'General Industry',
+        description: 'Custom machinery, equipment manufacturing, spare parts and small to medium production series.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Energy & Environment',
+        description: 'Wind turbine components, energy equipment and sustainable environmental solutions.',
+        icon: 'tabler:wind',
+      },
+    ]}
+  />
+
+  <!-- Technology Highlight -->
+  <Content
+    tagline="Industry 4.0"
+    title="Advanced Manufacturing Technology"
+    subtitle="State-of-the-art equipment and digital integration for superior quality and efficiency"
+    items={[
+      {
+        title: 'Automated Production',
+        description: 'Fully automated laser cutting systems with material handling and nesting optimization.',
+      },
+      {
+        title: 'Digital Traceability',
+        description: 'Complete process tracking from material receipt to final delivery with quality documentation.',
+      },
+      {
+        title: 'Collaborative Robotics',
+        description: 'Advanced welding robots working alongside skilled craftsmen for optimal results.',
+      },
+      {
+        title: 'Smart Manufacturing',
+        description: 'Integrated CAD/CAM systems, real-time monitoring and predictive maintenance.',
+      },
+    ]}
+    image={{
+      src: robotWelding,
+      alt: 'Robotic welding system',
+    }}
+  />
+
+  <!-- Certifications -->
+  <Features
+    id="certifications"
+    tagline="Quality Assurance"
+    title="Certified Excellence"
+    subtitle="International certifications and quality standards ensuring reliability and performance"
+    items={[
+      {
+        title: 'ISO 9001:2015',
+        description: 'Quality management system certification for consistent, high-quality manufacturing processes.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'ISO 14001:2015',
+        description: 'Environmental management certification demonstrating our commitment to sustainable operations.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'ISO 3834-2',
+        description: 'Welding quality certification ensuring the highest standards in all welding operations.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'ECOVADIS Bronze',
+        description: 'CSR performance recognition for environmental, social and ethical business practices.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
 
   <!-- Call to Action -->
   <CallToAction
+    title="Ready to Start Your Project?"
+    subtitle="Contact our engineering team for custom solutions tailored to your specifications"
     actions={[
       {
         variant: 'primary',
         text: 'Request Quote',
         href: '/contact',
+        icon: 'tabler:file-text',
       },
       {
+        variant: 'secondary',
         text: 'View Capabilities',
-        href: '/technology',
+        href: '/services',
+        icon: 'tabler:arrow-right',
       },
     ]}
-  >
-    <Fragment slot="title">
-      Ready to Start Your Project?
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Get in touch with our expert team to discuss your sheet metal processing requirements. 
-      We provide custom quotes and technical consultations.
-    </Fragment>
-  </CallToAction>
+  />
 </Layout>

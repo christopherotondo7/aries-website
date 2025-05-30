@@ -1,27 +1,413 @@
 ---
-import Layout from '~/layouts/MarkdownLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import assembly from '~/assets/images/assembly-1.jpg';
+import machining from '~/assets/images/machining-1.jpg';
+import cutting from '~/assets/images/cutting-1.jpg';
+import welding from '~/assets/images/WELDING.jpg';
 
 const metadata = {
-  title: "Products & Services",
-  description: "Comprehensive sheet metal processing solutions including cutting, forming, welding, and finishing services.",
+  title: 'Products & Market Sectors | Aries Manufacturing',
+  description: 'Precision metal components and assemblies for railway, construction, industrial, and energy sectors. Custom solutions from prototypes to series production.',
 };
 ---
 
-<Layout frontmatter={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto">
-    <h1>Products & Services</h1>
-    
-    <p>Aries Group offers comprehensive sheet metal processing solutions designed to meet the diverse needs of modern manufacturing.</p>
-    
-    <h2>Core Services</h2>
-    <ul>
-      <li><strong>Precision Cutting</strong>: Laser, plasma, and waterjet cutting services</li>
-      <li><strong>Metal Forming</strong>: Bending, stamping, and deep drawing capabilities</li>
-      <li><strong>Welding Services</strong>: MIG, TIG, and specialized welding techniques</li>
-      <li><strong>Surface Finishing</strong>: Powder coating, anodizing, and protective treatments</li>
-    </ul>
-    
-    <h2>Industries Served</h2>
-    <p>We serve clients across multiple industries including automotive, aerospace, construction, and industrial equipment manufacturing.</p>
-  </div>
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Products & Solutions"
+    title="Precision Metal Components"
+    subtitle="Custom engineered solutions from prototypes to series production serving demanding industrial applications across Europe"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Sectors',
+        href: '#sectors',
+        icon: 'tabler:arrow-down',
+      },
+    ]}
+    image={{
+      src: assembly,
+      alt: 'Precision metal assemblies',
+    }}
+  />
+
+  <!-- Product Overview Stats -->
+  <Stats
+    title="Product Excellence"
+    subtitle="Delivering precision components across diverse industrial applications"
+    stats={[
+      { amount: '4', title: 'Key Market Sectors' },
+      { amount: '1000+', title: 'Component Types' },
+      { amount: '50+', title: 'Years Expertise' },
+      { amount: '100%', title: 'Custom Solutions' },
+    ]}
+  />
+
+  <!-- Market Sectors -->
+  <Features
+    id="sectors"
+    tagline="Market Sectors"
+    title="Specialized Industry Solutions"
+    subtitle="Expertise across diverse industrial sectors with specialized requirements and certifications"
+    items={[
+      {
+        title: 'Railway Industry',
+        description: 'Certified components for rolling stock including chassis, sub-assemblies, and safety-critical parts meeting EN 15085-2 standards.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Building & Construction',
+        description: 'Structural components, architectural metalwork, railings, staircases, and prefabricated building elements.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'General Industry',
+        description: 'Custom machinery components, equipment housings, brackets, and specialized parts for diverse applications.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Energy & Environment',
+        description: 'Wind turbine components, energy equipment, and environmental technology solutions for sustainable applications.',
+        icon: 'tabler:wind',
+      },
+    ]}
+  />
+
+  <!-- Railway Products -->
+  <Content
+    tagline="Railway Sector"
+    title="Railway Industry Components"
+    subtitle="EN 15085-2 certified manufacturing for safety-critical railway applications"
+    items={[
+      {
+        title: 'Chassis Components',
+        description: 'Precision chassis parts including frames, brackets, and mounting systems with complete welding certification.',
+      },
+      {
+        title: 'Sub-Assemblies',
+        description: 'Complex mechanical assemblies including bogies, couplers, and specialized railway equipment components.',
+      },
+      {
+        title: 'Safety Systems',
+        description: 'Critical safety components with full traceability and certification documentation for railway applications.',
+      },
+      {
+        title: 'Custom Solutions',
+        description: 'Engineered solutions for unique railway requirements including prototyping and series production.',
+      },
+    ]}
+    image={{
+      src: welding,
+      alt: 'Railway component manufacturing',
+    }}
+  />
+
+  <!-- Construction Products -->
+  <Features2
+    tagline="Construction Sector"
+    title="Building & Construction Solutions"
+    subtitle="Structural and architectural metalwork for modern construction projects"
+    items={[
+      {
+        title: 'Structural Steel',
+        description: 'Precision-cut and welded structural components including beams, columns, and connection systems.',
+        icon: 'tabler:building-bridge',
+      },
+      {
+        title: 'Architectural Metalwork',
+        description: 'Custom designed facades, cladding systems, and decorative elements with superior finish quality.',
+        icon: 'tabler:building-arch',
+      },
+      {
+        title: 'Railings & Staircases',
+        description: 'Safety railings, handrails, and staircase systems meeting building codes and safety requirements.',
+        icon: 'tabler:stairs',
+      },
+      {
+        title: 'Prefabricated Elements',
+        description: 'Factory-produced building components for faster construction and consistent quality.',
+        icon: 'tabler:components',
+      },
+    ]}
+  />
+
+  <!-- Industrial Products -->
+  <Content
+    tagline="Industrial Sector"
+    title="General Industry Components"
+    subtitle="Custom engineered solutions for diverse industrial applications"
+    isReversed
+    items={[
+      {
+        title: 'Machinery Components',
+        description: 'Precision components for industrial machinery including housings, brackets, and mechanical assemblies.',
+      },
+      {
+        title: 'Equipment Housings',
+        description: 'Protective enclosures and cabinets for electronic and mechanical equipment with precise tolerances.',
+      },
+      {
+        title: 'Custom Brackets',
+        description: 'Specialized mounting and support brackets designed to customer specifications and requirements.',
+      },
+      {
+        title: 'Spare Parts',
+        description: 'Replacement components and spare parts with reverse engineering capabilities for obsolete parts.',
+      },
+    ]}
+    image={{
+      src: machining,
+      alt: 'Industrial component manufacturing',
+    }}
+  />
+
+  <!-- Energy Products -->
+  <Features3
+    title="Energy & Environment Sector"
+    subtitle="Components for renewable energy and environmental technology applications"
+    tagline="Energy Solutions"
+    columns={2}
+    items={[
+      {
+        title: 'Wind Turbine Components',
+        description: 'Precision components for wind energy systems including nacelle parts and tower internals.',
+        icon: 'tabler:wind',
+      },
+      {
+        title: 'Energy Equipment',
+        description: 'Components for energy generation and distribution equipment with demanding specifications.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Environmental Systems',
+        description: 'Components for water treatment, air filtration, and waste management systems.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Solar Applications',
+        description: 'Mounting systems and structural components for solar panel installations and solar farms.',
+        icon: 'tabler:sun',
+      },
+    ]}
+  />
+
+  <!-- Product Categories -->
+  <Features
+    tagline="Product Categories"
+    title="Comprehensive Component Range"
+    subtitle="Complete spectrum of metal components from simple brackets to complex assemblies"
+    items={[
+      {
+        title: 'Precision Cut Parts',
+        description: 'Laser-cut components with superior edge quality and dimensional accuracy up to 30mm thickness.',
+        icon: 'tabler:cut',
+      },
+      {
+        title: 'Machined Components',
+        description: 'CNC machined parts with tight tolerances and complex geometries using advanced 5-axis systems.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Welded Assemblies',
+        description: 'Professional welded structures and assemblies with ISO 3834-2 certified quality standards.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Finished Products',
+        description: 'Complete assemblies with surface treatment, painting, and final inspection ready for installation.',
+        icon: 'tabler:package',
+      },
+    ]}
+  />
+
+  <!-- Manufacturing Capabilities -->
+  <Content
+    tagline="Manufacturing Range"
+    title="From Prototypes to Series Production"
+    subtitle="Flexible manufacturing capabilities accommodating diverse volume requirements"
+    items={[
+      {
+        title: 'Prototype Development',
+        description: 'Rapid prototyping services for design validation and testing with quick turnaround times.',
+      },
+      {
+        title: 'Small Series Production',
+        description: 'Efficient production of small to medium quantities with competitive pricing and flexibility.',
+      },
+      {
+        title: 'High Volume Manufacturing',
+        description: 'Automated production systems for large volume requirements with consistent quality and cost optimization.',
+      },
+      {
+        title: 'Custom Engineering',
+        description: 'Design collaboration and engineering support for optimal manufacturability and cost effectiveness.',
+      },
+    ]}
+    image={{
+      src: cutting,
+      alt: 'Manufacturing capabilities overview',
+    }}
+  />
+
+  <!-- Material Expertise -->
+  <Features2
+    tagline="Material Expertise"
+    title="Advanced Material Processing"
+    subtitle="Comprehensive capabilities across diverse material types and specifications"
+    items={[
+      {
+        title: 'Carbon Steel',
+        description: 'Standard and high-strength carbon steels for structural and general engineering applications.',
+        icon: 'tabler:building-bridge',
+      },
+      {
+        title: 'Stainless Steel',
+        description: 'All grades of stainless steel including austenitic, ferritic, and duplex grades for demanding environments.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Aluminum Alloys',
+        description: 'Lightweight aluminum alloys for aerospace, automotive, and architectural applications.',
+        icon: 'tabler:plane',
+      },
+      {
+        title: 'Specialty Alloys',
+        description: 'Exotic materials including Inconel, Hastelloy, and other high-performance alloys for extreme conditions.',
+        icon: 'tabler:atom',
+      },
+    ]}
+  />
+
+  <!-- Quality & Certifications -->
+  <Content
+    tagline="Quality Assurance"
+    title="Certified Manufacturing Standards"
+    subtitle="Comprehensive quality systems ensuring consistent excellence across all products"
+    isReversed
+    items={[
+      {
+        title: 'ISO Certifications',
+        description: 'ISO 9001:2015 quality management and ISO 3834-2 welding certification ensuring consistent processes.',
+      },
+      {
+        title: 'Material Traceability',
+        description: 'Complete material certification and traceability from raw material to finished component delivery.',
+      },
+      {
+        title: 'Inspection & Testing',
+        description: 'Comprehensive dimensional inspection, NDT testing, and quality documentation for all products.',
+      },
+      {
+        title: 'Customer Specifications',
+        description: 'Adherence to customer-specific quality requirements and industry standards across all sectors.',
+      },
+    ]}
+    image={{
+      src: assembly,
+      alt: 'Quality assurance systems',
+    }}
+  />
+
+  <!-- Design Support -->
+  <Features3
+    title="Engineering & Design Support"
+    subtitle="Collaborative engineering services optimizing designs for manufacturing excellence"
+    tagline="Design Services"
+    columns={3}
+    items={[
+      {
+        title: 'Design Review',
+        description: 'Comprehensive design analysis for manufacturability optimization and cost reduction opportunities.',
+        icon: 'tabler:file-analytics',
+      },
+      {
+        title: 'CAD Services',
+        description: 'Professional CAD modeling and drafting services using latest design software and standards.',
+        icon: 'tabler:3d-cube-sphere',
+      },
+      {
+        title: 'Process Optimization',
+        description: 'Manufacturing process analysis and optimization for improved efficiency and quality.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Value Engineering',
+        description: 'Cost optimization through material selection, design simplification, and process improvement.',
+        icon: 'tabler:trending-down',
+      },
+      {
+        title: 'Simulation Services',
+        description: 'FEA analysis and simulation services for structural validation and optimization.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Documentation',
+        description: 'Complete technical documentation including drawings, specifications, and quality procedures.',
+        icon: 'tabler:file-text',
+      },
+    ]}
+  />
+
+  <!-- Production Process -->
+  <Features
+    tagline="Production Excellence"
+    title="Integrated Manufacturing Process"
+    subtitle="Streamlined production workflow ensuring quality and efficiency from concept to delivery"
+    items={[
+      {
+        title: 'Project Planning',
+        description: 'Comprehensive project planning with timeline development and resource allocation optimization.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Material Procurement',
+        description: 'Strategic material sourcing with certified suppliers ensuring quality and competitive pricing.',
+        icon: 'tabler:shopping-cart',
+      },
+      {
+        title: 'Production Execution',
+        description: 'Efficient manufacturing execution with real-time monitoring and quality control systems.',
+        icon: 'tabler:building-factory-2',
+      },
+      {
+        title: 'Quality Verification',
+        description: 'Comprehensive inspection and testing protocols ensuring compliance with specifications.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Discuss Your Project Requirements"
+    subtitle="Contact our engineering team to explore how we can deliver the precision components your project demands"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Project Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+      {
+        variant: 'secondary',
+        text: 'Technical Consultation',
+        href: '/contact',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
 </Layout>

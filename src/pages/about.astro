@@ -1,175 +1,356 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import VideoHero from '~/components/widgets/VideoHero.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
-import ImageTextBlock from '~/components/blocks/ImageTextBlock.astro';
-import Button from '~/components/ui/Button.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
-// Get the markdown content
-const entry = await getEntry('pages', 'about');
-if (!entry) throw new Error('About page not found');
-
-const { data: frontmatter } = entry;
+import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
+import welding from '~/assets/images/WELDING.jpg';
+import cutting from '~/assets/images/cutting-1.jpg';
+import robotWelding from '~/assets/images/robot-welding-1.jpg';
 
 const metadata = {
-  title: frontmatter.title,
-  description: frontmatter.description,
+  title: 'About Aries Manufacturing | 65+ Years of Excellence',
+  description: 'Family-owned European manufacturer since 1956. €42M turnover, 275 employees, ISO certified facilities in France and Slovakia delivering precision manufacturing solutions.',
 };
-
-// Prepare stats data
-const statsData = frontmatter.sections?.find(s => s.type === 'stats')?.stats?.map(stat => ({
-  title: stat.label,
-  amount: stat.value
-})) || [];
-
-// Prepare values data for Features component
-const valuesData = frontmatter.sections?.find(s => s.type === 'values')?.items?.map(item => ({
-  title: item.title,
-  description: item.description,
-  icon: 'tabler:star', // You can map icons later
-})) || [];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Section -->
-  {frontmatter.hero && (
-    frontmatter.hero.video ? (
-      <VideoHero
-        title={frontmatter.hero.title}
-        subtitle={frontmatter.hero.subtitle}
-        video={{
-          src: frontmatter.hero.video,
-          poster: frontmatter.hero.videoPoster,
-        }}
-      />
-    ) : (
-      <Hero
-        image={{
-          src: frontmatter.hero.image || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-          alt: frontmatter.hero.title,
-        }}
-      >
-        <Fragment slot="title">
-          {frontmatter.hero.title}
-        </Fragment>
-        <Fragment slot="subtitle">
-          {frontmatter.hero.subtitle}
-        </Fragment>
-      </Hero>
-    )
-  )}
+  <!-- Hero Section with Video -->
+  <VideoHero
+    video={{
+      src: "/video aries.mp4",
+      poster: facility
+    }}
+    image={{
+      src: facility,
+      alt: "Aries manufacturing facility"
+    }}
+    tagline="About Aries Manufacturing"
+    title="65+ Years of European Excellence"
+    subtitle="Family-owned manufacturing company delivering precision metal components since 1956"
+    buttons={[
+      {
+        text: 'Our Services',
+        href: '/services',
+        style: 'primary',
+      },
+      {
+        text: 'Contact Us',
+        href: '/contact',
+        style: 'secondary',
+      },
+    ]}
+  />
 
-  <!-- Introduction Section -->
-  {frontmatter.sections?.filter(s => s.type === 'intro').map(section => (
-    <section class="px-6 py-16 md:py-20">
-      <div class="max-w-6xl mx-auto">
-        <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-            {section.title}
-          </h2>
-          <p class="text-xl text-muted dark:text-slate-400">
-            {section.content}
-          </p>
-        </div>
-      </div>
-    </section>
-  ))}
+  <!-- Company Statistics -->
+  <Stats
+    title="Aries by the Numbers"
+    subtitle="Six decades of growth and continuous investment in excellence"
+    stats={[
+      { amount: '€42M', title: 'Annual Turnover' },
+      { amount: '275', title: 'Employees' },
+      { amount: '2', title: 'Production Sites' },
+      { amount: '65+', title: 'Years Experience' },
+    ]}
+  />
 
-  <!-- Image + Text Blocks -->
-  {frontmatter.sections?.filter(s => s.type === 'image_text').map((section, index) => (
-    <ImageTextBlock
-      title={section.title}
-      subtitle={section.subtitle}
-      content={section.content}
-      image={section.image}
-      button={section.button}
-      highlight={section.highlight}
-      reverse={index % 2 === 1}
-    />
-  ))}
+  <!-- Company Foundation -->
+  <Content
+    tagline="Our Foundation"
+    title="Family Heritage Since 1956"
+    subtitle="Built on traditional values, driven by modern innovation"
+    items={[
+      {
+        title: 'Family Ownership',
+        description: 'Independent family business passed through generations, maintaining founding values while embracing innovation.',
+      },
+      {
+        title: 'European Expansion',
+        description: 'Established in France 1956, expanded to Slovakia in 2000, serving markets across Europe with strategic positioning.',
+      },
+      {
+        title: 'Industry Expertise',
+        description: 'Deep knowledge in precision metalworking, serving railway, construction, industrial, and energy sectors.',
+      },
+      {
+        title: 'Long-term Vision',
+        description: 'Continuous investment in technology, people, and capabilities ensuring sustainable growth and customer satisfaction.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Aries manufacturing heritage',
+    }}
+  />
 
-  <!-- Stats Section -->
-  {statsData.length > 0 && (
-    <Stats
-      title={frontmatter.sections?.find(s => s.type === 'stats')?.title || "Our Impact"}
-      stats={statsData}
-    />
-  )}
+  <!-- Core Values -->
+  <Features
+    tagline="Our Values"
+    title="Principles That Drive Excellence"
+    subtitle="The foundation of our success and customer partnerships"
+    items={[
+      {
+        title: 'Quality Excellence',
+        description: 'ISO certified manufacturing processes ensuring consistent quality and reliability in every component we produce.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Innovation Leadership',
+        description: 'Continuous investment in advanced technology and Industry 4.0 solutions for competitive manufacturing advantages.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Customer Partnership',
+        description: 'Long-term relationships built on trust, reliability, and shared success with our industrial customers.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Environmental Responsibility',
+        description: 'ECOVADIS Bronze Medal recognition for our commitment to sustainable manufacturing and environmental stewardship.',
+        icon: 'tabler:leaf',
+      },
+    ]}
+  />
 
-  <!-- Values Section -->
-  {valuesData.length > 0 && (
-    <Features
-      title={frontmatter.sections?.find(s => s.type === 'values')?.title || "Our Values"}
-      subtitle="The principles that guide everything we do"
-      items={valuesData}
-      columns={2}
-    />
-  )}
+  <!-- Historical Journey -->
+  <Content
+    tagline="Our Journey"
+    title="Seven Decades of Growth"
+    subtitle="Key milestones in our evolution from local workshop to European manufacturer"
+    isReversed
+    items={[
+      {
+        title: '1956 - Foundation',
+        description: 'Company established in France as a family metalworking business focusing on local market needs.',
+      },
+      {
+        title: '1980s - Modernization',
+        description: 'Investment in modern equipment and expansion of capabilities to serve growing industrial demands.',
+      },
+      {
+        title: '2000 - European Expansion',
+        description: 'Opened Slovakia facility to serve Central European markets and provide competitive manufacturing solutions.',
+      },
+      {
+        title: '2020s - Digital Transformation',
+        description: 'Implementation of Industry 4.0 technologies, automation, and sustainable manufacturing practices.',
+      },
+    ]}
+    image={{
+      src: cutting,
+      alt: 'Historical growth and development',
+    }}
+  />
 
-  <!-- Call-to-Action Sections -->
-  {frontmatter.sections?.filter(s => s.type === 'cta').map(section => (
-    <section class="px-6 py-16 bg-blue-50 dark:bg-slate-800">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-6 font-heading">
-          {section.title}
-        </h2>
-        <p class="text-xl text-muted dark:text-slate-400 leading-relaxed mb-8">
-          {section.content}
-        </p>
-        {section.button && (
-          <div class="pt-4">
-            <Button 
-              variant={section.button.style || "primary"}
-              href={section.button.href}
-              class="text-lg px-8 py-4"
-            >
-              {section.button.text}
-            </Button>
-          </div>
-        )}
-      </div>
-    </section>
-  ))}
+  <!-- Certifications & Quality -->
+  <Features2
+    tagline="Quality Assurance"
+    title="International Certifications"
+    subtitle="Comprehensive quality systems ensuring excellence across all operations"
+    items={[
+      {
+        title: 'ISO 9001:2015',
+        description: 'Quality management system certification ensuring consistent processes and customer satisfaction.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'ISO 14001:2015',
+        description: 'Environmental management certification demonstrating our commitment to sustainable operations.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'ISO 3834-2',
+        description: 'Welding quality certification ensuring the highest standards in all welding and joining operations.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'ECOVADIS Bronze',
+        description: 'Corporate Social Responsibility recognition for environmental, social, and ethical business practices.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
 
-  <!-- Mission Statement -->
-  {frontmatter.mission && (
-    <section class="px-6 py-16 bg-blue-50 dark:bg-slate-800">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-6 font-heading">
-          Our Mission
-        </h2>
-        <p class="text-xl text-muted dark:text-slate-400 leading-relaxed">
-          {frontmatter.mission}
-        </p>
-      </div>
-    </section>
-  )}
+  <!-- Technology & Innovation -->
+  <Content
+    tagline="Innovation Leadership"
+    title="Continuous Technology Investment"
+    subtitle="State-of-the-art equipment and digital systems driving manufacturing excellence"
+    items={[
+      {
+        title: 'Advanced Manufacturing',
+        description: 'Latest generation laser cutting, CNC machining, and robotic welding systems for precision and efficiency.',
+      },
+      {
+        title: 'Industry 4.0 Integration',
+        description: 'Digital manufacturing systems with real-time monitoring, data analytics, and predictive maintenance.',
+      },
+      {
+        title: 'Quality Technology',
+        description: 'Comprehensive metrology equipment and testing systems ensuring dimensional accuracy and material compliance.',
+      },
+      {
+        title: 'Process Automation',
+        description: 'Automated material handling, production scheduling, and quality control systems for operational excellence.',
+      },
+    ]}
+    image={{
+      src: robotWelding,
+      alt: 'Advanced manufacturing technology',
+    }}
+  />
 
-  <!-- Leadership Team -->
-  {frontmatter.sections?.filter(s => s.type === 'team').map(section => (
-    <section class="px-6 py-16">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-12 font-heading text-center">
-          {section.title}
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {section.members?.map(member => (
-            <div class="text-center">
-              <div class="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-4 flex items-center justify-center">
-                <span class="text-white text-2xl font-bold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </span>
-              </div>
-              <h3 class="text-xl font-semibold mb-2">{member.name}</h3>
-              <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">{member.role}</p>
-              <p class="text-muted dark:text-slate-400">{member.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  ))}
+  <!-- Workforce & Culture -->
+  <Features3
+    title="Our People & Culture"
+    subtitle="Skilled professionals driving manufacturing excellence and innovation"
+    tagline="Our Team"
+    columns={3}
+    items={[
+      {
+        title: 'Experienced Workforce',
+        description: 'Highly skilled engineers, technicians, and craftsmen with decades of manufacturing expertise.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Continuous Learning',
+        description: 'Ongoing training and development programs keeping our team at the forefront of technology.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Safety Culture',
+        description: 'Comprehensive safety programs and protocols ensuring the highest standards of workplace safety.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Innovation Mindset',
+        description: 'Employee-driven improvement initiatives and innovation programs encouraging creative problem-solving.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'European Expertise',
+        description: 'Multilingual teams providing seamless communication and cultural understanding across Europe.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Career Development',
+        description: 'Clear career progression paths and professional development opportunities for all team members.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- Sustainability Commitment -->
+  <Content
+    tagline="Sustainability"
+    title="Environmental Responsibility"
+    subtitle="Committed to sustainable manufacturing and environmental stewardship"
+    isReversed
+    items={[
+      {
+        title: 'Energy Efficiency',
+        description: 'Smart energy management systems and renewable energy integration reducing environmental impact.',
+      },
+      {
+        title: 'Waste Minimization',
+        description: 'Advanced material optimization and recycling programs achieving industry-leading waste reduction.',
+      },
+      {
+        title: 'Green Manufacturing',
+        description: 'Environmentally responsible processes and materials supporting circular economy principles.',
+      },
+      {
+        title: 'Compliance Excellence',
+        description: 'Exceeding environmental regulations and industry standards through proactive environmental management.',
+      },
+    ]}
+    image={{
+      src: welding,
+      alt: 'Sustainable manufacturing practices',
+    }}
+  />
+
+  <!-- Market Leadership -->
+  <Features
+    tagline="Market Position"
+    title="European Manufacturing Leader"
+    subtitle="Recognized expertise across diverse industrial sectors"
+    items={[
+      {
+        title: 'Railway Industry',
+        description: 'EN 15085-2 certified manufacturer for safety-critical railway components and sub-assemblies.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Construction Sector',
+        description: 'Trusted partner for structural steel, architectural metalwork, and building construction projects.',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Industrial Equipment',
+        description: 'Precision components for machinery, equipment housings, and specialized industrial applications.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Energy & Environment',
+        description: 'Components for renewable energy systems and environmental technology applications.',
+        icon: 'tabler:wind',
+      },
+    ]}
+  />
+
+  <!-- Future Vision -->
+  <Features2
+    tagline="Future Vision"
+    title="Strategic Development Goals"
+    subtitle="Continuous evolution to meet tomorrow's manufacturing challenges"
+    items={[
+      {
+        title: 'Technology Leadership',
+        description: 'Ongoing investment in advanced manufacturing technologies and digitalization initiatives.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Market Expansion',
+        description: 'Strategic growth into new European markets and emerging industrial sectors.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Sustainability Goals',
+        description: 'Commitment to carbon neutrality and sustainable manufacturing practices by 2030.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Innovation Culture',
+        description: 'Fostering innovation through R&D partnerships and emerging technology adoption.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Partner With Aries Manufacturing"
+    subtitle="Discover how our 65+ years of expertise and European manufacturing excellence can benefit your next project"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start Your Project',
+        href: '/contact',
+        icon: 'tabler:rocket',
+      },
+      {
+        variant: 'secondary',
+        text: 'Facility Tour',
+        href: '/contact',
+        icon: 'tabler:building-factory',
+      },
+    ]}
+  />
 </Layout>

@@ -1,0 +1,21 @@
+{
+  "name": "Aries Manufacturing",
+  "short_name": "Aries",
+  "description": "European precision manufacturing since 1956",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "504x504",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}

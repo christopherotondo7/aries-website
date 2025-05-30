@@ -1,18 +1,414 @@
 ---
-import { getEntry } from 'astro:content';
-import Layout from '~/layouts/MarkdownLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
-const page = await getEntry('pages', 'services');
-const { Content } = await page.render();
+import cutting from '~/assets/images/cutting-1.jpg';
+import machining from '~/assets/images/machining-1.jpg';
+import welding from '~/assets/images/WELDING.jpg';
+import assembly from '~/assets/images/assembly-1.jpg';
+import painting from '~/assets/images/painting-2.jpg';
 
 const metadata = {
-  title: page.data.title,
-  description: page.data.description,
+  title: 'Manufacturing Services | Aries',
+  description: 'Complete manufacturing solutions from laser cutting to final assembly. High-precision metalworking services with 65+ years of European expertise.',
 };
 ---
 
-<Layout frontmatter={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto px-4 py-8">
-    <Content />
-  </div>
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Manufacturing Services"
+    title="Complete Industrial Solutions"
+    subtitle="From raw materials to finished assemblies - comprehensive metalworking services backed by 65+ years of European manufacturing excellence"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+      {
+        variant: 'secondary',
+        text: 'View Capabilities',
+        href: '#capabilities',
+        icon: 'tabler:arrow-down',
+      },
+    ]}
+    image={{
+      src: cutting,
+      alt: 'Precision laser cutting service',
+    }}
+  />
+
+  <!-- Service Statistics -->
+  <Stats
+    title="Service Excellence"
+    subtitle="Delivering precision and reliability across all manufacturing processes"
+    stats={[
+      { amount: '5', title: 'Core Services' },
+      { amount: '30mm', title: 'Max Cutting Thickness' },
+      { amount: '24/7', title: 'Production Capability' },
+      { amount: '100%', title: 'Quality Assured' },
+    ]}
+  />
+
+  <!-- Core Services Overview -->
+  <Features
+    id="capabilities"
+    tagline="Our Capabilities"
+    title="Comprehensive Manufacturing Services"
+    subtitle="End-to-end solutions covering the complete production cycle"
+    items={[
+      {
+        title: 'Precision Cutting',
+        description: 'Advanced laser, plasma, and mechanical cutting technologies for all material types and thicknesses up to 30mm.',
+        icon: 'tabler:cut',
+      },
+      {
+        title: 'CNC Machining',
+        description: 'Multi-axis machining centers for complex geometries, turning, milling, drilling, and precision operations.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Welding & Joining',
+        description: 'Expert manual and robotic welding services including TIG, MIG/MAG, and specialized joining processes.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Assembly & Finishing',
+        description: 'Complete mechanical assembly, surface treatment, painting, and logistics solutions.',
+        icon: 'tabler:package',
+      },
+    ]}
+  />
+
+  <!-- Cutting Services Detail -->
+  <Content
+    tagline="Cutting Services"
+    title="Advanced Material Processing"
+    subtitle="State-of-the-art cutting technologies for optimal results across all materials"
+    items={[
+      {
+        title: 'Fiber Laser Cutting',
+        description: 'High-speed precision cutting with superior edge quality and minimal heat-affected zone.',
+      },
+      {
+        title: 'Plasma Arc Cutting', 
+        description: 'Heavy-duty cutting for thick materials with beveling capabilities and automated controls.',
+      },
+      {
+        title: 'Oxy-Fuel Cutting',
+        description: 'Multi-torch systems for very heavy plates with optimized gas consumption.',
+      },
+      {
+        title: 'Mechanical Processing',
+        description: 'Precision shearing and punching for clean edges without thermal effects.',
+      },
+    ]}
+    image={{
+      src: cutting,
+      alt: 'Advanced cutting services',
+    }}
+  />
+
+  <!-- Machining Services -->
+  <Features2
+    tagline="Machining Services"
+    title="Precision Manufacturing"
+    subtitle="Advanced CNC capabilities for complex components and tight tolerances"
+    items={[
+      {
+        title: '5-Axis Machining',
+        description: 'Complex part machining in single setups for improved accuracy and reduced lead times.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Turning Operations',
+        description: 'High-precision turning with automated tool changers and integrated measurement systems.',
+        icon: 'tabler:rotate',
+      },
+      {
+        title: 'Milling & Drilling',
+        description: 'Multi-spindle milling and precision drilling operations with adaptive control systems.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Surface Finishing',
+        description: 'Complete surface preparation and finishing to meet exact specifications and standards.',
+        icon: 'tabler:paint',
+      },
+    ]}
+  />
+
+  <!-- Machining Capabilities -->
+  <Content
+    tagline="CNC Capabilities"
+    title="Advanced Machining Centers"
+    subtitle="Latest generation equipment for superior precision and efficiency"
+    isReversed
+    items={[
+      {
+        title: 'Multi-Axis Processing',
+        description: 'Simultaneous 5-axis machining for complex geometries and superior surface finishes.',
+      },
+      {
+        title: 'Automated Systems',
+        description: 'Robotic material handling and automated tool management for continuous production.',
+      },
+      {
+        title: 'Quality Control',
+        description: 'Integrated measurement systems with real-time monitoring and statistical process control.',
+      },
+      {
+        title: 'Custom Programming',
+        description: 'Advanced CAM programming with simulation and optimization for maximum efficiency.',
+      },
+    ]}
+    image={{
+      src: machining,
+      alt: 'Advanced CNC machining services',
+    }}
+  />
+
+  <!-- Welding Services -->
+  <Features3
+    title="Welding & Joining Excellence"
+    subtitle="Expert welding services combining traditional craftsmanship with modern technology"
+    tagline="Welding Services"
+    columns={2}
+    items={[
+      {
+        title: 'TIG Welding',
+        description: 'Precision tungsten inert gas welding for high-quality joints on critical components.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'MIG/MAG Welding',
+        description: 'High-speed metal inert/active gas welding for production efficiency and consistency.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Robotic Welding',
+        description: 'Automated welding systems with adaptive technology and real-time quality monitoring.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Specialized Joining',
+        description: 'Advanced joining techniques including brazing, soldering, and mechanical fastening.',
+        icon: 'tabler:link',
+      },
+    ]}
+  />
+
+  <!-- Welding Excellence -->
+  <Content
+    tagline="Welding Excellence"
+    title="ISO 3834-2 Certified Quality"
+    subtitle="Certified welding processes ensuring the highest standards in all joining operations"
+    items={[
+      {
+        title: 'Certified Processes',
+        description: 'ISO 3834-2 welding certification ensuring consistent quality and traceability.',
+      },
+      {
+        title: 'Material Expertise',
+        description: 'Specialized welding procedures for steel, stainless steel, aluminum, and exotic alloys.',
+      },
+      {
+        title: 'Quality Documentation',
+        description: 'Complete welding documentation with procedure qualification and welder certification.',
+      },
+      {
+        title: 'NDT Testing',
+        description: 'Non-destructive testing capabilities including radiographic and ultrasonic inspection.',
+      },
+    ]}
+    image={{
+      src: welding,
+      alt: 'Professional welding services',
+    }}
+  />
+
+  <!-- Assembly Services -->
+  <Features2
+    tagline="Assembly & Finishing"
+    title="Complete Manufacturing Solutions"
+    subtitle="From sub-assemblies to finished products with integrated logistics"
+    items={[
+      {
+        title: 'Mechanical Assembly',
+        description: 'Complete assembly services from simple sub-assemblies to complex mechanical systems.',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Surface Treatment',
+        description: 'Comprehensive surface preparation including sandblasting, degreasing, and chemical treatment.',
+        icon: 'tabler:brush',
+      },
+      {
+        title: 'Industrial Painting',
+        description: 'Professional painting systems with powder coating, wet painting, and protective coatings.',
+        icon: 'tabler:paint',
+      },
+      {
+        title: 'Logistics & Packaging',
+        description: 'Complete logistics solutions including packaging, inventory management, and delivery.',
+        icon: 'tabler:truck',
+      },
+    ]}
+  />
+
+  <!-- Assembly Excellence -->
+  <Content
+    tagline="Final Assembly"
+    title="Turnkey Manufacturing Solutions"
+    subtitle="Complete product realization from design support to final delivery"
+    isReversed
+    items={[
+      {
+        title: 'Design Collaboration',
+        description: 'Engineering support for design optimization and manufacturability analysis.',
+      },
+      {
+        title: 'Supply Chain Management',
+        description: 'Comprehensive component sourcing and supplier management for complete assemblies.',
+      },
+      {
+        title: 'Quality Systems',
+        description: 'Integrated quality management with full traceability and documentation.',
+      },
+      {
+        title: 'Delivery Excellence',
+        description: 'Reliable delivery schedules with flexible logistics and inventory solutions.',
+      },
+    ]}
+    image={{
+      src: assembly,
+      alt: 'Professional assembly services',
+    }}
+  />
+
+  <!-- Quality & Certifications -->
+  <Features
+    tagline="Quality Assurance"
+    title="Certified Manufacturing Excellence"
+    subtitle="International standards and certifications ensuring consistent quality"
+    items={[
+      {
+        title: 'ISO 9001:2015',
+        description: 'Quality management system certification for consistent manufacturing processes.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'ISO 3834-2',
+        description: 'Welding quality certification ensuring the highest standards in joining operations.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'EN 15085-2',
+        description: 'Railway industry certification for chassis and sub-assembly manufacturing.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Material Traceability',
+        description: 'Complete material certification and traceability from raw material to delivery.',
+        icon: 'tabler:qrcode',
+      },
+    ]}
+  />
+
+  <!-- Surface Treatment -->
+  <Content
+    tagline="Surface Treatment"
+    title="Professional Finishing Services"
+    subtitle="Complete surface treatment solutions for protection and aesthetics"
+    items={[
+      {
+        title: 'Powder Coating',
+        description: 'Durable powder coating systems with wide color selection and superior finish quality.',
+      },
+      {
+        title: 'Wet Painting',
+        description: 'Professional wet painting with primer, base coat, and protective top coat systems.',
+      },
+      {
+        title: 'Galvanizing',
+        description: 'Hot-dip galvanizing services for maximum corrosion protection and longevity.',
+      },
+      {
+        title: 'Special Coatings',
+        description: 'Specialized protective coatings for harsh environments and specific applications.',
+      },
+    ]}
+    image={{
+      src: painting,
+      alt: 'Professional surface treatment services',
+    }}
+  />
+
+  <!-- Service Process -->
+  <Features3
+    title="Our Service Process"
+    subtitle="Streamlined workflow from initial consultation to final delivery"
+    tagline="Process Excellence"
+    columns={3}
+    items={[
+      {
+        title: 'Consultation',
+        description: 'Technical consultation and project analysis to determine optimal manufacturing approach.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Design Review',
+        description: 'Engineering review for manufacturability optimization and cost reduction opportunities.',
+        icon: 'tabler:file-analytics',
+      },
+      {
+        title: 'Prototyping',
+        description: 'Rapid prototyping services for design validation and process optimization.',
+        icon: 'tabler:3d-cube-sphere',
+      },
+      {
+        title: 'Production',
+        description: 'Scaled production with consistent quality and reliable delivery schedules.',
+        icon: 'tabler:building-factory-2',
+      },
+      {
+        title: 'Quality Control',
+        description: 'Comprehensive inspection and testing throughout the manufacturing process.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Delivery',
+        description: 'Professional packaging and logistics with complete documentation and certification.',
+        icon: 'tabler:truck-delivery',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Start Your Manufacturing Project"
+    subtitle="Contact our technical team to discuss your requirements and receive a detailed quote for your manufacturing needs"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request Quote',
+        href: '/contact',
+        icon: 'tabler:file-text',
+      },
+      {
+        variant: 'secondary',
+        text: 'Technical Consultation',
+        href: '/contact',
+        icon: 'tabler:phone',
+      },
+    ]}
+  />
 </Layout>

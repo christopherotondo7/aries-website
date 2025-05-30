@@ -1,18 +1,411 @@
 ---
-import { getEntry } from 'astro:content';
-import Layout from '~/layouts/MarkdownLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
-const page = await getEntry('pages', 'production-sites');
-const { Content } = await page.render();
+import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
+import machining from '~/assets/images/machining-1.jpg';
+import assembly from '~/assets/images/assembly-1.jpg';
 
 const metadata = {
-  title: page.data.title,
-  description: page.data.description,
+  title: 'Production Sites | Aries Manufacturing',
+  description: 'European production facilities in France and Slovakia. Strategic locations providing comprehensive manufacturing capabilities and logistics advantages.',
 };
 ---
 
-<Layout frontmatter={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto px-4 py-8">
-    <Content />
-  </div>
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Production Sites"
+    title="European Manufacturing Excellence"
+    subtitle="Strategic production facilities across Europe providing comprehensive manufacturing capabilities and optimal logistics solutions"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Contact Facilities',
+        href: '/contact',
+        icon: 'tabler:building-factory',
+      },
+      {
+        variant: 'secondary',
+        text: 'Facility Tour',
+        href: '/contact',
+        icon: 'tabler:calendar',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Aries manufacturing facility',
+    }}
+  />
+
+  <!-- Network Overview -->
+  <Stats
+    title="European Network"
+    subtitle="Strategic locations delivering manufacturing excellence across Europe"
+    stats={[
+      { amount: '2', title: 'Production Sites' },
+      { amount: '275', title: 'Total Employees' },
+      { amount: '€42M', title: 'Combined Turnover' },
+      { amount: '65+', title: 'Years Experience' },
+    ]}
+  />
+
+  <!-- Site Overview -->
+  <Features
+    tagline="Manufacturing Network"
+    title="Strategic European Locations"
+    subtitle="Complementary production facilities optimized for different manufacturing requirements and market access"
+    items={[
+      {
+        title: 'France - Headquarters',
+        description: 'Original manufacturing site with comprehensive capabilities including laser cutting, machining, welding, and assembly.',
+        icon: 'tabler:flag',
+      },
+      {
+        title: 'Slovakia - Expansion',
+        description: 'Modern facility focused on high-volume production and specialized manufacturing for Central European markets.',
+        icon: 'tabler:building-factory',
+      },
+      {
+        title: 'Logistics Advantage',
+        description: 'Strategic positioning provides optimal access to major European industrial centers and transportation networks.',
+        icon: 'tabler:truck-delivery',
+      },
+      {
+        title: 'Combined Expertise',
+        description: 'Shared knowledge and best practices across sites ensuring consistent quality and continuous improvement.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <!-- France Facility -->
+  <Content
+    tagline="France Facility"
+    title="Headquarters & Original Site"
+    subtitle="Established 1956 - The foundation of Aries manufacturing excellence"
+    items={[
+      {
+        title: 'Complete Manufacturing',
+        description: 'Full-service facility with laser cutting, CNC machining, welding, assembly, and surface treatment capabilities.',
+      },
+      {
+        title: 'Engineering Center',
+        description: 'Central engineering and design services with advanced CAD/CAM systems and technical support.',
+      },
+      {
+        title: 'Quality Laboratory',
+        description: 'Comprehensive metrology laboratory with coordinate measuring machines and materials testing equipment.',
+      },
+      {
+        title: 'Logistics Hub',
+        description: 'Central distribution center with inventory management and shipping coordination for European customers.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Aries France manufacturing facility',
+    }}
+  />
+
+  <!-- France Capabilities -->
+  <Features2
+    tagline="France Capabilities"
+    title="Comprehensive Manufacturing Services"
+    subtitle="Advanced equipment and experienced workforce delivering precision manufacturing"
+    items={[
+      {
+        title: 'Laser Cutting Center',
+        description: 'Trumpf fiber laser systems with automated material handling and nesting optimization up to 30mm thickness.',
+        icon: 'tabler:cut',
+      },
+      {
+        title: 'CNC Machining',
+        description: 'Multi-axis machining centers including 5-axis simultaneous processing for complex geometries.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Welding Expertise',
+        description: 'ISO 3834-2 certified welding with TIG, MIG/MAG, and robotic welding capabilities.',
+        icon: 'tabler:flame',
+      },
+      {
+        title: 'Assembly & Testing',
+        description: 'Complete mechanical assembly and testing facilities with final inspection and packaging.',
+        icon: 'tabler:package',
+      },
+    ]}
+  />
+
+  <!-- Slovakia Facility -->
+  <Content
+    tagline="Slovakia Facility"
+    title="Central European Production Hub"
+    subtitle="Established 2000 - Modern manufacturing for expanding European markets"
+    isReversed
+    items={[
+      {
+        title: 'Modern Infrastructure',
+        description: 'State-of-the-art facility designed for Industry 4.0 with integrated digital manufacturing systems.',
+      },
+      {
+        title: 'Specialized Production',
+        description: 'Focus on high-volume series production and specialized components for railway and industrial applications.',
+      },
+      {
+        title: 'Strategic Location',
+        description: 'Central European position providing optimal access to growing markets in Eastern and Central Europe.',
+      },
+      {
+        title: 'Cost Optimization',
+        description: 'Competitive manufacturing costs while maintaining European quality standards and certifications.',
+      },
+    ]}
+    image={{
+      src: machining,
+      alt: 'Slovakia modern manufacturing facility',
+    }}
+  />
+
+  <!-- Slovakia Capabilities -->
+  <Features3
+    title="Slovakia Specialized Capabilities"
+    subtitle="Modern equipment and processes optimized for efficiency and quality"
+    tagline="Slovakia Focus"
+    columns={2}
+    items={[
+      {
+        title: 'Automated Production',
+        description: 'Highly automated production lines with robotic material handling and quality control systems.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Railway Components',
+        description: 'Specialized in railway industry components with EN 15085-2 certification and complete traceability.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Series Production',
+        description: 'Optimized for medium to high-volume production with consistent quality and competitive costs.',
+        icon: 'tabler:building-factory-2',
+      },
+      {
+        title: 'Digital Integration',
+        description: 'Industry 4.0 implementation with real-time monitoring and data analytics across all processes.',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Network Advantages -->
+  <Features
+    tagline="Network Benefits"
+    title="Dual-Site Manufacturing Advantages"
+    subtitle="Strategic benefits of our European production network"
+    items={[
+      {
+        title: 'Redundancy & Flexibility',
+        description: 'Multiple production options ensuring continuity and flexibility to meet varying customer demands.',
+        icon: 'tabler:repeat',
+      },
+      {
+        title: 'Optimized Logistics',
+        description: 'Strategic positioning reduces transportation costs and delivery times across European markets.',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Risk Mitigation',
+        description: 'Distributed production capabilities reducing business risks and ensuring reliable supply chains.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Market Access',
+        description: 'Enhanced access to diverse European markets with local presence and cultural understanding.',
+        icon: 'tabler:world',
+      },
+    ]}
+  />
+
+  <!-- Quality Standards -->
+  <Content
+    tagline="Quality Excellence"
+    title="Unified Quality Standards"
+    subtitle="Consistent quality management across all production sites"
+    items={[
+      {
+        title: 'ISO Certifications',
+        description: 'Both facilities maintain ISO 9001:2015, ISO 14001:2015, and ISO 3834-2 certifications.',
+      },
+      {
+        title: 'Standardized Processes',
+        description: 'Unified procedures and work instructions ensuring consistent quality regardless of production location.',
+      },
+      {
+        title: 'Shared Best Practices',
+        description: 'Continuous knowledge transfer and improvement initiatives across both facilities.',
+      },
+      {
+        title: 'Integrated Systems',
+        description: 'Connected quality management systems providing real-time visibility and traceability.',
+      },
+    ]}
+    image={{
+      src: assembly,
+      alt: 'Quality control systems',
+    }}
+  />
+
+  <!-- Facility Features -->
+  <Features2
+    tagline="Infrastructure"
+    title="Modern Manufacturing Infrastructure"
+    subtitle="Advanced facilities designed for efficiency, safety, and environmental responsibility"
+    items={[
+      {
+        title: 'Environmental Systems',
+        description: 'Advanced air filtration, waste management, and energy-efficient systems meeting EU environmental standards.',
+        icon: 'tabler:leaf',
+      },
+      {
+        title: 'Safety Standards',
+        description: 'Comprehensive safety systems and protocols ensuring the highest standards of workplace safety.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Digital Infrastructure',
+        description: 'High-speed networks, integrated IT systems, and digital manufacturing platforms.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Expansion Capability',
+        description: 'Designed for growth with available space and infrastructure for future capacity expansion.',
+        icon: 'tabler:building-plus',
+      },
+    ]}
+  />
+
+  <!-- Workforce Excellence -->
+  <Features3
+    title="Skilled European Workforce"
+    subtitle="Experienced professionals driving manufacturing excellence"
+    tagline="Our People"
+    columns={3}
+    items={[
+      {
+        title: 'Technical Expertise',
+        description: 'Highly skilled engineers, technicians, and craftsmen with decades of manufacturing experience.',
+        icon: 'tabler:user-star',
+      },
+      {
+        title: 'Continuous Training',
+        description: 'Ongoing education and certification programs keeping our workforce at the forefront of technology.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Multi-lingual Support',
+        description: 'Multilingual teams providing seamless communication with customers across Europe.',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'Local Partnerships',
+        description: 'Strong relationships with local technical schools and universities for talent development.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Cross-Site Collaboration',
+        description: 'Regular exchange programs and collaboration between facilities sharing knowledge and expertise.',
+        icon: 'tabler:arrows-exchange',
+      },
+      {
+        title: 'Innovation Culture',
+        description: 'Employee-driven innovation initiatives encouraging continuous improvement and problem-solving.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Logistics & Distribution -->
+  <Content
+    tagline="Logistics Excellence"
+    title="European Distribution Network"
+    subtitle="Optimized logistics solutions for efficient delivery across Europe"
+    isReversed
+    items={[
+      {
+        title: 'Strategic Positioning',
+        description: 'Facilities positioned to minimize transportation costs and delivery times to major European markets.',
+      },
+      {
+        title: 'Integrated Planning',
+        description: 'Coordinated production planning across sites optimizing capacity utilization and delivery schedules.',
+      },
+      {
+        title: 'Carrier Partnerships',
+        description: 'Established relationships with reliable logistics partners providing competitive shipping solutions.',
+      },
+      {
+        title: 'Inventory Management',
+        description: 'Strategic inventory positioning enabling rapid response to customer requirements and market demands.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'European logistics network',
+    }}
+  />
+
+  <!-- Future Expansion -->
+  <Features
+    tagline="Future Growth"
+    title="Expansion & Development Plans"
+    subtitle="Continuous investment in capabilities and capacity to serve growing European markets"
+    items={[
+      {
+        title: 'Capacity Expansion',
+        description: 'Planned facility expansions to increase production capacity and accommodate new technologies.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Technology Investment',
+        description: 'Ongoing investment in advanced manufacturing technologies and digitalization initiatives.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Market Development',
+        description: 'Strategic expansion into new European markets and industrial sectors.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Sustainability Goals',
+        description: 'Implementation of sustainable manufacturing practices and renewable energy systems.',
+        icon: 'tabler:world',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="Visit Our Facilities"
+    subtitle="Experience our manufacturing capabilities firsthand with a guided facility tour and technical consultation"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule Facility Tour',
+        href: '/contact',
+        icon: 'tabler:calendar',
+      },
+      {
+        variant: 'secondary',
+        text: 'Contact Locations',
+        href: '/contact',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
 </Layout>

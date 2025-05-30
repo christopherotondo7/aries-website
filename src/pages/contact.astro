@@ -1,32 +1,293 @@
 ---
-import Layout from '~/layouts/MarkdownLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Contact from '~/components/widgets/Contact.astro';
+
+import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
 
 const metadata = {
-  title: "Contact Us",
-  description: "Get in touch with Aries Group for your sheet metal processing needs.",
+  title: 'Contact Aries Manufacturing | European Facilities',
+  description: 'Contact our European manufacturing facilities in France and Slovakia. Request quotes, technical consultation, and facility tours for your precision manufacturing needs.',
 };
 ---
 
-<Layout frontmatter={metadata}>
-  <div class="prose prose-lg max-w-none mx-auto">
-    <h1>Contact Us</h1>
-    
-    <p>Ready to discuss your sheet metal processing needs? Our team is here to help you find the perfect solution.</p>
-    
-    <h2>Get In Touch</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 not-prose">
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Contact Information</h3>
-        <p><strong>Email:</strong> contact@aries1.fr</p>
-        <p><strong>Phone:</strong> +33 (0)1 23 45 67 89</p>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Request a Quote</h3>
-        <p>Send us your project specifications and we'll provide a detailed quote within 24 hours.</p>
-      </div>
-    </div>
-    
-    <h2>Our Locations</h2>
-    <p>Aries Group operates multiple production facilities across Europe to serve our clients efficiently.</p>
-  </div>
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    tagline="Contact Us"
+    title="Let's Discuss Your Project"
+    subtitle="Contact our experienced team for technical consultation, project quotes, and manufacturing solutions tailored to your specific requirements"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Send Message',
+        href: '#contact-form',
+        icon: 'tabler:mail',
+      },
+      {
+        variant: 'secondary',
+        text: 'Call Directly',
+        href: 'tel:+33123456789',
+        icon: 'tabler:phone',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Aries manufacturing facility contact',
+    }}
+  />
+
+  <!-- Contact Methods -->
+  <Features
+    tagline="Get In Touch"
+    title="Multiple Ways to Connect"
+    subtitle="Choose the most convenient way to discuss your manufacturing requirements with our expert team"
+    items={[
+      {
+        title: 'Technical Consultation',
+        description: 'Speak directly with our engineers about your project requirements, specifications, and manufacturing challenges.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Project Quotes',
+        description: 'Request detailed quotes for your manufacturing projects with comprehensive cost analysis and timeline estimates.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'Facility Tours',
+        description: 'Schedule guided tours of our manufacturing facilities to see our capabilities and quality systems firsthand.',
+        icon: 'tabler:building-factory',
+      },
+      {
+        title: 'Quality Discussions',
+        description: 'Discuss quality requirements, certifications, and compliance standards with our quality assurance team.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <!-- France Facility Contact -->
+  <Content
+    tagline="France Headquarters"
+    title="Primary Manufacturing Facility"
+    subtitle="Our original facility providing comprehensive manufacturing services and engineering support"
+    items={[
+      {
+        title: 'Complete Manufacturing',
+        description: 'Full-service facility with laser cutting, CNC machining, welding, assembly, and surface treatment capabilities.',
+      },
+      {
+        title: 'Engineering Support',
+        description: 'Central engineering team providing design consultation, process optimization, and technical support.',
+      },
+      {
+        title: 'Quality Laboratory',
+        description: 'Comprehensive metrology and testing facilities with coordinate measuring machines and materials testing.',
+      },
+      {
+        title: 'Project Management',
+        description: 'Dedicated project management team coordinating complex projects and ensuring timely delivery.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'France manufacturing facility',
+    }}
+  />
+
+  <!-- Slovakia Facility Contact -->
+  <Features2
+    tagline="Slovakia Production Hub"
+    title="Central European Manufacturing"
+    subtitle="Modern facility serving Central and Eastern European markets with specialized capabilities"
+    items={[
+      {
+        title: 'Automated Production',
+        description: 'Highly automated production lines optimized for series manufacturing and consistent quality.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Railway Expertise',
+        description: 'Specialized capabilities for railway industry components with EN 15085-2 certification.',
+        icon: 'tabler:train',
+      },
+      {
+        title: 'Cost Optimization',
+        description: 'Competitive manufacturing costs while maintaining European quality standards and certifications.',
+        icon: 'tabler:trending-down',
+      },
+      {
+        title: 'Market Access',
+        description: 'Strategic location providing optimal access to Central and Eastern European markets.',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+
+  <!-- Contact Information -->
+  <Features
+    tagline="Contact Information"
+    title="Reach Our Expert Teams"
+    subtitle="Direct contact information for our facilities and specialized departments"
+    items={[
+      {
+        title: 'Sales & Quotes',
+        description: 'Commercial team for project inquiries, quotes, and business development discussions.',
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: 'Technical Support',
+        description: 'Engineering team for technical discussions, design consultation, and process optimization.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Quality Assurance',
+        description: 'Quality team for certification discussions, compliance requirements, and quality standards.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Customer Service',
+        description: 'Dedicated customer service for order status, delivery coordination, and general inquiries.',
+        icon: 'tabler:headset',
+      },
+    ]}
+  />
+
+  <!-- Contact Form -->
+  <Contact
+    id="contact-form"
+    title="Send Us a Message"
+    subtitle="Complete the form below and our team will respond within 24 hours with detailed information about your project"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Full Name',
+        autocomplete: 'name',
+        placeholder: 'Your name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email Address',
+        autocomplete: 'email',
+        placeholder: 'your.email@company.com',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company',
+        autocomplete: 'organization',
+        placeholder: 'Your company name',
+      },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone Number',
+        autocomplete: 'tel',
+        placeholder: '+33 1 23 45 67 89',
+      },
+    ]}
+    textarea={{
+      label: 'Project Details',
+      name: 'message',
+      placeholder: 'Please describe your project requirements, materials, quantities, specifications, and timeline. Include any drawings or technical documents you can share.',
+      rows: 6,
+    }}
+    disclaimer={{
+      label: 'Privacy Notice: Your information will be used solely for responding to your inquiry and will not be shared with third parties. We typically respond within 24 hours during business days.',
+    }}
+    description="All fields are required. Include as much detail as possible about your project to help us provide the most accurate information and quote."
+  />
+
+  <!-- Business Hours & Response Times -->
+  <Features2
+    tagline="Business Information"
+    title="Hours & Response Times"
+    subtitle="When you can reach us and what to expect for response times"
+    items={[
+      {
+        title: 'Business Hours',
+        description: 'Monday to Friday: 8:00 AM - 6:00 PM CET. Extended hours available for urgent projects and technical support.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Quote Response',
+        description: 'Standard quotes provided within 24-48 hours. Complex projects may require additional time for thorough analysis.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'Technical Support',
+        description: 'Technical questions answered within 4-8 hours during business days. Emergency technical support available.',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Project Updates',
+        description: 'Regular project status updates provided. Dedicated project managers available for large projects.',
+        icon: 'tabler:progress',
+      },
+    ]}
+  />
+
+  <!-- Additional Services -->
+  <Content
+    tagline="Additional Services"
+    title="Comprehensive Support Services"
+    subtitle="Beyond manufacturing - supporting your complete project success"
+    isReversed
+    items={[
+      {
+        title: 'Design Consultation',
+        description: 'Engineering support for design optimization, manufacturability analysis, and cost reduction opportunities.',
+      },
+      {
+        title: 'Material Sourcing',
+        description: 'Strategic material procurement with certified suppliers ensuring quality and competitive pricing.',
+      },
+      {
+        title: 'Logistics Coordination',
+        description: 'Complete logistics management including packaging, shipping coordination, and delivery scheduling.',
+      },
+      {
+        title: 'After-Sales Support',
+        description: 'Ongoing support for maintenance, spare parts, modifications, and additional manufacturing requirements.',
+      },
+    ]}
+    image={{
+      src: facility,
+      alt: 'Comprehensive manufacturing support',
+    }}
+  />
+
+  <!-- Emergency Contact -->
+  <Features
+    tagline="Emergency Support"
+    title="Urgent Project Support"
+    subtitle="When you need immediate assistance for critical manufacturing requirements"
+    items={[
+      {
+        title: 'Rush Orders',
+        description: 'Emergency production capabilities for urgent requirements with expedited processing and delivery.',
+        icon: 'tabler:clock-bolt',
+      },
+      {
+        title: 'Technical Emergencies',
+        description: '24/7 technical support availability for critical manufacturing issues and problem resolution.',
+        icon: 'tabler:phone-call',
+      },
+      {
+        title: 'Quality Issues',
+        description: 'Immediate response for quality concerns with dedicated quality engineers and rapid resolution protocols.',
+        icon: 'tabler:alert-triangle',
+      },
+      {
+        title: 'Supply Chain Support',
+        description: 'Emergency supply chain solutions for critical components and time-sensitive delivery requirements.',
+        icon: 'tabler:truck-delivery',
+      },
+    ]}
+  />
 </Layout>

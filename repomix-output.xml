@@ -43,6 +43,8 @@ The content is organized as follows:
 </file_summary>
 
 <directory_structure>
+.claude/
+  settings.local.json
 content/
   pages/
     contact-content.md
@@ -261,6 +263,17 @@ website_crawler.py
 
 <files>
 This section contains the contents of the repository's files.
+
+<file path=".claude/settings.local.json">
+{
+  "permissions": {
+    "allow": [
+      "Bash(rg:*)"
+    ],
+    "deny": []
+  }
+}
+</file>
 
 <file path="content/pages/contact-content.md">
 # Contact Content - Aries Manufacturing
@@ -3972,7 +3985,7 @@ const metadata = {
       {
         title: 'Supplier Development',
         description: 'Supporting supplier capability development and sustainability initiatives throughout our value chain.',
-        icon: 'tabler:handshake',
+        icon: 'tabler:heart-handshake',
       },
       {
         title: 'Stakeholder Value',
@@ -4185,7 +4198,7 @@ const metadata = {
         variant: 'secondary',
         text: 'Discuss Sustainability Partnership',
         href: '/contact',
-        icon: 'tabler:handshake',
+        icon: 'tabler:heart-handshake',
       },
     ]}
   />
@@ -4302,6 +4315,7 @@ const metadata = {
     image={{
       src: '/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg',
       alt: 'Aries manufacturing facility',
+      inferSize: true,
     }}
   />
 
@@ -4360,6 +4374,7 @@ const metadata = {
     image={{
       src: '/images/robot-welding-1.jpg',
       alt: 'Robotic welding system',
+      inferSize: true,
     }}
   />
 
@@ -4826,7 +4841,7 @@ const metadata = {
       {
         title: 'Partnership Approach',
         description: 'Long-term partnership mindset focused on customer success and mutual growth.',
-        icon: 'tabler:handshake',
+        icon: 'tabler:heart-handshake',
       },
     ]}
   />
@@ -5990,6 +6005,7 @@ const metadata = {
     image={{
       src: '/images/robot-welding-1.jpg',
       alt: 'Advanced robotic welding system',
+      inferSize: true,
     }}
   />
 
@@ -6062,6 +6078,7 @@ const metadata = {
     image={{
       src: '/images/machining-1.jpg',
       alt: 'Advanced CNC machining center',
+      inferSize: true,
     }}
   />
 
@@ -6121,6 +6138,7 @@ const metadata = {
     image={{
       src: '/images/engineering-1.jpg',
       alt: 'Engineering workstation with CAD/CAM systems',
+      inferSize: true,
     }}
   />
 
@@ -6179,6 +6197,7 @@ const metadata = {
     image={{
       src: '/images/assembly-1.jpg',
       alt: 'Digital manufacturing control systems',
+      inferSize: true,
     }}
   />
 
@@ -6238,6 +6257,7 @@ const metadata = {
     image={{
       src: '/images/bending.jpg',
       alt: 'R&D laboratory and testing facility',
+      inferSize: true,
     }}
   />
 
@@ -6307,6 +6327,7 @@ const metadata = {
     image={{
       src: '/images/cutting-1.jpg',
       alt: 'Future manufacturing technology concept',
+      inferSize: true,
     }}
   />
 

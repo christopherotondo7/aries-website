@@ -10,7 +10,7 @@
 ## Key Statistics
 - **€42M** Annual Turnover
 - **275** Employees
-- **2** Production Sites (France & Slovakia)
+- **3** Production Sites (France & Slovakia)
 - **65+** Years of Experience (Since 1956)
 
 ---
