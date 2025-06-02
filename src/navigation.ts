@@ -74,7 +74,7 @@ export const footerData = {
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: '#' },
-    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:contact@aries1.fr' },
+    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:marketing@aries1.fr' },
   ],
   footNote: `
     © ${new Date().getFullYear()} Aries Group. All rights reserved. European leader in sheet metal processing.

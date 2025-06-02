@@ -1,5 +1,5 @@
 site:
-  name: Aries Manufacturing
+  name: Aries Group
   site: 'https://astrocms.aries1.fr'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Aries Manufacturing
-    template: '%s — Aries Manufacturing'
+    default: Aries Group
+    template: '%s — Aries Group'
   description: "European precision manufacturing since 1956. Custom metal components, laser cutting, CNC machining, welding, and assembly services. ISO certified facilities in France and Slovakia."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Aries Manufacturing
+    site_name: Aries Group
     images:
       - url: '~/assets/images/default.png'
         width: 1200

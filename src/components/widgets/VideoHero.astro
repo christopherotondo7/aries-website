@@ -41,24 +41,28 @@ const hasMedia = !!(video?.src || image?.src);
       <!-- Poster image as background while video loads -->
       {video.poster && (
         <div 
-          class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-10 transition-opacity duration-1000"
           style={`background-image: url('${video.poster}')`}
+          id="video-poster"
         ></div>
       )}
       <video
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover z-20 opacity-0 transition-opacity duration-1000"
         autoplay
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="auto"
         poster={video.poster}
+        id="hero-video"
+        onloadeddata="this.style.opacity = '1'; document.getElementById('video-poster')?.style.setProperty('opacity', '0')"
+        oncanplay="this.style.opacity = '1'; document.getElementById('video-poster')?.style.setProperty('opacity', '0')"
       >
         <source src={video.src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <!-- Dark overlay for better text readability -->
-      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="absolute inset-0 bg-black bg-opacity-40 z-30"></div>
     </div>
   )}
 
@@ -122,9 +126,66 @@ const hasMedia = !!(video?.src || image?.src);
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-40">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
     </svg>
   </div>
 </section>
+
+<!-- Enhanced video loading script -->
+{video?.src && (
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('hero-video');
+      const poster = document.getElementById('video-poster');
+      
+      if (!video) return;
+      
+      // Enhanced loading states
+      let videoLoaded = false;
+      
+      // Handle video load success
+      function handleVideoLoad() {
+        if (!videoLoaded) {
+          videoLoaded = true;
+          video.style.opacity = '1';
+          if (poster) {
+            poster.style.opacity = '0';
+          }
+        }
+      }
+      
+      // Multiple event listeners for better compatibility
+      video.addEventListener('canplay', handleVideoLoad);
+      video.addEventListener('loadeddata', handleVideoLoad);
+      video.addEventListener('loadedmetadata', handleVideoLoad);
+      
+      // Fallback timeout - if video doesn't load in 5 seconds, fade out poster anyway
+      setTimeout(function() {
+        if (!videoLoaded && poster) {
+          poster.style.opacity = '0.3'; // Keep some poster visibility if video fails
+        }
+      }, 5000);
+      
+      // Handle video error - keep poster visible
+      video.addEventListener('error', function() {
+        console.warn('Video failed to load, using poster image');
+        if (poster) {
+          poster.style.opacity = '1';
+        }
+      });
+      
+      // Optimize for slow connections
+      if (navigator.connection && navigator.connection.effectiveType) {
+        const connection = navigator.connection.effectiveType;
+        if (connection === 'slow-2g' || connection === '2g') {
+          // On very slow connections, don't auto-hide poster
+          if (poster) {
+            poster.style.opacity = '0.7';
+          }
+        }
+      }
+    });
+  </script>
+)}
