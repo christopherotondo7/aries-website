@@ -4,13 +4,19 @@ import VideoHero from '~/components/widgets/VideoHero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
 import FeaturesClickable from '~/components/widgets/FeaturesClickable.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Features4 from '~/components/widgets/Features4.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import CardGrid from '~/components/widgets/CardGrid.astro';
+import ProductSlider2 from '~/components/widgets/ProductSlider2.astro';
 
 import robotWelding from '~/assets/images/robot-welding-1.jpg';
 import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
+import bending from '~/assets/images/bending.jpg';
+import assembly1 from '~/assets/images/assembly-1.jpg';
+import machining1 from '~/assets/images/machining-1.jpg';
+import cutting1 from '~/assets/images/cutting-1.jpg';
+import manualWelding from '~/assets/images/manual-welding.jpg';
+import heroImage from '~/assets/images/hero-image.png';
 
 const metadata = {
   title: 'Aries - European Manufacturer of High-Precision Metal Components',
@@ -47,10 +53,10 @@ const metadata = {
   <VideoHero
     video={{
       src: "/video aries.mp4",
-      poster: "/images/hero-image.png"
+      poster: heroImage
     }}
     image={{
-      src: "/images/hero-image.png",
+      src: heroImage,
       alt: "Aries manufacturing facility"
     }}
     tagline="European Manufacturing Excellence"
@@ -82,74 +88,102 @@ const metadata = {
     ]}
   />
 
-  <!-- Products Section -->
-  <CardGrid
-    id="products"
-    tagline="Products & Markets"
+  <!-- Market Section -->
+  <ProductSlider2
+    id="markets"
+    tagline="End-Markets"
     title="Serving Diverse Industries"
     subtitle="Aries Group delivers tailored sheet metal solutions across Europe for various industries."
-    columns={3}
-    items={[
+    slides={[
       {
         title: 'Agriculture Equipment',
         description: 'Durable components for agricultural machinery, implements and equipment designed for harsh environments.',
-        image: '/images/bending.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/railway',
+        image: {
+          src: bending,
+          alt: 'Agriculture equipment components',
         },
-        tags: ['Certified', 'EN 15085-2'],
-        isHighlighted: true,
+        imagePosition: 'right',
+        gradient: 'from-green-600 via-emerald-600 to-teal-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/agriculture',
+          variant: 'primary',
+        },
       },
       {
         title: 'Building & Construction',
         description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork for construction projects.',
-        image: '/images/assembly-1.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/construction',
+        image: {
+          src: assembly1,
+          alt: 'Building and construction components',
         },
-        tags: ['Structures', 'Architecture'],
+        imagePosition: 'left',
+        gradient: 'from-slate-600 via-gray-600 to-zinc-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/construction',
+          variant: 'primary',
+        },
       },
       {
         title: 'Industrial Machinery',
         description: 'Custom machinery components, equipment manufacturing, spare parts and small to medium production series.',
-        image: '/images/machining-1.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/machinery',
+        image: {
+          src: machining1,
+          alt: 'Industrial machinery components',
         },
-        tags: ['Custom', 'Series Production'],
+        imagePosition: 'right',
+        gradient: 'from-blue-600 via-indigo-600 to-purple-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/machinery',
+          variant: 'primary',
+        },
       },
       {
         title: 'Recycling & Environment',
         description: 'Recycling equipment, waste management solutions and environmental technology components.',
-        image: '/images/cutting-1.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/energy',
+        image: {
+          src: cutting1,
+          alt: 'Recycling and environmental components',
         },
-        tags: ['Renewable', 'Sustainable'],
+        imagePosition: 'left',
+        gradient: 'from-emerald-600 via-green-600 to-lime-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/recycling',
+          variant: 'primary',
+        },
       },
       {
         title: 'Logistics & Material Handling',
         description: 'Precision components for material handling, storage systems, conveyor systems and logistics solutions.',
-        image: '/images/robot-welding-1.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/automotive',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
         },
-        tags: ['Precision', 'OEM'],
+        imagePosition: 'right',
+        gradient: 'from-orange-600 via-red-600 to-pink-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/logistics',
+          variant: 'primary',
+        },
       },
       {
-        title: 'Outdoor furniture',
+        title: 'Outdoor Furniture',
         description: 'High-quality metal furniture for public spaces, parks and outdoor environments, combining durability and design.',
-        image: '/images/manual-welding.jpg',
-        callToAction: {
-          text: 'Learn More',
-          href: '/industries/agriculture',
+        image: {
+          src: manualWelding,
+          alt: 'Outdoor furniture components',
         },
-        tags: ['Durable', 'Heavy-Duty'],
+        imagePosition: 'left',
+        gradient: 'from-violet-600 via-purple-600 to-fuchsia-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/furniture',
+          variant: 'primary',
+        },
       },
     ]}
   />
@@ -211,18 +245,8 @@ const metadata = {
       },
     ]}
   />
-  
-  <!-- CTA Button for Technology Page -->
-  <div class="text-center mt-8 mb-16">
-    <a href="/technology" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary/90 transition duration-150 ease-in-out">
-      Discover our Technologies
-      <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-      </svg>
-    </a>
-  </div>
 
-  <!-- Technology Highlight -->
+  <!-- Technology Highlight
   <Content
     tagline="Industry 4.0"
     title="Advanced Manufacturing Technology"
@@ -249,9 +273,9 @@ const metadata = {
       src: robotWelding,
       alt: 'Robotic welding system',
     }}
-  />
+  /> -->
 
-  <!-- Company Values -->
+  <!-- Company Values
   <Content
     tagline="Our Values"
     title="Partnership. Innovation. Excellence."
@@ -283,7 +307,149 @@ const metadata = {
       src: facility,
       alt: 'Aries manufacturing facility',
     }}
+  /> -->
+
+  <!-- Material Expertise with Images -->
+  <Features4
+    tagline="Material Expertise"
+    title="Advanced Material Processing"
+    subtitle="Comprehensive capabilities across diverse material types and specifications"
+    columns={2}
+    items={[
+      {
+        title: 'Carbon Steel',
+        description: 'Standard and high-strength carbon steels for structural and general engineering applications.',
+        image: {
+          src: cutting1,
+          alt: 'Carbon steel cutting process',
+        },
+      },
+      {
+        title: 'Stainless Steel',
+        description: 'All grades of stainless steel including austenitic, ferritic, and duplex grades for demanding environments.',
+        image: {
+          src: robotWelding,
+          alt: 'Stainless steel welding',
+        },
+      },
+      {
+        title: 'Aluminum Alloys',
+        description: 'Lightweight aluminum alloys for aerospace, automotive, and architectural applications.',
+        image: {
+          src: machining1,
+          alt: 'Aluminum machining process',
+        },
+      },
+      {
+        title: 'Specialty Alloys',
+        description: 'Exotic materials including Inconel, Hastelloy, and other high-performance alloys for extreme conditions.',
+        image: {
+          src: assembly1,
+          alt: 'Specialty alloy assembly',
+        },
+      },
+    ]}
   />
+
+  <!-- Market Section
+  <ProductSlider
+    id="markets"
+    tagline="End-Markets"
+    title="Serving Diverse Industries"
+    subtitle="Aries Group delivers tailored sheet metal solutions across Europe for various industries."
+    slides={[
+      {
+        title: 'Agriculture Equipment',
+        description: 'Durable components for agricultural machinery, implements and equipment designed for harsh environments.',
+        image: {
+          src: bending,
+          alt: 'Agriculture equipment components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-green-600 via-emerald-600 to-teal-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/agriculture',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Building & Construction',
+        description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork for construction projects.',
+        image: {
+          src: assembly1,
+          alt: 'Building and construction components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-slate-600 via-gray-600 to-zinc-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/construction',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Industrial Machinery',
+        description: 'Custom machinery components, equipment manufacturing, spare parts and small to medium production series.',
+        image: {
+          src: machining1,
+          alt: 'Industrial machinery components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-blue-600 via-indigo-600 to-purple-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/machinery',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Recycling & Environment',
+        description: 'Recycling equipment, waste management solutions and environmental technology components.',
+        image: {
+          src: cutting1,
+          alt: 'Recycling and environmental components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-emerald-600 via-green-600 to-lime-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/recycling',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Logistics & Material Handling',
+        description: 'Precision components for material handling, storage systems, conveyor systems and logistics solutions.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-orange-600 via-red-600 to-pink-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/logistics',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Outdoor Furniture',
+        description: 'High-quality metal furniture for public spaces, parks and outdoor environments, combining durability and design.',
+        image: {
+          src: manualWelding,
+          alt: 'Outdoor furniture components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-violet-600 via-purple-600 to-fuchsia-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/furniture',
+          variant: 'primary',
+        },
+      },
+    ]}
+  /> -->
 
   <!-- CTA Button for Production Sites Page -->
   <div class="text-center mt-8 mb-16">

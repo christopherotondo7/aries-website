@@ -1,0 +1,107 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
+import type { Features as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+  forceDark = false,
+  imageRounded = false,
+  
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const actualIsDark = forceDark || isDark;
+---
+
+<WidgetWrapper 
+  id={id} 
+  isDark={actualIsDark} 
+  containerClass={`max-w-7xl ${classes?.container ?? ''} ${forceDark ? 'dark-theme-forced' : ''}`} 
+  bg={bg}
+>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+  
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+    {
+      items &&
+        items.map(({ title: itemTitle, description, icon, image, href, linkText = 'En savoir plus' }) => (
+          <div class="group">
+            <div class="flex flex-col h-full">
+              {(icon || image) && (
+                <div class={image ? "mb-2 md:mb-3 lg:mb-2" : "mb-6"}>
+                  {image ? (
+                    <div class={`w-full h-48 overflow-hidden ${imageRounded ? 'rounded-lg' : ''}`}>
+                      <Image
+                        src={image.src}
+                        alt={image.alt || itemTitle}
+                        width={300}
+                        height={192}
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : icon ? (
+                    <div class={`w-16 h-16 rounded-lg flex items-center justify-center ${
+                      forceDark 
+                        ? 'bg-blue-500 text-white' 
+                        : 'bg-blue-500 dark:bg-blue-600 text-white'
+                    }`}>
+                      <Fragment set:html={icon} />
+                    </div>
+                  ) : null}
+                </div>
+              )}
+              
+              <h3 class={`text-xl font-semibold mb-4 ${
+                forceDark 
+                  ? 'text-white' 
+                  : 'text-gray-900 dark:text-white'
+              }`}>
+                {itemTitle}
+              </h3>
+              
+              {description && (
+                <p class={`mb-6 flex-grow leading-relaxed ${
+                  forceDark 
+                    ? 'text-gray-300' 
+                    : 'text-gray-600 dark:text-gray-300'
+                }`}>
+                  {description}
+                </p>
+              )}
+              
+              {href && (
+                <a 
+                  href={href}
+                  class={`inline-flex items-center transition-colors duration-200 font-medium ${
+                    forceDark 
+                      ? 'text-blue-400 hover:text-blue-300' 
+                      : 'text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300'
+                  }`}
+                >
+                  {linkText}
+                  <svg class="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+    }
+  </div>
+</WidgetWrapper>
+
+<style>
+  .dark-theme-forced {
+    background: #1e293b !important;
+    color: white !important;
+  }
+</style>
