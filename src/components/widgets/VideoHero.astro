@@ -38,12 +38,20 @@ const hasMedia = !!(video?.src || image?.src);
   <!-- Video Background -->
   {video?.src && (
     <div class="absolute inset-0 w-full h-full">
+      <!-- Poster image as background while video loads -->
+      {video.poster && (
+        <div 
+          class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={`background-image: url('${video.poster}')`}
+        ></div>
+      )}
       <video
         class="absolute inset-0 w-full h-full object-cover"
         autoplay
         muted
         loop
         playsinline
+        preload="metadata"
         poster={video.poster}
       >
         <source src={video.src} type="video/mp4" />
