@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import VideoHero from '~/components/widgets/VideoHero.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
+import FeaturesClickable from '~/components/widgets/FeaturesClickable.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
@@ -154,7 +155,7 @@ const metadata = {
   />
 
   <!-- Services Overview -->
-  <Features
+  <FeaturesClickable
     id="services"
     tagline="Our Capabilities"
     title="Complete Manufacturing Solutions"
@@ -164,41 +165,49 @@ const metadata = {
         title: 'High-Precision Cutting',
         description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL Oxy/Plasma cutting tables for maximum efficiency.',
         icon: 'tabler:circle-dashed',
+        href: '/services/cutting',
       },
       {
         title: 'Cutting Finition',
         description: 'Precision deburring, edge rounding, flatening and sandblasting for all laser/oxy/plasma cut parts, ensuring optimal quality and safety.',
         icon: 'tabler:sparkles',
+        href: '/services/cutting-finition',
       },
       {
         title: 'Bending & Forming',
         description: 'Advanced CNC bending machines for complex shapes and high precision forming operations.',
         icon: 'tabler:border-corner-pill',
+        href: '/services/bending',
       },
       {
         title: 'Multi-Axis CNC Machining',
         description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
         icon: 'tabler:arrows-maximize',
+        href: '/services/machining',
       },
       {
         title: 'Manual & Robotic Welding',
         description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
         icon: 'tabler:bolt',
+        href: '/services/welding',
       },
       {
         title: 'Painting & Surface Treatment',
         description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
         icon: 'tabler:brush',
+        href: '/services/painting',
       },
       {
         title: 'Assembly',
         description: 'Complete mechanical assembly, including sub-assemblies, electro-mechanical and hydraulic assemblies as well as final assembly and quality control.',
         icon: 'tabler:tool',
+        href: '/services/assembly',
       },
       {
         title: 'Logistics',
         description: 'Logistics solutions, including packaging, kanban systems inventory management, and transportation rack design.',
         icon: 'tabler:package',
+        href: '/services/logistics',
       },
     ]}
   />
@@ -288,6 +297,7 @@ const metadata = {
 
   <!-- Certifications -->
   <Features
+    isDark={true}
     id="certifications"
     tagline="Quality Assurance"
     title="Certified Excellence"

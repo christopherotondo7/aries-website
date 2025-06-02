@@ -5,10 +5,12 @@ import PortfolioGallery from '~/components/widgets/PortfolioGallery.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
+import FeaturesWithImages from '~/components/widgets/FeaturesWithImages.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 
 import assembly from '~/assets/images/assembly-1.jpg';
+import manufacturing from '~/assets/images/recycling-bins-galva-steel.JPG';
 
 const metadata = {
   title: 'Products & Market Sectors | Aries Manufacturing',
@@ -176,6 +178,7 @@ const metadata = {
 
   <!-- Product Categories -->
   <Features
+    isDark={true}
     tagline="Product Categories"
     title="Comprehensive Component Range"
     subtitle="Complete spectrum of metal components from simple brackets to complex assemblies"
@@ -226,33 +229,42 @@ const metadata = {
         description: 'Design collaboration and engineering support for optimal manufacturability and cost effectiveness.',
       },
     ]}
+    image={{
+      src: manufacturing,
+      alt: 'Professional manufacturing services',
+    }}
   />
 
-  <!-- Material Expertise -->
-  <Features2
+  <!-- Material Expertise with Images -->
+  <FeaturesWithImages
     tagline="Material Expertise"
     title="Advanced Material Processing"
     subtitle="Comprehensive capabilities across diverse material types and specifications"
+    columns={2}
     items={[
       {
         title: 'Carbon Steel',
         description: 'Standard and high-strength carbon steels for structural and general engineering applications.',
-        icon: 'tabler:building-bridge',
+        image: '/images/cutting-1.jpg',
+        alt: 'Carbon steel cutting process',
       },
       {
         title: 'Stainless Steel',
         description: 'All grades of stainless steel including austenitic, ferritic, and duplex grades for demanding environments.',
-        icon: 'tabler:shield',
+        image: '/images/robot-welding-1.jpg',
+        alt: 'Stainless steel welding',
       },
       {
         title: 'Aluminum Alloys',
         description: 'Lightweight aluminum alloys for aerospace, automotive, and architectural applications.',
-        icon: 'tabler:plane',
+        image: '/images/machining-1.jpg',
+        alt: 'Aluminum machining process',
       },
       {
         title: 'Specialty Alloys',
         description: 'Exotic materials including Inconel, Hastelloy, and other high-performance alloys for extreme conditions.',
-        icon: 'tabler:atom',
+        image: '/images/assembly-1.jpg',
+        alt: 'Specialty alloy assembly',
       },
     ]}
   />

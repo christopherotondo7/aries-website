@@ -139,6 +139,16 @@ export interface Item {
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
+  href?: string;
+}
+
+export interface ItemWithImage {
+  title?: string;
+  description?: string;
+  image?: Image | string;
+  alt?: string;
+  classes?: Record<string, string>;
+  callToAction?: CallToAction;
 }
 
 export interface Price {
@@ -193,6 +203,19 @@ export interface ItemGrid {
   items?: Array<Item>;
   columns?: number;
   defaultIcon?: string;
+  classes?: Record<string, string>;
+}
+
+export interface ItemGridClickable {
+  items?: Array<Item>;
+  columns?: number;
+  defaultIcon?: string;
+  classes?: Record<string, string>;
+}
+
+export interface ItemGridWithImages {
+  items?: Array<ItemWithImage>;
+  columns?: number;
   classes?: Record<string, string>;
 }
 
@@ -252,6 +275,24 @@ export interface Features extends Omit<Headline, 'classes'>, Widget {
   isReversed?: boolean;
   isBeforeContent?: boolean;
   isAfterContent?: boolean;
+}
+
+export interface FeaturesClickable extends Omit<Headline, 'classes'>, Widget {
+  image?: string | unknown;
+  video?: Video;
+  items?: Array<Item>;
+  columns?: number;
+  defaultIcon?: string;
+  callToAction1?: CallToAction;
+  callToAction2?: CallToAction;
+  isReversed?: boolean;
+  isBeforeContent?: boolean;
+  isAfterContent?: boolean;
+}
+
+export interface FeaturesWithImages extends Omit<Headline, 'classes'>, Widget {
+  items?: Array<ItemWithImage>;
+  columns?: number;
 }
 
 export interface Faqs extends Omit<Headline, 'classes'>, Widget {
