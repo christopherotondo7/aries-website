@@ -1,0 +1,119 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Image from '~/components/common/Image.astro';
+
+export interface ProductItem {
+  title: string;
+  description?: string;
+  image: string;
+  category?: string;
+}
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  items?: Array<ProductItem>;
+  columns?: number;
+  imageAspectRatio?: string;
+  showCategories?: boolean;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+  bg?: string;
+}
+
+const {
+  id,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+  columns = 4,
+  imageAspectRatio = 'aspect-[4/3]',
+  showCategories = false,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+  5: 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5',
+  6: 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6',
+};
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+  
+  <div class={`grid grid-cols-1 gap-6 sm:gap-8 ${gridCols[columns] || 'md:grid-cols-2 lg:grid-cols-4'}`}>
+    {items.map((item) => (
+      <div class="group relative overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class={`relative overflow-hidden ${imageAspectRatio}`}>
+          <Image
+            src={item.image}
+            alt={item.title}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            widths={[300, 600]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            loading="lazy"
+          />
+          
+          {/* Overlay */}
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          
+          {/* Category Badge */}
+          {showCategories && item.category && (
+            <div class="absolute top-3 left-3">
+              <span class="px-2 py-1 text-xs font-medium bg-primary text-white rounded-full">
+                {item.category}
+              </span>
+            </div>
+          )}
+        </div>
+        
+        {/* Content */}
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
+            {item.title}
+          </h3>
+          {item.description && (
+            <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
+              {item.description}
+            </p>
+          )}
+        </div>
+        
+        {/* Hover overlay content */}
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="text-center text-white p-4">
+            <h4 class="text-lg font-bold mb-2">{item.title}</h4>
+            {item.description && (
+              <p class="text-sm opacity-90">{item.description}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</WidgetWrapper>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

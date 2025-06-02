@@ -1,17 +1,14 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import PortfolioGallery from '~/components/widgets/PortfolioGallery.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-import Content from '~/components/widgets/Content.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
 
 import assembly from '~/assets/images/assembly-1.jpg';
-import machining from '~/assets/images/machining-1.jpg';
-import cutting from '~/assets/images/cutting-1.jpg';
-import welding from '~/assets/images/WELDING.jpg';
 
 const metadata = {
   title: 'Products & Market Sectors | Aries Manufacturing',
@@ -20,187 +17,159 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Section -->
-  <Hero
-    tagline="Products & Solutions"
-    title="Precision Metal Components"
-    subtitle="Custom engineered solutions from prototypes to series production serving demanding industrial applications across Europe"
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Request Quote',
-        href: '/contact',
-        icon: 'tabler:file-text',
-      },
-      {
-        variant: 'secondary',
-        text: 'View Sectors',
-        href: '#sectors',
-        icon: 'tabler:arrow-down',
-      },
-    ]}
-    image={{
-      src: assembly,
-      alt: 'Precision metal assemblies',
-    }}
-  />
 
-  <!-- Product Overview Stats -->
-  <Stats
-    title="Product Excellence"
-    subtitle="Delivering precision components across diverse industrial applications"
-    stats={[
-      { amount: '4', title: 'Key Market Sectors' },
-      { amount: '1000+', title: 'Component Types' },
-      { amount: '50+', title: 'Years Expertise' },
-      { amount: '100%', title: 'Custom Solutions' },
+  <!-- Portfolio Gallery with Category Filter -->
+  <PortfolioGallery
+    tagline="Our Products"
+    title="Product Portfolio by Market Sector"
+    subtitle="Explore our comprehensive range of precision metal components across diverse industry applications"
+    columns={3}
+    categories={[
+      { label: 'All', value: 'all' },
+      { label: 'Agriculture', value: 'agriculture' },
+      { label: 'Construction', value: 'construction' },
+      { label: 'Industrial', value: 'industrial' },
+      { label: 'Environment', value: 'environment' },
+      { label: 'Logistics', value: 'logistics' },
+      { label: 'Furniture', value: 'furniture' },
     ]}
-  />
-
-  <!-- Market Sectors -->
-  <Features
-    id="sectors"
-    tagline="Market Sectors"
-    title="Specialized Industry Solutions"
-    subtitle="Expertise across diverse industrial sectors with specialized requirements and certifications"
     items={[
+      // Agriculture Equipment
       {
-        title: 'Railway Industry',
-        description: 'Certified components for rolling stock including chassis, sub-assemblies, and safety-critical parts meeting EN 15085-2 standards.',
-        icon: 'tabler:train',
+        image: '/images/bending.jpg',
+        title: 'Tractor Components',
+        subtitle: 'Heavy-duty brackets and frames',
+        category: 'agriculture',
       },
       {
-        title: 'Building & Construction',
-        description: 'Structural components, architectural metalwork, railings, staircases, and prefabricated building elements.',
-        icon: 'tabler:building',
+        image: '/images/cutting-1.jpg',
+        title: 'Harvester Parts',
+        subtitle: 'Precision-cut components',
+        category: 'agriculture',
       },
       {
-        title: 'General Industry',
-        description: 'Custom machinery components, equipment housings, brackets, and specialized parts for diverse applications.',
-        icon: 'tabler:settings',
+        image: '/images/assembly-1.jpg',
+        title: 'Implement Frames',
+        subtitle: 'Robust welded structures',
+        category: 'agriculture',
       },
       {
-        title: 'Energy & Environment',
-        description: 'Wind turbine components, energy equipment, and environmental technology solutions for sustainable applications.',
-        icon: 'tabler:wind',
+        image: '/images/WhatsApp Image 2024-06-04 at 09.56.05.jpeg',
+        title: 'Agricultural Tools',
+        subtitle: 'Custom farming equipment',
+        category: 'agriculture',
       },
-    ]}
-  />
-
-  <!-- Railway Products -->
-  <Content
-    tagline="Railway Sector"
-    title="Railway Industry Components"
-    subtitle="EN 15085-2 certified manufacturing for safety-critical railway applications"
-    items={[
+      
+      // Construction
       {
-        title: 'Chassis Components',
-        description: 'Precision chassis parts including frames, brackets, and mounting systems with complete welding certification.',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg',
+        title: 'Structural Steel Components',
+        subtitle: 'Beams, columns, and connection systems',
+        category: 'construction',
       },
       {
-        title: 'Sub-Assemblies',
-        description: 'Complex mechanical assemblies including bogies, couplers, and specialized railway equipment components.',
-      },
-      {
-        title: 'Safety Systems',
-        description: 'Critical safety components with full traceability and certification documentation for railway applications.',
-      },
-      {
-        title: 'Custom Solutions',
-        description: 'Engineered solutions for unique railway requirements including prototyping and series production.',
-      },
-    ]}
-    image={{
-      src: welding,
-      alt: 'Railway component manufacturing',
-    }}
-  />
-
-  <!-- Construction Products -->
-  <Features2
-    tagline="Construction Sector"
-    title="Building & Construction Solutions"
-    subtitle="Structural and architectural metalwork for modern construction projects"
-    items={[
-      {
-        title: 'Structural Steel',
-        description: 'Precision-cut and welded structural components including beams, columns, and connection systems.',
-        icon: 'tabler:building-bridge',
-      },
-      {
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.29.jpeg',
         title: 'Architectural Metalwork',
-        description: 'Custom designed facades, cladding systems, and decorative elements with superior finish quality.',
-        icon: 'tabler:building-arch',
+        subtitle: 'Custom facades and cladding systems',
+        category: 'construction',
       },
       {
-        title: 'Railings & Staircases',
-        description: 'Safety railings, handrails, and staircase systems meeting building codes and safety requirements.',
-        icon: 'tabler:stairs',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.30.jpeg',
+        title: 'Safety Railings & Staircases',
+        subtitle: 'Code-compliant safety systems',
+        category: 'construction',
+      },
+      
+      // Industrial Machinery
+      {
+        image: '/images/machining-1.jpg',
+        title: 'CNC Machined Parts',
+        subtitle: 'High-precision 5-axis components',
+        category: 'industrial',
       },
       {
-        title: 'Prefabricated Elements',
-        description: 'Factory-produced building components for faster construction and consistent quality.',
-        icon: 'tabler:components',
-      },
-    ]}
-  />
-
-  <!-- Industrial Products -->
-  <Content
-    tagline="Industrial Sector"
-    title="General Industry Components"
-    subtitle="Custom engineered solutions for diverse industrial applications"
-    isReversed
-    items={[
-      {
-        title: 'Machinery Components',
-        description: 'Precision components for industrial machinery including housings, brackets, and mechanical assemblies.',
+        image: '/images/robot-welding-1.jpg',
+        title: 'Welded Assemblies',
+        subtitle: 'Complex robotic welding',
+        category: 'industrial',
       },
       {
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.31.jpeg',
         title: 'Equipment Housings',
-        description: 'Protective enclosures and cabinets for electronic and mechanical equipment with precise tolerances.',
+        subtitle: 'Protective enclosures',
+        category: 'industrial',
+      },
+      
+      // Environment & Recycling
+      {
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.32.jpeg',
+        title: 'Waste Processing Equipment',
+        subtitle: 'Heavy-duty sorting machinery',
+        category: 'environment',
       },
       {
-        title: 'Custom Brackets',
-        description: 'Specialized mounting and support brackets designed to customer specifications and requirements.',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.33.jpeg',
+        title: 'Conveyor Systems',
+        subtitle: 'Material handling solutions',
+        category: 'environment',
       },
       {
-        title: 'Spare Parts',
-        description: 'Replacement components and spare parts with reverse engineering capabilities for obsolete parts.',
-      },
-    ]}
-    image={{
-      src: machining,
-      alt: 'Industrial component manufacturing',
-    }}
-  />
-
-  <!-- Energy Products -->
-  <Features3
-    title="Energy & Environment Sector"
-    subtitle="Components for renewable energy and environmental technology applications"
-    tagline="Energy Solutions"
-    columns={2}
-    items={[
-      {
-        title: 'Wind Turbine Components',
-        description: 'Precision components for wind energy systems including nacelle parts and tower internals.',
-        icon: 'tabler:wind',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.34.jpeg',
+        title: 'Environmental Containers',
+        subtitle: 'Durable storage solutions',
+        category: 'environment',
       },
       {
-        title: 'Energy Equipment',
-        description: 'Components for energy generation and distribution equipment with demanding specifications.',
-        icon: 'tabler:bolt',
+        image: '/images/WhatsApp Image 2024-06-04 at 09.56.06.jpeg',
+        title: 'Recycling Equipment',
+        subtitle: 'Sustainable processing systems',
+        category: 'environment',
+      },
+      
+      // Logistics & Material Handling
+      {
+        image: '/images/WhatsApp Image 2024-03-18 at 12.14.35.jpeg',
+        title: 'Storage Racks & Shelving',
+        subtitle: 'Modular warehouse systems',
+        category: 'logistics',
       },
       {
-        title: 'Environmental Systems',
-        description: 'Components for water treatment, air filtration, and waste management systems.',
-        icon: 'tabler:leaf',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.15.00.jpeg',
+        title: 'Conveyor Components',
+        subtitle: 'Automated material handling',
+        category: 'logistics',
       },
       {
-        title: 'Solar Applications',
-        description: 'Mounting systems and structural components for solar panel installations and solar farms.',
-        icon: 'tabler:sun',
+        image: '/images/WhatsApp Image 2024-03-18 at 12.15.02.jpeg',
+        title: 'Lifting Equipment',
+        subtitle: 'Safety-critical crane components',
+        category: 'logistics',
+      },
+      {
+        image: '/images/WhatsApp Image 2024-03-18 at 12.15.03.jpeg',
+        title: 'Transport Solutions',
+        subtitle: 'Custom logistics equipment',
+        category: 'logistics',
+      },
+      
+      // Outdoor Furniture
+      {
+        image: '/images/manual-welding.jpg',
+        title: 'Park Benches',
+        subtitle: 'Weather-resistant public seating',
+        category: 'furniture',
+      },
+      {
+        image: '/images/painting-2.jpg',
+        title: 'Street Furniture',
+        subtitle: 'Urban design elements',
+        category: 'furniture',
+      },
+      {
+        image: '/images/engineering-1.jpg',
+        title: 'Playground Equipment',
+        subtitle: 'Safety-certified components',
+        category: 'furniture',
       },
     ]}
   />
@@ -257,10 +226,6 @@ const metadata = {
         description: 'Design collaboration and engineering support for optimal manufacturability and cost effectiveness.',
       },
     ]}
-    image={{
-      src: cutting,
-      alt: 'Manufacturing capabilities overview',
-    }}
   />
 
   <!-- Material Expertise -->

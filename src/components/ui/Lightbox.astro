@@ -1,0 +1,121 @@
+---
+export interface Props {
+  id?: string;
+}
+
+const { id = 'lightbox' } = Astro.props;
+---
+
+<div id={id} class="lightbox fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
+  <div class="relative max-w-6xl max-h-[90vh] mx-4">
+    <!-- Close button -->
+    <button class="lightbox-close absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 z-10">
+      ×
+    </button>
+    
+    <!-- Previous button -->
+    <button class="lightbox-prev absolute left-4 top-1/2 -translate-y-1/2 text-white text-6xl hover:text-gray-300 z-10 bg-black/30 rounded-full w-16 h-16 flex items-center justify-center">
+      ‹
+    </button>
+    
+    <!-- Next button -->
+    <button class="lightbox-next absolute right-4 top-1/2 -translate-y-1/2 text-white text-6xl hover:text-gray-300 z-10 bg-black/30 rounded-full w-16 h-16 flex items-center justify-center">
+      ›
+    </button>
+    
+    <!-- Image container -->
+    <div class="lightbox-image-container">
+      <img class="lightbox-image max-w-full max-h-[90vh] object-contain" src="" alt="" />
+    </div>
+    
+    <!-- Caption -->
+    <div class="lightbox-caption text-white text-center mt-4 text-lg">
+      <h3 class="lightbox-title font-bold"></h3>
+      <p class="lightbox-subtitle text-gray-300"></p>
+    </div>
+    
+    <!-- Image counter -->
+    <div class="lightbox-counter absolute top-4 left-4 text-white bg-black/50 px-3 py-1 rounded">
+      <span class="current">1</span> / <span class="total">1</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  class Lightbox {
+    constructor() {
+      this.lightbox = document.getElementById('lightbox');
+      this.image = this.lightbox.querySelector('.lightbox-image');
+      this.title = this.lightbox.querySelector('.lightbox-title');
+      this.subtitle = this.lightbox.querySelector('.lightbox-subtitle');
+      this.current = this.lightbox.querySelector('.current');
+      this.total = this.lightbox.querySelector('.total');
+      this.images = [];
+      this.currentIndex = 0;
+      
+      this.bindEvents();
+    }
+    
+    bindEvents() {
+      // Close buttons
+      this.lightbox.querySelector('.lightbox-close').addEventListener('click', () => this.close());
+      this.lightbox.addEventListener('click', (e) => {
+        if (e.target === this.lightbox) this.close();
+      });
+      
+      // Navigation
+      this.lightbox.querySelector('.lightbox-prev').addEventListener('click', () => this.prev());
+      this.lightbox.querySelector('.lightbox-next').addEventListener('click', () => this.next());
+      
+      // Keyboard
+      document.addEventListener('keydown', (e) => {
+        if (!this.lightbox.classList.contains('hidden')) {
+          if (e.key === 'Escape') this.close();
+          if (e.key === 'ArrowLeft') this.prev();
+          if (e.key === 'ArrowRight') this.next();
+        }
+      });
+    }
+    
+    open(images, startIndex = 0) {
+      this.images = images;
+      this.currentIndex = startIndex;
+      this.total.textContent = images.length;
+      this.showImage();
+      this.lightbox.classList.remove('hidden');
+      this.lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    close() {
+      this.lightbox.classList.add('hidden');
+      this.lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    
+    prev() {
+      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.images.length - 1;
+      this.showImage();
+    }
+    
+    next() {
+      this.currentIndex = this.currentIndex < this.images.length - 1 ? this.currentIndex + 1 : 0;
+      this.showImage();
+    }
+    
+    showImage() {
+      const imageData = this.images[this.currentIndex];
+      this.image.src = imageData.src;
+      this.image.alt = imageData.alt;
+      this.title.textContent = imageData.title || '';
+      this.subtitle.textContent = imageData.subtitle || '';
+      this.current.textContent = this.currentIndex + 1;
+    }
+  }
+  
+  // Initialize lightbox
+  const lightbox = new Lightbox();
+  
+  // Make it globally accessible
+  window.lightbox = lightbox;
+</script>
