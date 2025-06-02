@@ -8,7 +8,33 @@ import Features3 from '~/components/widgets/Features3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Pricing',
+  title: 'About Aries Manufacturing | 65+ Years of Excellence',
+  description: 'Family-owned European manufacturer since 1956. €42M turnover, 275 employees, ISO certified facilities in France and Slovakia delivering precision manufacturing solutions.',
+  openGraph: {
+    type: 'website',
+    title: 'About Aries Group | Sheet Metal Manufacturing in Frane and Slovakia',
+    description: 'Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+    url: 'https://astrocms.aries1.fr/about',
+    siteName: 'Aries Group',
+    images: [
+      {
+        url: '~/images/cutting-1.png',
+        width: 1200,
+        height: 630,
+        alt: 'Aries Group - Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+        type: 'image/png',
+      },
+    ],
+    locale: 'en_US',
+  },
+  twitter: {
+    cardType: 'summary_large_image',
+    site: '@AriesGroup',
+    creator: '@AriesGroup',
+    title: 'About Aries Group | Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+    description: 'Sheet Metal ',
+    image: '~/images/cutting-1.png',
+  },
 };
 ---
 

@@ -9,8 +9,33 @@ import Contact from '~/components/widgets/Contact.astro';
 import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
 
 const metadata = {
-  title: 'Contact Aries Manufacturing | European Facilities',
-  description: 'Contact our European manufacturing facilities in France and Slovakia. Request quotes, technical consultation, and facility tours for your precision manufacturing needs.',
+  title: 'About Aries Manufacturing | 65+ Years of Excellence',
+  description: 'Family-owned European manufacturer since 1956. €42M turnover, 275 employees, ISO certified facilities in France and Slovakia delivering precision manufacturing solutions.',
+  openGraph: {
+    type: 'website',
+    title: 'About Aries Group | Sheet Metal Manufacturing in Frane and Slovakia',
+    description: 'Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+    url: 'https://astrocms.aries1.fr/about',
+    siteName: 'Aries Group',
+    images: [
+      {
+        url: '~/images/cutting-1.png',
+        width: 1200,
+        height: 630,
+        alt: 'Aries Group - Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+        type: 'image/png',
+      },
+    ],
+    locale: 'en_US',
+  },
+  twitter: {
+    cardType: 'summary_large_image',
+    site: '@AriesGroup',
+    creator: '@AriesGroup',
+    title: 'About Aries Group | Sheet Metal Cutting, Bending, Welding, Machining, Painting and Assembly',
+    description: 'Sheet Metal ',
+    image: '~/images/cutting-1.png',
+  },
 };
 ---
 
