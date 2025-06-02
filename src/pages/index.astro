@@ -6,9 +6,11 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
+import CardGrid from '~/components/widgets/CardGrid.astro';
 
 import robotWelding from '~/assets/images/robot-welding-1.jpg';
 import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
+import Announcement from '~/components/widgets/Announcement.astro';
 
 const metadata = {
   title: 'Aries - European Manufacturer of High-Precision Metal Components',
@@ -50,10 +52,82 @@ const metadata = {
     title="Trusted by Industry Leaders"
     subtitle="65+ years of European manufacturing excellence"
     stats={[
-      { amount: '€42M', title: 'Annual Turnover' },
+      { amount: '15.000t', title: 'Sheet Metal Processed per year' },
       { amount: '275', title: 'Employees' },
-      { amount: '2', title: 'Production Sites' },
-      { amount: '65+', title: 'Years Experience' },
+      { amount: '3', title: 'Production Sites' },
+      { amount: '30.000m2', title: 'Total production surface' },
+    ]}
+  />
+
+  <!-- Products Section -->
+  <CardGrid
+    id="products"
+    tagline="Products & Markets"
+    title="Serving Diverse Industries"
+    subtitle="Aries Group delivers tailored sheet metal solutions across Europe for various industries."
+    columns={3}
+    items={[
+      {
+        title: 'Agriculture Equipment',
+        description: 'Durable components for agricultural machinery, implements and equipment designed for harsh environments.',
+        image: '/images/bending.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/railway',
+        },
+        tags: ['Certified', 'EN 15085-2'],
+        isHighlighted: true,
+      },
+      {
+        title: 'Building & Construction',
+        description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork for construction projects.',
+        image: '/images/assembly-1.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/construction',
+        },
+        tags: ['Structures', 'Architecture'],
+      },
+      {
+        title: 'Industrial Machinery',
+        description: 'Custom machinery components, equipment manufacturing, spare parts and small to medium production series.',
+        image: '/images/machining-1.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/machinery',
+        },
+        tags: ['Custom', 'Series Production'],
+      },
+      {
+        title: 'Recycling & Environment',
+        description: 'Recycling equipment, waste management solutions and environmental technology components.',
+        image: '/images/cutting-1.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/energy',
+        },
+        tags: ['Renewable', 'Sustainable'],
+      },
+      {
+        title: 'Logistics & Material Handling',
+        description: 'Precision components for material handling, storage systems, conveyor systems and logistics solutions.',
+        image: '/images/robot-welding-1.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/automotive',
+        },
+        tags: ['Precision', 'OEM'],
+      },
+      {
+        title: 'Outdoor furniture',
+        description: 'High-quality metal furniture for public spaces, parks and outdoor environments, combining durability and design.',
+        image: '/images/WELDING.jpg',
+        callToAction: {
+          text: 'Learn More',
+          href: '/industries/agriculture',
+        },
+        tags: ['Durable', 'Heavy-Duty'],
+      },
     ]}
   />
 
@@ -65,23 +139,43 @@ const metadata = {
     subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
     items={[
       {
-        title: 'High-Precision Laser Cutting',
-        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL cutting tables for maximum efficiency.',
-        icon: 'tabler:cut',
+        title: 'High-Precision Cutting',
+        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL Oxy/Plasma cutting tables for maximum efficiency.',
+        icon: 'tabler:circle-dashed',
+      },
+      {
+        title: 'Cutting Finition',
+        description: 'Precision deburring, edge rounding, flatening and sandblasting for all laser/oxy/plasma cut parts, ensuring optimal quality and safety.',
+        icon: 'tabler:sparkles',
+      },
+      {
+        title: 'Bending & Forming',
+        description: 'Advanced CNC bending machines for complex shapes and high precision forming operations.',
+        icon: 'tabler:border-corner-pill',
       },
       {
         title: 'Multi-Axis CNC Machining',
         description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
-        icon: 'tabler:tool',
+        icon: 'tabler:arrows-maximize',
       },
       {
         title: 'Manual & Robotic Welding',
         description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
-        icon: 'tabler:flame',
+        icon: 'tabler:bolt',
       },
       {
-        title: 'Assembly & Logistics',
+        title: 'Painting & Surface Treatment',
         description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
+        icon: 'tabler:brush',
+      },
+      {
+        title: 'Assembly',
+        description: 'Complete mechanical assembly, including sub-assemblies, electro-mechanical and hydraulic assemblies as well as final assembly and quality control.',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Logistics',
+        description: 'Logistics solutions, including packaging, kanban systems inventory management, and transportation rack design.',
         icon: 'tabler:package',
       },
     ]}
@@ -115,35 +209,6 @@ const metadata = {
       src: facility,
       alt: 'Aries manufacturing facility',
     }}
-  />
-
-  <!-- Market Sectors -->
-  <Features2
-    tagline="Industries We Serve"
-    title="Specialized Solutions Across Key Sectors"
-    subtitle="Delivering precision components and assemblies for demanding industrial applications"
-    items={[
-      {
-        title: 'Railway Industry',
-        description: 'Chassis, sub-assemblies and certified components meeting EN 15085-2 standards with complete traceability.',
-        icon: 'tabler:train',
-      },
-      {
-        title: 'Building & Construction',
-        description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork.',
-        icon: 'tabler:building',
-      },
-      {
-        title: 'General Industry',
-        description: 'Custom machinery, equipment manufacturing, spare parts and small to medium production series.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Energy & Environment',
-        description: 'Wind turbine components, energy equipment and sustainable environmental solutions.',
-        icon: 'tabler:wind',
-      },
-    ]}
   />
 
   <!-- Technology Highlight -->

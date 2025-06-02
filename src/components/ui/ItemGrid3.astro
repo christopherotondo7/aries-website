@@ -1,0 +1,79 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import Button from './Button.astro';
+import Image from '~/components/common/Image.astro';
+
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+  image: imageClass = 'w-full h-48 object-cover rounded-lg mb-6',
+} = classes;
+---
+
+{
+  items && items.length > 0 && (
+    <div
+      class={twMerge(
+        `grid gap-8 gap-x-12 sm:gap-y-8 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`,
+        containerClass
+      )}
+    >
+      {items.map(({ title, description, icon, image, callToAction, classes: itemClasses = {} }) => (
+        <div
+          class={twMerge(
+            'relative flex flex-col h-full intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+            panelClass,
+            itemClasses?.panel
+          )}
+        >
+          {/* Image takes priority over icon */}
+          {image ? (
+            <div class="mb-6">
+              {typeof image === 'string' ? (
+                <img 
+                  src={image || "/placeholder.svg"} 
+                  alt={title || 'Industry image'} 
+                  class={twMerge(imageClass, itemClasses?.image)}
+                />
+              ) : (
+                <Image
+                  {...image}
+                  class={twMerge(imageClass, itemClasses?.image)}
+                  alt={image.alt || title || 'Industry image'}
+                />
+              )}
+            </div>
+          ) : (icon || defaultIcon) && (
+            <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
+          )}
+          
+          <div class="flex-1 flex flex-col">
+            <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
+            {description && (
+              <p class={twMerge('text-muted mt-2 flex-1', descriptionClass, itemClasses?.description)} set:html={description} />
+            )}
+            {callToAction && (
+              <div class="mt-4">
+                <Button {...callToAction} />
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
