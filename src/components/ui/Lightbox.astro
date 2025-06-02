@@ -42,80 +42,133 @@ const { id = 'lightbox' } = Astro.props;
 </div>
 
 <script>
-  class Lightbox {
-    constructor() {
-      this.lightbox = document.getElementById('lightbox');
-      this.image = this.lightbox.querySelector('.lightbox-image');
-      this.title = this.lightbox.querySelector('.lightbox-title');
-      this.subtitle = this.lightbox.querySelector('.lightbox-subtitle');
-      this.current = this.lightbox.querySelector('.current');
-      this.total = this.lightbox.querySelector('.total');
-      this.images = [];
-      this.currentIndex = 0;
-      
-      this.bindEvents();
+  function initLightbox() {
+    const lightbox = document.getElementById('portfolio-lightbox');
+    if (!lightbox) {
+      console.error('Lightbox element not found');
+      return null;
     }
     
-    bindEvents() {
-      // Close buttons
-      this.lightbox.querySelector('.lightbox-close').addEventListener('click', () => this.close());
-      this.lightbox.addEventListener('click', (e) => {
-        if (e.target === this.lightbox) this.close();
-      });
-      
-      // Navigation
-      this.lightbox.querySelector('.lightbox-prev').addEventListener('click', () => this.prev());
-      this.lightbox.querySelector('.lightbox-next').addEventListener('click', () => this.next());
-      
-      // Keyboard
-      document.addEventListener('keydown', (e) => {
-        if (!this.lightbox.classList.contains('hidden')) {
-          if (e.key === 'Escape') this.close();
-          if (e.key === 'ArrowLeft') this.prev();
-          if (e.key === 'ArrowRight') this.next();
-        }
-      });
-    }
+    const image = lightbox.querySelector('.lightbox-image');
+    const title = lightbox.querySelector('.lightbox-title');
+    const subtitle = lightbox.querySelector('.lightbox-subtitle');
+    const current = lightbox.querySelector('.current');
+    const total = lightbox.querySelector('.total');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
     
-    open(images, startIndex = 0) {
-      this.images = images;
-      this.currentIndex = startIndex;
-      this.total.textContent = images.length;
-      this.showImage();
-      this.lightbox.classList.remove('hidden');
-      this.lightbox.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
+    let images = [];
+    let currentIndex = 0;
     
-    close() {
-      this.lightbox.classList.add('hidden');
-      this.lightbox.classList.remove('flex');
+    // Close functionality
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
       document.body.style.overflow = '';
     }
     
-    prev() {
-      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.images.length - 1;
-      this.showImage();
+    // Navigation
+    function prevImage() {
+      if (images.length === 0) return;
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+      showCurrentImage();
     }
     
-    next() {
-      this.currentIndex = this.currentIndex < this.images.length - 1 ? this.currentIndex + 1 : 0;
-      this.showImage();
+    function nextImage() {
+      if (images.length === 0) return;
+      currentIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+      showCurrentImage();
     }
     
-    showImage() {
-      const imageData = this.images[this.currentIndex];
-      this.image.src = imageData.src;
-      this.image.alt = imageData.alt;
-      this.title.textContent = imageData.title || '';
-      this.subtitle.textContent = imageData.subtitle || '';
-      this.current.textContent = this.currentIndex + 1;
+    function showCurrentImage() {
+      if (!images || images.length === 0 || !image) return;
+      
+      const imageData = images[currentIndex];
+      if (!imageData) return;
+      
+      image.src = imageData.src;
+      image.alt = imageData.alt || imageData.title || '';
+      
+      if (title) title.textContent = imageData.title || '';
+      if (subtitle) subtitle.textContent = imageData.subtitle || '';
+      if (current) current.textContent = (currentIndex + 1).toString();
     }
+    
+    // Event listeners
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeLightbox);
+    }
+    
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        prevImage();
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nextImage();
+      });
+    }
+    
+    // Keyboard events
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      }
+    });
+    
+    // Public API
+    return {
+      open: function(imageArray, startIndex) {
+        if (!imageArray || imageArray.length === 0) {
+          console.error('No images provided to lightbox');
+          return;
+        }
+        
+        console.log('Opening lightbox with', imageArray.length, 'images, starting at index', startIndex || 0);
+        
+        images = imageArray;
+        currentIndex = Math.max(0, Math.min(startIndex || 0, images.length - 1));
+        
+        if (total) total.textContent = images.length.toString();
+        
+        showCurrentImage();
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      },
+      close: closeLightbox
+    };
   }
   
   // Initialize lightbox
-  const lightbox = new Lightbox();
+  function setupLightbox() {
+    console.log('Setting up lightbox...');
+    const lightboxInstance = initLightbox();
+    
+    if (lightboxInstance) {
+      window.lightbox = lightboxInstance;
+      console.log('Lightbox available globally');
+    }
+  }
   
-  // Make it globally accessible
-  window.lightbox = lightbox;
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupLightbox);
+  } else {
+    setupLightbox();
+  }
+  
+  // Fallback
+  setTimeout(setupLightbox, 100);
 </script>

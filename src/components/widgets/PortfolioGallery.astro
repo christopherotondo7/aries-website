@@ -143,71 +143,92 @@ const gridCols = {
 </style>
 
 <script>
-  class PortfolioFilter {
-    constructor() {
-      this.items = Array.from(document.querySelectorAll('.portfolio-item'));
-      this.filters = Array.from(document.querySelectorAll('.portfolio-filter'));
-      this.currentFilter = 'all';
-      
-      this.bindEvents();
-      this.setActiveFilter('all');
-    }
+  // Simple portfolio functionality without TypeScript
+  function initPortfolioGallery() {
+    const items = document.querySelectorAll('.portfolio-item');
+    const filters = document.querySelectorAll('.portfolio-filter');
     
-    bindEvents() {
-      // Filter buttons
-      this.filters.forEach(filter => {
-        filter.addEventListener('click', (e) => {
-          const category = e.target.dataset.category;
-          this.filterItems(category);
-          this.setActiveFilter(category);
+    console.log('Found', items.length, 'portfolio items and', filters.length, 'filters');
+    
+    // Filter functionality
+    filters.forEach(function(filter) {
+      filter.addEventListener('click', function() {
+        const category = this.dataset.category;
+        console.log('Filter clicked:', category);
+        
+        // Update active filter
+        filters.forEach(function(f) {
+          f.classList.remove('active');
+        });
+        this.classList.add('active');
+        
+        // Filter items
+        items.forEach(function(item) {
+          const itemCategory = item.dataset.category;
+          const shouldShow = category === 'all' || itemCategory === category;
+          
+          if (shouldShow) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
         });
       });
-      
-      // Portfolio item clicks for lightbox
-      this.items.forEach(item => {
-        item.addEventListener('click', () => {
-          const visibleItems = this.items.filter(item => !item.classList.contains('hidden'));
-          const images = visibleItems.map(item => ({
+    });
+    
+    // Lightbox functionality
+    items.forEach(function(item, index) {
+      item.addEventListener('click', function() {
+        console.log('Portfolio item clicked:', this.dataset.title);
+        
+        // Get all visible items for the slideshow
+        const visibleItems = Array.from(items).filter(function(item) {
+          return !item.classList.contains('hidden');
+        });
+        
+        // Create images array for lightbox
+        const images = visibleItems.map(function(item) {
+          return {
             src: item.dataset.image,
             alt: item.dataset.title,
             title: item.dataset.title,
-            subtitle: item.dataset.subtitle
-          }));
-          
-          const clickedIndex = visibleItems.indexOf(item);
-          window.lightbox.open(images, clickedIndex);
+            subtitle: item.dataset.subtitle || ''
+          };
         });
-      });
-    }
-    
-    filterItems(category) {
-      this.currentFilter = category;
-      
-      this.items.forEach(item => {
-        const itemCategory = item.dataset.category;
-        const shouldShow = category === 'all' || itemCategory === category;
         
-        if (shouldShow) {
-          item.classList.remove('hidden');
+        // Find the clicked item's index in visible items
+        const clickedIndex = visibleItems.indexOf(this);
+        
+        // Open lightbox
+        if (window.lightbox) {
+          console.log('Opening lightbox with', images.length, 'images, starting at index', clickedIndex);
+          window.lightbox.open(images, clickedIndex);
         } else {
-          item.classList.add('hidden');
+          console.error('Lightbox not available');
+          // Fallback: try to initialize lightbox
+          setTimeout(function() {
+            if (window.lightbox) {
+              window.lightbox.open(images, clickedIndex);
+            }
+          }, 100);
         }
       });
-    }
+    });
     
-    setActiveFilter(category) {
-      this.filters.forEach(filter => {
-        if (filter.dataset.category === category) {
-          filter.classList.add('active');
-        } else {
-          filter.classList.remove('active');
-        }
-      });
+    // Set initial active filter
+    const allFilter = document.querySelector('.portfolio-filter[data-category="all"]');
+    if (allFilter) {
+      allFilter.classList.add('active');
     }
   }
   
-  // Initialize portfolio filter
-  document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioFilter();
-  });
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortfolioGallery);
+  } else {
+    initPortfolioGallery();
+  }
+  
+  // Fallback initialization
+  setTimeout(initPortfolioGallery, 200);
 </script>
