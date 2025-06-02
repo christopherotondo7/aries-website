@@ -10,27 +10,35 @@ import CardGrid from '~/components/widgets/CardGrid.astro';
 
 import robotWelding from '~/assets/images/robot-welding-1.jpg';
 import facility from '~/assets/images/WhatsApp Image 2024-03-18 at 12.14.28.jpeg';
-import Announcement from '~/components/widgets/Announcement.astro';
 
 const metadata = {
   title: 'Aries - European Manufacturer of High-Precision Metal Components',
-  description: 'Precision metal components and assemblies for railway, construction, industrial, and energy sectors. Custom solutions from prototypes to series production.',
+  description: 'European leader in precision sheet metal processing with 65+ years expertise. €42M turnover, 275 employees across France & Slovakia. From laser cutting to final assembly.',
   ignoreTitleTemplate: true,
   openGraph: {
     type: 'website',
-    title: 'Aries Manufacturing - Precision Metal Components',
-    description: 'Precision metal components and assemblies for railway, construction, industrial, and energy sectors. Custom solutions from prototypes to series production.',
+    title: 'Aries Group | 65+ Years of European Manufacturing Excellence',
+    description: '🏭 European leader in precision sheet metal processing | €42M turnover | 275 employees | Advanced laser cutting, machining & assembly | ISO certified quality',
+    url: 'https://astrocms.aries1.fr',
+    siteName: 'Aries Group',
     images: [
       {
         url: '~/assets/images/hero-image.png',
         width: 1200,
         height: 630,
-        alt: 'Aries manufacturing facility',
+        alt: 'Aries Group manufacturing facility - European leader in precision metal components',
+        type: 'image/png',
       },
     ],
+    locale: 'en_US',
   },
   twitter: {
     cardType: 'summary_large_image',
+    site: '@AriesGroup',
+    creator: '@AriesGroup',
+    title: 'Aries Group | European Manufacturing Excellence',
+    description: '🏭 65+ years of precision sheet metal processing | €42M turnover | 275 employees across France & Slovakia | Advanced manufacturing solutions',
+    image: '~/assets/images/hero-image.png',
   },
 };
 ---
