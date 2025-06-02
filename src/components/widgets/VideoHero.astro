@@ -48,15 +48,13 @@ const hasMedia = !!(video?.src || image?.src);
       )}
       <video
         class="absolute inset-0 w-full h-full object-cover z-20 opacity-0 transition-opacity duration-1000"
-        autoplay
         muted
         loop
         playsinline
         preload="auto"
         poster={video.poster}
         id="hero-video"
-        onloadeddata="this.style.opacity = '1'; document.getElementById('video-poster')?.style.setProperty('opacity', '0')"
-        oncanplay="this.style.opacity = '1'; document.getElementById('video-poster')?.style.setProperty('opacity', '0')"
+        data-autoplay="true"
       >
         <source src={video.src} type="video/mp4" />
         Your browser does not support the video tag.
@@ -82,7 +80,7 @@ const hasMedia = !!(video?.src || image?.src);
   )}
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+  <div class="relative z-40 max-w-7xl mx-auto px-6 text-center">
     <div class="max-w-4xl mx-auto">
       
       {tagline && (
@@ -136,19 +134,23 @@ const hasMedia = !!(video?.src || image?.src);
 <!-- Enhanced video loading script -->
 {video?.src && (
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    function initializeVideo() {
       const video = document.getElementById('hero-video');
       const poster = document.getElementById('video-poster');
       
       if (!video) return;
       
+      console.log('Initializing video...');
+      
       // Enhanced loading states
       let videoLoaded = false;
+      let playAttempted = false;
       
       // Handle video load success
       function handleVideoLoad() {
         if (!videoLoaded) {
           videoLoaded = true;
+          console.log('Video loaded successfully');
           video.style.opacity = '1';
           if (poster) {
             poster.style.opacity = '0';
@@ -156,35 +158,99 @@ const hasMedia = !!(video?.src || image?.src);
         }
       }
       
-      // Multiple event listeners for better compatibility
-      video.addEventListener('canplay', handleVideoLoad);
-      video.addEventListener('loadeddata', handleVideoLoad);
-      video.addEventListener('loadedmetadata', handleVideoLoad);
+      // Attempt to play video with proper error handling
+      async function attemptPlay() {
+        if (playAttempted) return;
+        playAttempted = true;
+        
+        try {
+          console.log('Attempting to play video...');
+          await video.play();
+          console.log('Video started playing');
+          handleVideoLoad();
+        } catch (error) {
+          console.warn('Autoplay failed:', error.message);
+          // If autoplay fails, show video anyway but don't start playing
+          video.style.opacity = '1';
+          if (poster) {
+            poster.style.opacity = '0.3'; // Keep some poster visibility
+          }
+        }
+      }
       
-      // Fallback timeout - if video doesn't load in 5 seconds, fade out poster anyway
+      // Multiple event listeners for better compatibility
+      video.addEventListener('canplay', function() {
+        console.log('Video can play');
+        attemptPlay();
+      });
+      
+      video.addEventListener('loadeddata', function() {
+        console.log('Video data loaded');
+        attemptPlay();
+      });
+      
+      video.addEventListener('loadedmetadata', function() {
+        console.log('Video metadata loaded');
+        // Try to play as soon as metadata is available
+        attemptPlay();
+      });
+      
+      // Force play attempt after short delay
+      setTimeout(function() {
+        if (!playAttempted) {
+          console.log('Forcing play attempt...');
+          attemptPlay();
+        }
+      }, 1000);
+      
+      // Fallback timeout - if video doesn't load in 5 seconds
       setTimeout(function() {
         if (!videoLoaded && poster) {
-          poster.style.opacity = '0.3'; // Keep some poster visibility if video fails
+          console.warn('Video loading timeout, keeping poster');
+          poster.style.opacity = '0.3';
         }
       }, 5000);
       
       // Handle video error - keep poster visible
-      video.addEventListener('error', function() {
-        console.warn('Video failed to load, using poster image');
+      video.addEventListener('error', function(e) {
+        console.error('Video error:', e);
         if (poster) {
           poster.style.opacity = '1';
         }
       });
       
+      // Handle user interaction - retry play
+      document.addEventListener('click', function() {
+        if (!videoLoaded && video.paused) {
+          console.log('User interaction detected, retrying video play...');
+          attemptPlay();
+        }
+      }, { once: true });
+      
       // Optimize for slow connections
       if (navigator.connection && navigator.connection.effectiveType) {
         const connection = navigator.connection.effectiveType;
         if (connection === 'slow-2g' || connection === '2g') {
-          // On very slow connections, don't auto-hide poster
+          console.log('Slow connection detected');
           if (poster) {
             poster.style.opacity = '0.7';
           }
         }
+      }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeVideo);
+    } else {
+      initializeVideo();
+    }
+    
+    // Also initialize on page show (for back/forward navigation)
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        console.log('Page restored from cache, reinitializing video...');
+        setTimeout(initializeVideo, 100);
       }
     });
   </script>
