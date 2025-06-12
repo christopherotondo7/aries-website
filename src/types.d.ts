@@ -151,6 +151,15 @@ export interface ItemWithImage {
   callToAction?: CallToAction;
 }
 
+export interface ItemClickableWithImage {
+  title?: string;
+  description?: string;
+  image?: Image | string | ImageMetadata;
+  href?: string;
+  classes?: Record<string, string>;
+  callToAction?: CallToAction;
+}
+
 export interface Price {
   title?: string;
   subtitle?: string;
@@ -215,6 +224,12 @@ export interface ItemGridClickable {
 
 export interface ItemGridWithImages {
   items?: Array<ItemWithImage>;
+  columns?: number;
+  classes?: Record<string, string>;
+}
+
+export interface ItemGridClickableWithImages {
+  items?: Array<ItemClickableWithImage>;
   columns?: number;
   classes?: Record<string, string>;
 }
@@ -292,6 +307,11 @@ export interface FeaturesClickable extends Omit<Headline, 'classes'>, Widget {
 
 export interface FeaturesWithImages extends Omit<Headline, 'classes'>, Widget {
   items?: Array<ItemWithImage>;
+  columns?: number;
+}
+
+export interface FeaturesClickableWithImages extends Omit<Headline, 'classes'>, Widget {
+  items?: Array<ItemClickableWithImage>;
   columns?: number;
 }
 

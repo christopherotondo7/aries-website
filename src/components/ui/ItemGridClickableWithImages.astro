@@ -1,0 +1,129 @@
+---
+import type { ItemGridClickableWithImages as Props } from '~/types';
+import { twMerge } from 'tailwind-merge';
+import Button from './Button.astro';
+import { Image } from 'astro:assets';
+
+const { items = [], columns, classes = {} } = Astro.props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  image: imageClass = '',
+  action: actionClass = '',
+} = classes;
+---
+
+{
+  items && items.length > 0 && (
+    <div
+      class={twMerge(
+        `grid mx-auto gap-8 md:gap-y-12 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`,
+        containerClass
+      )}
+    >
+      {items.map(({ title, description, image, href, callToAction, classes: itemClasses = {} }) => (
+        <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          {href ? (
+            <a 
+              href={href}
+              class={twMerge(
+                'flex flex-row max-w-md p-4 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:shadow-lg hover:scale-105 cursor-pointer dark:hover:bg-gray-700 group',
+                panelClass, 
+                itemClasses?.panel
+              )}
+            >
+              <div class="flex justify-center">
+                {image && (
+                  typeof image === 'string' ? (
+                    <img 
+                      src={image} 
+                      alt={title || ''} 
+                      class={twMerge('transition-all duration-300', imageClass, itemClasses?.image)}
+                    />
+                  ) : image.src ? (
+                    <Image 
+                      src={image.src} 
+                      alt={image.alt || title || ''} 
+                      class={twMerge('transition-all duration-300', imageClass, itemClasses?.image)}
+                    />
+                  ) : (
+                    <Image 
+                      src={image} 
+                      alt={title || ''} 
+                      class={twMerge('transition-all duration-300', imageClass, itemClasses?.image)}
+                    />
+                  )
+                )}
+              </div>
+              <div class="mt-0.5 flex-1">
+                {title && <h3 class={twMerge('text-xl font-bold transition-colors duration-300 group-hover:text-white dark:group-hover:text-gray-200', titleClass, itemClasses?.title)}>{title}</h3>}
+                {description && (
+                  <p
+                    class={twMerge(`${title ? 'mt-3' : ''} text-muted transition-colors duration-300 group-hover:text-gray-200 dark:group-hover:text-gray-300`, descriptionClass, itemClasses?.description)}
+                    set:html={description}
+                  />
+                )}
+                {callToAction && (
+                  <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
+                    <Button variant="link" {...callToAction} />
+                  </div>
+                )}
+              </div>
+            </a>
+          ) : (
+            <div class={twMerge('flex flex-row max-w-md', panelClass, itemClasses?.panel)}>
+              <div class="flex justify-center">
+                {image && (
+                  typeof image === 'string' ? (
+                    <img 
+                      src={image} 
+                      alt={title || ''} 
+                      class={twMerge(imageClass, itemClasses?.image)}
+                    />
+                  ) : image.src ? (
+                    <Image 
+                      src={image.src} 
+                      alt={image.alt || title || ''} 
+                      class={twMerge(imageClass, itemClasses?.image)}
+                    />
+                  ) : (
+                    <Image 
+                      src={image} 
+                      alt={title || ''} 
+                      class={twMerge(imageClass, itemClasses?.image)}
+                    />
+                  )
+                )}
+              </div>
+              <div class="mt-0.5">
+                {title && <h3 class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</h3>}
+                {description && (
+                  <p
+                    class={twMerge(`${title ? 'mt-3' : ''} text-muted`, descriptionClass, itemClasses?.description)}
+                    set:html={description}
+                  />
+                )}
+                {callToAction && (
+                  <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
+                    <Button variant="link" {...callToAction} />
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
