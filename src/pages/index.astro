@@ -92,6 +92,197 @@ const metadata = {
   <!-- Market Section -->
   <ProductSlider2
     id="markets"
+    tagline="Our products"
+    title="Wide range of sheet metal products"
+    subtitle="Aries Group produces a wide range of products, from simple cut/bent parts to complex welded assemblies, with machining after welding and painting."
+    slides={[
+      {
+        title: 'Telehandler parts',
+        description: 'Complete telescopic arm assembly, or sub-component kits for your production line.',
+        image: {
+          src: bending,
+          alt: 'Agriculture equipment components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-green-600 via-emerald-600 to-teal-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/agriculture',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Chassis parts',
+        description: 'Complete chassis or sub-component for your chassis line.',
+        image: {
+          src: assembly1,
+          alt: 'Building and construction components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-slate-600 via-gray-600 to-zinc-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/construction',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'small to medium serial welded components',
+        description: 'Large welded components manufactured in series, small to medium size parts, with cataphoresis or painting finish, that we can manage in kaban for high-volumes production lines.',
+        image: {
+          src: machining1,
+          alt: 'Industrial machinery components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-blue-600 via-indigo-600 to-purple-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/machinery',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Thin sheet metal assemblies and body machine parts',
+        description: 'Thin sheet metal assemblies and body machine parts for industrial equipment, with precise fabrication and finishing, using carbon steel, aluminum or stainless steel. Those parts can be low-volume and high-mix.',
+        image: {
+          src: cutting1,
+          alt: 'Recycling and environmental components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-emerald-600 via-green-600 to-lime-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/recycling',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Cut/bent part for your welding line',
+        description: 'Cut and bent sheet metal parts, ready for seamless integration into your production process, with possibility of kitting delivery for your production line.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        imagePosition: 'right',
+        gradient: 'from-orange-600 via-red-600 to-pink-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/logistics',
+          variant: 'primary',
+        },
+      },
+      {
+        title: 'Complex assemblies',
+        description: 'Complex assemblies for outdoor furniture or complete machines, produced 100% internally, up to the assembly of hydraulic or electrical components, with painting and surface treatment.',
+        image: {
+          src: manualWelding,
+          alt: 'Outdoor furniture components',
+        },
+        imagePosition: 'left',
+        gradient: 'from-violet-600 via-purple-600 to-fuchsia-700',
+        button: {
+          text: 'Discover our Portfolio',
+          href: '/products/furniture',
+          variant: 'primary',
+        },
+      },
+    ]}
+  />
+
+  <!-- Services Overview -->
+  <FeaturesClickableWithImages
+    id="services"
+    tagline="Our Capabilities"
+    title="Complete Manufacturing Solutions"
+    subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
+    items={[
+      {
+        title: 'Engineering & Production Tooling',
+        description: 'Industrialization design, jig/tooling design, prototyping services and consulting services for sheet metal projects.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/cutting',
+      },
+      {
+        title: 'High-Precision Cutting',
+        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL Oxy/Plasma cutting tables for maximum efficiency.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/cutting',
+      },
+      {
+        title: 'Cutting Finition',
+        description: 'Precision deburring, edge rounding, flatening and sandblasting for all laser/oxy/plasma cut parts, ensuring optimal quality and safety.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/cutting-finition',
+      },
+      {
+        title: 'Bending & Forming',
+        description: 'Advanced CNC bending machines for complex shapes and high precision forming operations.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/bending',
+      },
+      {
+        title: 'Multi-Axis CNC Machining',
+        description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/machining',
+      },
+      {
+        title: 'Manual & Robotic Welding',
+        description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/welding',
+      },
+      {
+        title: 'Painting & Surface Treatment',
+        description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/painting',
+      },
+      {
+        title: 'Assembly',
+        description: 'Complete mechanical assembly, including sub-assemblies, electro-mechanical and hydraulic assemblies as well as final assembly and quality control.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/assembly',
+      },
+      {
+        title: 'Logistics',
+        description: 'Logistics solutions, including packaging, kanban systems inventory management, and transportation rack design.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/logistics',
+      },
+    ]}
+  />
+
+  <!-- Market Section -->
+  <ProductSlider2
+    id="markets"
     tagline="End-Markets"
     title="Serving Diverse Industries"
     subtitle="Aries Group delivers tailored sheet metal solutions across Europe for various industries."
@@ -188,208 +379,6 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- Services Overview
-  <FeaturesClickableWithImages
-    id="services"
-    tagline="Our Capabilities"
-    title="Complete Manufacturing Solutions"
-    subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
-    items={[
-      {
-        title: 'High-Precision Cutting',
-        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL Oxy/Plasma cutting tables for maximum efficiency.',
-        icon: 'tabler:circle-dashed',
-        href: '/services/cutting',
-      },
-      {
-        title: 'Cutting Finition',
-        description: 'Precision deburring, edge rounding, flatening and sandblasting for all laser/oxy/plasma cut parts, ensuring optimal quality and safety.',
-        icon: 'tabler:sparkles',
-        href: '/services/cutting-finition',
-      },
-      {
-        title: 'Bending & Forming',
-        description: 'Advanced CNC bending machines for complex shapes and high precision forming operations.',
-        icon: 'tabler:border-corner-pill',
-        href: '/services/bending',
-      },
-      {
-        title: 'Multi-Axis CNC Machining',
-        description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
-        icon: 'tabler:arrows-maximize',
-        href: '/services/machining',
-      },
-      {
-        title: 'Manual & Robotic Welding',
-        description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
-        icon: 'tabler:bolt',
-        href: '/services/welding',
-      },
-      {
-        title: 'Painting & Surface Treatment',
-        description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
-        icon: 'tabler:brush',
-        href: '/services/painting',
-      },
-      {
-        title: 'Assembly',
-        description: 'Complete mechanical assembly, including sub-assemblies, electro-mechanical and hydraulic assemblies as well as final assembly and quality control.',
-        icon: 'tabler:tool',
-        href: '/services/assembly',
-      },
-      {
-        title: 'Logistics',
-        description: 'Logistics solutions, including packaging, kanban systems inventory management, and transportation rack design.',
-        icon: 'tabler:package',
-        href: '/services/logistics',
-      },
-    ]}
-  /> -->
-  <!-- Services Overview -->
-  <FeaturesClickableWithImages
-    id="services"
-    tagline="Our Capabilities"
-    title="Complete Manufacturing Solutions"
-    subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
-    items={[
-      {
-        title: 'High-Precision Cutting',
-        description: 'Fiber laser cutting up to 30mm steel thickness with automated systems and XXL Oxy/Plasma cutting tables for maximum efficiency.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/cutting',
-      },
-      {
-        title: 'Cutting Finition',
-        description: 'Precision deburring, edge rounding, flatening and sandblasting for all laser/oxy/plasma cut parts, ensuring optimal quality and safety.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/cutting-finition',
-      },
-      {
-        title: 'Bending & Forming',
-        description: 'Advanced CNC bending machines for complex shapes and high precision forming operations.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/bending',
-      },
-      {
-        title: 'Multi-Axis CNC Machining',
-        description: 'Advanced 5-axis machining centers for complex geometries, turning, milling, drilling and tapping operations.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/machining',
-      },
-      {
-        title: 'Manual & Robotic Welding',
-        description: 'Expert welding services including TIG, MIG/MAG, electrode welding and robotic welding for series production.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/welding',
-      },
-      {
-        title: 'Painting & Surface Treatment',
-        description: 'Complete mechanical assembly, surface treatment, industrial painting and logistics solutions.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/painting',
-      },
-      {
-        title: 'Assembly',
-        description: 'Complete mechanical assembly, including sub-assemblies, electro-mechanical and hydraulic assemblies as well as final assembly and quality control.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/assembly',
-      },
-      {
-        title: 'Logistics',
-        description: 'Logistics solutions, including packaging, kanban systems inventory management, and transportation rack design.',
-        image: {
-          src: robotWelding,
-          alt: 'Logistics and material handling components',
-        },
-        href: '/services/logistics',
-      },
-    ]}
-  />
-
-  <!-- Technology Highlight
-  <Content
-    tagline="Industry 4.0"
-    title="Advanced Manufacturing Technology"
-    subtitle="State-of-the-art equipment and digital integration for superior quality and efficiency"
-    items={[
-      {
-        title: 'Automated Production',
-        description: 'Fully automated laser cutting systems with material handling and nesting optimization.',
-      },
-      {
-        title: 'Digital Traceability',
-        description: 'Complete process tracking from material receipt to final delivery with quality documentation.',
-      },
-      {
-        title: 'Collaborative Robotics',
-        description: 'Advanced welding robots working alongside skilled craftsmen for optimal results.',
-      },
-      {
-        title: 'Smart Manufacturing',
-        description: 'Integrated CAD/CAM systems, real-time monitoring and predictive maintenance.',
-      },
-    ]}
-    image={{
-      src: robotWelding,
-      alt: 'Robotic welding system',
-    }}
-  /> -->
-
-  <!-- Company Values
-  <Content
-    tagline="Our Values"
-    title="Partnership. Innovation. Excellence."
-    subtitle="Built on family values since 1956, we combine traditional craftsmanship with cutting-edge technology"
-    isReversed
-    items={[
-      {
-        title: 'Innovation',
-        description: 'Industry 4.0 integration, digital processes, and continuous investment in advanced technologies.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Quality',
-        description: 'ISO 9001, 14001, 3834-2 certifications ensuring the highest standards in every project.',
-        icon: 'tabler:augmented-reality',
-      },
-      {
-        title: 'Sustainability',
-        description: 'ECOVADIS Bronze Medal recognizing our commitment to environmental and social responsibility.',
-        icon: 'tabler:michelin-star-green',
-      },
-      {
-        title: 'Partnership',
-        description: 'Long-term relationships built on trust, reliability and shared success with our clients.',
-        icon: 'tabler:heart-handshake',
-      },
-    ]}
-    image={{
-      src: facility,
-      alt: 'Aries manufacturing facility',
-    }}
-  /> -->
 
   <!-- Material Expertise with Images -->
   <Features4
