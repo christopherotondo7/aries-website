@@ -9,6 +9,7 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
   items = [],
+  columns = 4,
   forceDark = false,
   imageRounded = false,
   
@@ -29,7 +30,13 @@ const actualIsDark = forceDark || isDark;
 >
   <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
   
-  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
+  <div class={`grid gap-8 md:grid-cols-2 ${
+    columns === 2 
+      ? 'lg:grid-cols-2' 
+      : columns === 3 
+        ? 'lg:grid-cols-3' 
+        : 'lg:grid-cols-4'
+  } mt-12`}>
     {
       items &&
         items.map(({ title: itemTitle, description, icon, image, href, linkText = 'En savoir plus' }) => (

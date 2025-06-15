@@ -195,7 +195,17 @@ const metadata = {
     tagline="Our Capabilities"
     title="Complete Manufacturing Solutions"
     subtitle="From raw materials to finished assemblies, we deliver precision engineering across the full production cycle"
+    columns={2}
     items={[
+      {
+        title: 'Material Expertise',
+        description: 'With over 4 tons of available materials all year, Aries Group has the capacity to meet your request for carbon steel, stainless steel, aluminum alloys, and specialty alloys, from 0.5mm to 150mm.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
+        },
+        href: '/services/cutting',
+      },
       {
         title: 'Engineering & Production Tooling',
         description: 'Industrialization design, jig/tooling design, prototyping services and consulting services for sheet metal projects.',
@@ -380,147 +390,40 @@ const metadata = {
     ]}
   />
 
-  <!-- Material Expertise with Images -->
+  <!-- Features Section -->
   <Features4
-    tagline="Material Expertise"
-    title="Advanced Material Processing"
-    subtitle="Comprehensive capabilities across diverse material types and specifications"
-    columns={2}
+    id="features"
+    columns={3}
+    tagline="Our Production Sites"
+    title="Your European Sheet Metal Partner"
+    subtitle="With 3 sites across Europe, Aries Group has a central position to be your efficient partner in sheet metal activities."
     items={[
       {
-        title: 'Carbon Steel',
-        description: 'Standard and high-strength carbon steels for structural and general engineering applications.',
-        image: {
-          src: cutting1,
-          alt: 'Carbon steel cutting process',
-        },
-      },
-      {
-        title: 'Stainless Steel',
-        description: 'All grades of stainless steel including austenitic, ferritic, and duplex grades for demanding environments.',
-        image: {
-          src: robotWelding,
-          alt: 'Stainless steel welding',
-        },
-      },
-      {
-        title: 'Aluminum Alloys',
-        description: 'Lightweight aluminum alloys for aerospace, automotive, and architectural applications.',
-        image: {
-          src: machining1,
-          alt: 'Aluminum machining process',
-        },
-      },
-      {
-        title: 'Specialty Alloys',
-        description: 'Exotic materials including Inconel, Hastelloy, and other high-performance alloys for extreme conditions.',
-        image: {
-          src: assembly1,
-          alt: 'Specialty alloy assembly',
-        },
-      },
-    ]}
-  />
-
-  <!-- Market Section
-  <ProductSlider
-    id="markets"
-    tagline="End-Markets"
-    title="Serving Diverse Industries"
-    subtitle="Aries Group delivers tailored sheet metal solutions across Europe for various industries."
-    slides={[
-      {
-        title: 'Agriculture Equipment',
-        description: 'Durable components for agricultural machinery, implements and equipment designed for harsh environments.',
-        image: {
-          src: bending,
-          alt: 'Agriculture equipment components',
-        },
-        imagePosition: 'right',
-        gradient: 'from-green-600 via-emerald-600 to-teal-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/agriculture',
-          variant: 'primary',
-        },
-      },
-      {
-        title: 'Building & Construction',
-        description: 'Metal structures, prefabricated elements, railings, staircases and architectural metalwork for construction projects.',
-        image: {
-          src: assembly1,
-          alt: 'Building and construction components',
-        },
-        imagePosition: 'left',
-        gradient: 'from-slate-600 via-gray-600 to-zinc-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/construction',
-          variant: 'primary',
-        },
-      },
-      {
-        title: 'Industrial Machinery',
-        description: 'Custom machinery components, equipment manufacturing, spare parts and small to medium production series.',
-        image: {
-          src: machining1,
-          alt: 'Industrial machinery components',
-        },
-        imagePosition: 'right',
-        gradient: 'from-blue-600 via-indigo-600 to-purple-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/machinery',
-          variant: 'primary',
-        },
-      },
-      {
-        title: 'Recycling & Environment',
-        description: 'Recycling equipment, waste management solutions and environmental technology components.',
-        image: {
-          src: cutting1,
-          alt: 'Recycling and environmental components',
-        },
-        imagePosition: 'left',
-        gradient: 'from-emerald-600 via-green-600 to-lime-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/recycling',
-          variant: 'primary',
-        },
-      },
-      {
-        title: 'Logistics & Material Handling',
-        description: 'Precision components for material handling, storage systems, conveyor systems and logistics solutions.',
+        title: 'Aries3-Guret Métallurgie (France 🇫🇷)',
+        description: 'Located in Brignais, France, near Lyon, this site specializes in small/mid thickness sheet metal fabrication for both high-volume and custom, low-volume projects. This site is equiped with all the technologies to meet your demand: fiber laser cutting, bending, welding, painting and assembly capabilities.',
         image: {
           src: robotWelding,
           alt: 'Logistics and material handling components',
         },
-        imagePosition: 'right',
-        gradient: 'from-orange-600 via-red-600 to-pink-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/logistics',
-          variant: 'primary',
+      },
+      {
+        title: 'Aries2 (Slovakia 🇸🇰)',
+        description: 'Located in Tornala, Slovakia, Aries2 is the main Aries site for mid/heavy sheet metal components and assemblies, delivering high-volume production for major industrial customers, with a specialization in welding, robot welding, CNC machining (up to 10m and 5 tons), painting (both liquid and powder coating) and assembly.',
+        image: {
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
         },
       },
       {
-        title: 'Outdoor Furniture',
-        description: 'High-quality metal furniture for public spaces, parks and outdoor environments, combining durability and design.',
+        title: 'Aries4-Raciostyl (Slovakia 🇸🇰)',
+        description: 'Located in Drienovec, Slovakia, this site specializes in high-precision cutting operations (fiber laser and oxy/plasma), cutting post-processing and bending operations, with a focus on medium to high series production. It is specialized in kitting preparation for welding lines, delivering all the cut/bent parts ready for welding.',
         image: {
-          src: manualWelding,
-          alt: 'Outdoor furniture components',
+          src: robotWelding,
+          alt: 'Logistics and material handling components',
         },
-        imagePosition: 'left',
-        gradient: 'from-violet-600 via-purple-600 to-fuchsia-700',
-        button: {
-          text: 'Discover our Portfolio',
-          href: '/products/furniture',
-          variant: 'primary',
-        },
-      },
+      }
     ]}
-  /> -->
+  />
 
   <!-- CTA Button for Production Sites Page -->
   <div class="text-center mt-8 mb-16">

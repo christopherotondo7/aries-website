@@ -39,7 +39,7 @@ const {
             <a 
               href={href}
               class={twMerge(
-                'relative flex flex-row max-w-md p-4 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:shadow-lg hover:scale-105 cursor-pointer dark:hover:bg-gray-700 group',
+                'relative flex flex-row max-w-md p-4 rounded-lg transition-all duration-300 hover:bg-gray-900 hover:shadow-lg hover:scale-105 cursor-pointer dark:hover:bg-gray-700 group border-2 border-transparent hover:border-white dark:hover:border-gray-300',
                 panelClass, 
                 itemClasses?.panel
               )}
@@ -67,7 +67,7 @@ const {
                   )
                 )}
               </div>
-              <div class="mt-0.5 flex-1 flex flex-col">
+              <div class="mt-0.5 flex-1">
                 {title && <h3 class={twMerge('text-xl font-bold transition-colors duration-300 group-hover:text-white dark:group-hover:text-gray-200', titleClass, itemClasses?.title)}>{title}</h3>}
                 {description && (
                   <p
@@ -80,13 +80,10 @@ const {
                     <Button variant="link" {...callToAction} />
                   </div>
                 )}
-                {/* Arrow icon that appears on hover */}
-                <div class="mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                  <div class="inline-flex items-center gap-1 bg-white/20 dark:bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                    <span class="text-sm text-white dark:text-gray-100 underline underline-offset-2">Learn more</span>
-                    <Icon name="tabler:arrow-right" class="w-4 h-4 text-white dark:text-gray-100" />
-                  </div>
-                </div>
+              </div>
+              {/* Arrow icon that appears on hover */}
+              <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Icon name="tabler:arrow-up-right" class="w-5 h-5 text-white dark:text-gray-200" />
               </div>
             </a>
           ) : (
